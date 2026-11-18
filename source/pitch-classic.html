@@ -509,32 +509,32 @@
 .active .tst.on::after { animation: tprog 6s linear both; }
 @keyframes tprog { to { width: 100%; } }
 
-/* the result: traditional flow vs Silicofeller, technique by technique */
-.rhead { margin-top: -20px; display: flex; justify-content: space-between; align-items: flex-end; }
-.ten { display: flex; align-items: center; gap: 22px; padding: 14px 30px 14px 26px; border-radius: 20px; border: 1px solid rgba(165, 180, 255, .28); background: rgba(91, 75, 245, .12); }
-.ten .big { font-size: 84px; line-height: 1; }
-.ten p:not(.big) { font-size: 19px; line-height: 1.4; color: rgba(255, 255, 255, .8); }
-.cmp { margin-top: 22px; }
-.chd, .cr { display: grid; grid-template-columns: 250px 1fr 40px 1fr 144px; gap: 22px; align-items: center; }
-.chd { padding: 0 0 12px; border-bottom: 1px solid rgba(255, 255, 255, .3); }
-.chd span { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
-.chd .o { color: #F4A3A6; }
-.chd .n { color: #A5B4FF; }
-.cr { padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
-.k-tech { display: flex; gap: 14px; align-items: baseline; }
-.k-tech .mono { font-size: 13px; color: #A5B4FF; letter-spacing: .1em; }
-.k-tech h3 { font-size: 22px; font-weight: 600; color: #FFFFFF; letter-spacing: -.01em; line-height: 1.2; }
-.k-old .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
-.tchip { font-style: normal; font-size: 14px; font-weight: 600; padding: 3px 11px; border-radius: 999px; color: #F4A3A6; background: rgba(229, 72, 77, .14); border: 1px solid rgba(229, 72, 77, .35); }
-.k-old p { font-size: 17px; line-height: 1.4; color: rgba(255, 255, 255, .55); }
-.k-arr { color: #A5B4FF; }
-.k-arr .ico { width: 28px; height: 28px; }
-.k-new p { font-size: 19px; line-height: 1.4; font-weight: 500; color: #FFFFFF; }
-.k-th { width: 144px; height: 90px; border-radius: 8px; border: 3px solid #FFFFFF; box-shadow: 0 10px 26px rgba(0, 0, 0, .45); transform: rotate(-2deg); transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
-.cr:nth-child(odd) .k-th { transform: rotate(2deg); }
-.cr:hover .k-th { transform: rotate(0) scale(1.9) translateX(-30px); position: relative; z-index: 5; }
-.cr:hover { background: rgba(255, 255, 255, .03); }
-.result .src { margin-top: 16px; }
+/* the result: the comparison on the left, the live screens scattered like papers on the right */
+.result .rleft { width: 860px; }
+.ten { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
+.ten .big { font-size: 64px; line-height: 1; }
+.ten p:not(.big) { font-size: 18px; line-height: 1.35; color: rgba(255, 255, 255, .78); }
+.ten small { display: block; }
+.ten small { font-size: 13px; color: rgba(255, 255, 255, .45); }
+.techs { list-style: none; padding: 0; margin: 22px 0 0; }
+.techs li { display: grid; grid-template-columns: 46px 1fr; gap: 6px; padding: 10px 14px 10px 0; border-top: 1px solid rgba(255, 255, 255, .1); border-radius: 10px; transition: background .25s; }
+.techs li:hover { background: rgba(255, 255, 255, .04); }
+.techs .num { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; color: #A5B4FF; letter-spacing: .1em; padding: 5px 0 0 12px; }
+.techs h3 { font-size: 21px; font-weight: 600; color: #FFFFFF; letter-spacing: -.01em; }
+.techs .was { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 5px; font-size: 15px; color: rgba(255, 255, 255, .5); }
+.techs .was span { margin-left: 4px; }
+.tchip { font-style: normal; font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; color: #F4A3A6; background: rgba(229, 72, 77, .14); border: 1px solid rgba(229, 72, 77, .35); }
+.techs .now { display: flex; align-items: center; gap: 10px; margin-top: 4px; font-size: 17px; font-weight: 500; color: #FFFFFF; }
+.techs .now .ico { width: 18px; height: 18px; color: #A5B4FF; }
+.result .pile { position: absolute !important; left: 1050px; top: 140px; width: 860px; height: 820px; z-index: 1; }
+.paper { position: absolute; left: var(--x); top: var(--y); width: 344px; margin: 0; padding: 9px 9px 0; background: #FFFFFF; border-radius: 6px; transform: rotate(var(--rot)); box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 26px 56px rgba(0, 0, 0, .55); transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s; }
+.paper img { display: block; width: 326px; height: 204px; border-radius: 3px; border: 1px solid #E6E8EF; }
+.paper figcaption { display: flex; gap: 10px; align-items: baseline; padding: 9px 4px 11px; font-size: 15px; font-weight: 600; color: #090B1A; }
+.paper figcaption b { font-family: 'JetBrains Mono', monospace !important; font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: .1em; }
+.paper:hover, .paper.hot { transform: rotate(0deg) scale(1.08); z-index: 5; box-shadow: 0 4px 8px rgba(0, 0, 0, .3), 0 40px 90px rgba(0, 0, 0, .65); }
+.active .paper { animation: toss .7s cubic-bezier(.2, .8, .3, 1.1) var(--d) both; }
+@keyframes toss { from { opacity: 0; transform: translateY(-60px) rotate(calc(var(--rot) * -2)) scale(1.08); } }
+@media print { .paper { animation: none !important; } }
 
 /* close */
 .close .contact { font-size: 22px; }
@@ -731,59 +731,39 @@
 
 <!-- THE RESULT -->
 <section class="night result" data-title="The result">
-  <div class="rhead">
-    <div>
-      <p class="eb r" style="--i:0">The result · technique by technique</p>
-      <h2 class="t r" style="--i:1">Traditional flow <span class="grad">vs Silicofeller.</span></h2>
-    </div>
-    <div class="ten r" style="--i:2"><p class="big count">10×</p><p>faster design cycles:<br>months of layout become hours</p></div>
+  <div class="rleft">
+    <p class="eb r" style="--i:0">The result · technique by technique</p>
+    <h2 class="t r" style="--i:1">Traditional flow <span class="grad">vs Silicofeller.</span></h2>
+    <div class="ten r" style="--i:2"><p class="big count">10×</p><p>faster design cycles: months of layout become hours <small>(company-reported)</small></p></div>
+    <ol class="techs">
+      <li class="r" style="--i:3" data-k="0"><span class="num">01</span><div><h3>Chip design</h3><p class="was"><i class="tchip">Python</i><i class="tchip">Qiskit Metal</i><span>hand-written code, no picture of the chip</span></p><p class="now">{{icon:arrow}}<span>AI Design Copilot: target Hamiltonian in, qubit geometry out</span></p></div></li>
+      <li class="r" style="--i:4" data-k="1"><span class="num">02</span><div><h3>Layout and routing</h3><p class="was"><i class="tchip">KLayout</i><i class="tchip">CAD tools</i><span>waveguides drawn and re-routed by hand</span></p><p class="now">{{icon:arrow}}<span>Schematic editor with automatic, physics-aware routing</span></p></div></li>
+      <li class="r" style="--i:5" data-k="2"><span class="num">03</span><div><h3>EM simulation</h3><p class="was"><i class="tchip">Ansys HFSS</i><span>model rebuilt by hand, days per run</span></p><p class="now">{{icon:arrow}}<span>Built-in Palace FEM on the live design, cloud and GPU</span></p></div></li>
+      <li class="r" style="--i:6" data-k="3"><span class="num">04</span><div><h3>Capacitance and quantum analysis</h3><p class="was"><i class="tchip">Ansys Q3D</i><i class="tchip">pyEPR</i><i class="tchip">Excel</i><span>results copied between scripts</span></p><p class="now">{{icon:arrow}}<span>Capacitance, EPR and Hamiltonian analysis in one place</span></p></div></li>
+      <li class="r" style="--i:7" data-k="4"><span class="num">05</span><div><h3>Design-rule checks</h3><p class="was"><i class="tchip">Separate DRC run</i><span>faults often found after fabrication</span></p><p class="now">{{icon:arrow}}<span>Real-time DRC: boundary, margins, overlaps, connectivity</span></p></div></li>
+      <li class="r" style="--i:8" data-k="5"><span class="num">06</span><div><h3>Tapeout export</h3><p class="was"><i class="tchip">Manual GDS</i><span>files converted and cleaned up by hand</span></p><p class="now">{{icon:arrow}}<span>One-click GDSII plus the Qiskit Metal code</span></p></div></li>
+    </ol>
   </div>
-  <div class="cmp">
-    <div class="chd"><span>Technique</span><span class="o">Traditional · 10+ separate tools</span><span></span><span class="n">Silicofeller · one platform</span><span>Live screen</span></div>
-      <div class="cr r" style="--i:3">
-        <div class="k-tech"><span class="mono">01</span><h3>Chip design</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">Python</i><i class="tchip">Qiskit Metal</i></div><p>Hand-written code, line by line, with no picture of the chip.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>AI Design Copilot turns a target Hamiltonian into qubit geometry.</p></div>
-        <img class="k-th" src="{{img:th-design}}" alt="Silicofeller: Chip design">
-      </div>
-      <div class="cr r" style="--i:4">
-        <div class="k-tech"><span class="mono">02</span><h3>Layout and routing</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">KLayout</i><i class="tchip">CAD tools</i></div><p>Waveguides drawn and re-routed by hand; overlaps found late.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>Visual schematic editor with automatic, physics-aware routing.</p></div>
-        <img class="k-th" src="{{img:th-schematic}}" alt="Silicofeller: Layout and routing">
-      </div>
-      <div class="cr r" style="--i:5">
-        <div class="k-tech"><span class="mono">03</span><h3>EM simulation</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">Ansys HFSS</i></div><p>Model rebuilt by hand in a separate solver; days per run.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>Built-in Palace FEM: eigenmode and driven-modal on the live design, cloud and GPU.</p></div>
-        <img class="k-th" src="{{img:th-em}}" alt="Silicofeller: EM simulation">
-      </div>
-      <div class="cr r" style="--i:6">
-        <div class="k-tech"><span class="mono">04</span><h3>Capacitance and quantum analysis</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">Ansys Q3D</i><i class="tchip">pyEPR</i><i class="tchip">Excel</i></div><p>Results copied between scripts and spreadsheets.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>Capacitance matrix, EPR and Hamiltonian analysis in the same workspace.</p></div>
-        <img class="k-th" src="{{img:th-q3d}}" alt="Silicofeller: Capacitance and quantum analysis">
-      </div>
-      <div class="cr r" style="--i:7">
-        <div class="k-tech"><span class="mono">05</span><h3>Design-rule checks</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">Separate DRC run</i></div><p>Run after export; faults often found only after fabrication.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>Real-time DRC: die boundary, edge margin, overlaps and connectivity.</p></div>
-        <img class="k-th" src="{{img:th-drc}}" alt="Silicofeller: Design-rule checks">
-      </div>
-      <div class="cr r" style="--i:8">
-        <div class="k-tech"><span class="mono">06</span><h3>Tapeout export</h3></div>
-        <div class="k-old"><div class="chips"><i class="tchip">Manual GDS</i></div><p>Files converted and polygons cleaned up by hand.</p></div>
-        <span class="k-arr">{{icon:arrow}}</span>
-        <div class="k-new"><p>One-click GDSII, plus the Qiskit Metal code behind the design.</p></div>
-        <img class="k-th" src="{{img:th-export}}" alt="Silicofeller: Tapeout export">
-      </div>
+  <div class="pile">
+    <figure class="paper" style="--x:30px; --y:0px; --rot:-6deg; --d:0.30s"><img src="{{img:th-design}}" alt="Silicofeller: Chip design"><figcaption><b>01</b>Design Copilot</figcaption></figure>
+    <figure class="paper" style="--x:455px; --y:22px; --rot:5deg; --d:0.42s"><img src="{{img:th-schematic}}" alt="Silicofeller: Layout and routing"><figcaption><b>02</b>Schematic Editor</figcaption></figure>
+    <figure class="paper" style="--x:0px; --y:272px; --rot:4deg; --d:0.54s"><img src="{{img:th-em}}" alt="Silicofeller: EM simulation"><figcaption><b>03</b>Palace FEM solvers</figcaption></figure>
+    <figure class="paper" style="--x:440px; --y:296px; --rot:-4deg; --d:0.66s"><img src="{{img:th-q3d}}" alt="Silicofeller: Capacitance and quantum analysis"><figcaption><b>04</b>Electrostatic analysis</figcaption></figure>
+    <figure class="paper" style="--x:40px; --y:548px; --rot:-3deg; --d:0.78s"><img src="{{img:th-drc}}" alt="Silicofeller: Design-rule checks"><figcaption><b>05</b>Live DRC</figcaption></figure>
+    <figure class="paper" style="--x:460px; --y:560px; --rot:6deg; --d:0.90s"><img src="{{img:th-export}}" alt="Silicofeller: Tapeout export"><figcaption><b>06</b>Qiskit Metal code</figcaption></figure>
   </div>
-  <p class="src r" style="--i:9">10× is company-reported. Thumbnails: the live Silicofeller product; hover a row to enlarge its screen.</p>
+  <script>
+  (() => {
+    // Pointing at a technique on the left lifts its screen on the right.
+    const sec = document.currentScript.closest("section");
+    const papers = [...sec.querySelectorAll(".paper")];
+    sec.querySelectorAll(".techs li").forEach((li) => {
+      const p = papers[+li.dataset.k];
+      li.addEventListener("mouseenter", () => p.classList.add("hot"));
+      li.addEventListener("mouseleave", () => p.classList.remove("hot"));
+    });
+  })();
+  </script>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>9</span></div>
   <aside>This is the difference, technique by technique. Chip design: today an engineer hand-writes Python in Qiskit Metal; in Silicofeller the AI copilot turns a target Hamiltonian into geometry. Layout and routing: KLayout and CAD tools, re-routed by hand, versus our schematic editor with automatic routing. EM simulation: in Ansys HFSS the model is rebuilt by hand and a run takes days; we run eigenmode and driven-modal simulation with the Palace FEM solver on the live design, in the cloud with GPU acceleration. Capacitance and quantum analysis: Q3D, pyEPR and spreadsheets, versus capacitance, EPR and Hamiltonian analysis in one workspace. Design-rule checks: today they run after export and faults show up after fabrication; ours run in real time. And tapeout: one-click GDSII with the Qiskit Metal code behind it. Net result: design cycles about ten times faster, by our own measurements.</aside>
 </section>
