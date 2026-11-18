@@ -630,6 +630,26 @@ img.av { object-fit: cover; object-position: center top; display: block; }
 .team .mem p { font-size: 17px; letter-spacing: .08em; margin-top: 10px; }
 /* Small uppercase labels: simple bold sans, everywhere */
 .deck section .ph, .deck section .ph *, .deck section .grp, .deck section .st, .deck section .phases span, .deck section .chl, .deck section .foot, .deck section .foot span, .deck section .tier .k, .deck section .mem p, .deck section .pcard .ptag, .deck section .xcard .ptag, .deck section .cvfoot b { font-family: Inter, Arial, sans-serif !important; font-weight: 700 !important; }
+/* Competition slide: full-height rows and a dark advantages panel */
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 36px; height: 620px; }
+.cmp-left { display: flex; flex-direction: column; min-height: 0; }
+.cmp-rows { display: flex; flex-direction: column; flex: 1; border-top: 2px solid var(--ink); margin-top: 16px; }
+.crow { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 14px 4px; border-bottom: 1px solid var(--rule); }
+.crow h3 { font-size: 32px; font-weight: 600; letter-spacing: -.4px; color: var(--ink); }
+.crow p { font-size: 22px; line-height: 1.4; color: var(--body); margin-top: 6px; }
+.crow.sq h3, .crow.sq p { color: #E5484D; }
+.cmp-right { background: var(--night); color: #FFFFFF; border-radius: 24px; padding: 36px 40px; display: flex; flex-direction: column; gap: 26px; box-shadow: 0 30px 70px rgba(9, 11, 26, .2); }
+.cmp-right .lbl { color: #A5B4FF; }
+.cstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cs { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .08); border-radius: 16px; padding: 20px 18px; display: flex; flex-direction: column; gap: 8px; }
+.cs b { font-size: 50px; font-weight: 600; letter-spacing: -1.2px; line-height: 1; color: #FFFFFF; }
+.cs span { font-size: 17px; line-height: 1.35; color: rgba(255, 255, 255, .78); }
+.cs small { display: block; font-size: 13px; color: rgba(255, 255, 255, .45); margin-top: 4px; }
+.cdots { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+.cdots li { display: flex; gap: 16px; align-items: flex-start; font-size: 23px; line-height: 1.4; color: rgba(255, 255, 255, .92); }
+.cdots li .ico { width: 26px; height: 26px; color: #A5B4FF; flex: none; margin-top: 2px; }
+.cclose { margin-top: auto; font-size: 30px; font-weight: 600; letter-spacing: -.5px; color: #FFFFFF; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .12); }
+.cclose .grad { color: #A5B4FF; }
 </style>
 
 <!-- 1 · COVER -->
@@ -869,29 +889,36 @@ img.av { object-fit: cover; object-position: center top; display: block; }
 <section data-title="Competition">
   <p class="eb r" style="--i:0">Competition</p>
   <h2 class="t r" style="--i:1">Others cover part of the flow. <span class="grad">We cover all of it.</span></h2>
-  <div class="body comp">
-    <div class="alts">
-      <p class="lbl r" style="--i:2">COMPETITORS AND ALTERNATIVES</p>
-      <div class="alt r" style="--i:3"><h3>Keysight QuantumPro</h3><p>Integrated EDA workflow for superconducting qubits.</p></div>
-      <div class="alt r" style="--i:4"><h3>Qiskit Metal</h3><p>Framework for quantum device design.</p></div>
-      <div class="alt r" style="--i:5"><h3>Nanoacademic + Kothar</h3><p>Partnering on a quantum EDA suite.</p></div>
-      <div class="alt r" style="--i:6"><h3>EDA-Q</h3><p>Academic EDA for superconducting chips.</p></div>
-      <div class="alt sq r" style="--i:7"><h3>Status quo</h3><p>Manual scripts and 10+ disconnected tools.</p></div>
+  <div class="body cmp">
+    <div class="cmp-left">
+      <p class="lbl r" style="--i:2">Competitors and alternatives</p>
+      <div class="cmp-rows">
+        <div class="crow r" style="--i:3"><h3>Keysight QuantumPro</h3><p>Integrated EDA workflow for superconducting qubits.</p></div>
+        <div class="crow r" style="--i:4"><h3>Qiskit Metal</h3><p>Framework for quantum device design.</p></div>
+        <div class="crow r" style="--i:5"><h3>Nanoacademic + Kothar</h3><p>Partnering on a quantum EDA suite.</p></div>
+        <div class="crow r" style="--i:6"><h3>EDA-Q</h3><p>Academic EDA for superconducting chips.</p></div>
+        <div class="crow sq r" style="--i:7"><h3>Status quo</h3><p>Manual scripts and 10+ disconnected tools.</p></div>
+      </div>
     </div>
-    <div class="cadv r" style="--i:4">
-      <p class="lbl">OUR ADVANTAGES</p>
-      <ul>
-        <li>{{icon:check}}<span>One unified platform instead of 10+ tools</span></li>
-        <li>{{icon:check}}<span>AI Design Copilot that generates QPU designs from prompts</span></li>
-        <li>{{icon:check}}<span>Integrated simulation, DRC, LVS and fault-tolerance checks</span></li>
-        <li>{{icon:check}}<span>Multi-architecture support, beyond superconducting</span></li>
-        <li>{{icon:check}}<span>Fabrication-ready GDSII and Python export</span></li>
-        <li>{{icon:check}}<span>10× faster design cycles<small>Company-reported</small></span></li>
-        <li>{{icon:check}}<span>Under 0.5% Hamiltonian deviation versus fab<small>Company-reported</small></span></li>
+    <div class="cmp-right r" style="--i:4">
+      <p class="lbl">Our advantages</p>
+      <div class="cstats">
+        <div class="cs"><b>10&times;</b><span>faster design cycles<small>Company-reported</small></span></div>
+        <div class="cs"><b>&lt;0.5%</b><span>Hamiltonian deviation versus fab<small>Company-reported</small></span></div>
+        <div class="cs"><b>1</b><span>platform instead of 10+ tools</span></div>
+      </div>
+      <ul class="cdots">
+        <li>{{icon:sparkles}}<span>AI Design Copilot that generates QPU designs from prompts</span></li>
+        <li>{{icon:shield}}<span>Integrated simulation, DRC, LVS and fault-tolerance checks</span></li>
+        <li>{{icon:layers}}<span>Multi-architecture support, beyond superconducting</span></li>
+        <li>{{icon:chip}}<span>Fabrication-ready GDSII and Python export</span></li>
       </ul>
+      <p class="cclose">From prompt to tapeout, <span class="grad">in one workspace.</span></p>
     </div>
   </div>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>12</span></div>
+  <aside>The landscape: Keysight QuantumPro offers an integrated EDA workflow for superconducting qubits. Qiskit Metal is a framework for quantum device design. Nanoacademic and Kothar are partnering on a quantum EDA suite, and EDA-Q is an academic EDA for superconducting chips. But the real competitor is the status quo: manual scripts and ten-plus disconnected tools. What sets us apart is one platform with an AI copilot that generates designs from a prompt, verification built in, support beyond superconducting, and fabrication-ready export, with ten times faster cycles and under half a percent Hamiltonian deviation versus fab.</aside>
+
   <aside>The landscape: Keysight QuantumPro offers an integrated EDA workflow for superconducting qubits. Qiskit Metal is a framework for quantum device design. Nanoacademic and Kothar are partnering on a quantum EDA suite, and EDA-Q is an academic EDA for superconducting chips. But the real competitor is the status quo: manual scripts and ten-plus disconnected tools. What sets us apart is one platform with an AI copilot that generates designs from a prompt, verification built in, support beyond superconducting, and fabrication-ready export, with ten times faster cycles and under half a percent Hamiltonian deviation versus fab.</aside>
 </section>
 
