@@ -555,9 +555,11 @@
 .pl.dk { background: #0A0D1A; border-color: #0A0D1A; }
 .pl:hover { transform: translateY(-5px); border-color: #D9D5FC; box-shadow: 0 18px 36px rgba(91, 75, 245, .16); }
 .pl.dk:hover { border-color: #0A0D1A; }
-.ent .ec h3 { font-size: 28px; margin-top: 8px; }
-.ent .ec p { font-size: 20px; line-height: 1.4; }
-.ent .ec .fbadge { width: 56px; height: 56px; background: #EEEBFF; border-color: transparent; color: var(--accent); }
+/* Trust slide: the logo wall fills the slide */
+.trust .panel { flex: 1; display: flex; flex-direction: column; padding: 34px 40px 40px; }
+.trust .logos4 { flex: 1; grid-template-rows: repeat(2, 1fr); gap: 26px; }
+.trust .pl { height: auto; min-height: 0; padding: 22px 30px; }
+.trust .pl img { max-height: 140px; }
 /* Product screenshots: rounded window corners everywhere */
 .tstage img, .shots img, .bwin img, img.shot { border-radius: 18px !important; overflow: hidden; }
 .tstage img { object-position: left top !important; }
@@ -869,20 +871,20 @@ img.av { object-fit: cover; object-position: center top; display: block; }
       <circle cx="350" cy="350" r="118" fill="#5B4BF5"/>
       <text x="350" y="58" text-anchor="middle" font-family="'Source Sans 3', 'Segoe UI', Arial, sans-serif" font-size="16" letter-spacing="3" fill="#5B4BF5">TAM</text>
       <text x="350" y="102" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="40" font-weight="600" fill="#090B1A">$1.4B</text>
-      <text x="350" y="170" text-anchor="middle" font-family="'Source Sans 3', 'Segoe UI', Arial, sans-serif" font-size="16" letter-spacing="3" fill="#5B4BF5">SAM</text>
+      <text x="350" y="170" text-anchor="middle" font-family="'Source Sans 3', 'Segoe UI', Arial, sans-serif" font-size="16" letter-spacing="3" fill="#5B4BF5">SAM · COMPANIES</text>
       <text x="350" y="212" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="40" font-weight="600" fill="#090B1A">556</text>
       <text x="350" y="326" text-anchor="middle" font-family="'Source Sans 3', 'Segoe UI', Arial, sans-serif" font-size="15" letter-spacing="3" fill="#FFFFFF" fill-opacity=".75">BEACHHEAD</text>
       <text x="350" y="364" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="25" font-weight="600" fill="#FFFFFF">Superconducting</text>
       <text x="350" y="394" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="25" font-weight="600" fill="#FFFFFF">+ trapped ion</text>
     </svg>
     <div class="tiers">
-      <div class="tier r" style="--i:3"><div><p class="k">TAM · top down</p><p class="n count">$1.4B</p></div><div><h3>Quantum computing market, 2025</h3><p>Projected near $3B by 2028.</p></div></div>
-      <div class="tier r" style="--i:4"><div><p class="k">SAM · customers</p><p class="n count">556</p></div><div><h3>Pure-play quantum companies</h3><p>Among 7,418 quantum-engaged organizations worldwide.</p></div></div>
+      <div class="tier r" style="--i:3"><div><p class="k">TAM · top down</p><p class="n count">$1.4B</p></div><div><h3>Quantum computing market, 2025</h3><p>Growing about 30% a year to more than $3B by 2028. Source: QED-C, State of the Global Quantum Industry 2026.</p></div></div>
+      <div class="tier r" style="--i:4"><div><p class="k">SAM · companies</p><p class="n count">556</p></div><div><h3>Pure-play quantum companies</h3><p>Among 7,418 quantum-engaged organizations worldwide at end-2025. Source: QED-C, 2026.</p></div></div>
       <div class="tier r" style="--i:5"><div><p class="k">Beachhead</p><p class="n" style="font-size:44px">SC + ion</p></div><div><h3>Teams building quantum hardware</h3><p>Hardware engineers, national research labs and deeptech innovators, starting with superconducting and trapped-ion.</p></div></div>
     </div>
   </div>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>11</span></div>
-  <aside>Who do we sell to? Top down, quantum computing was about a 1.4 billion dollar market in 2025, projected near 3 billion by 2028. Our serviceable market is the 556 pure-play quantum companies, out of more than 7,400 organizations engaged in quantum. And our beachhead is the teams actually building quantum hardware, hardware engineers, national research labs and deeptech innovators, starting with superconducting and trapped-ion, which we support today.</aside>
+  <aside>Who do we sell to? Top down, quantum computing was about a 1.4 billion dollar market in 2025 according to QED-C, growing about 30 percent a year to more than 3 billion by 2028. Our serviceable market is the 556 pure-play quantum companies, out of more than 7,400 organizations engaged in quantum. And our beachhead is the teams actually building quantum hardware, hardware engineers, national research labs and deeptech innovators, starting with superconducting and trapped-ion, which we support today.</aside>
 </section>
 
 <!-- COMPETITION -->
@@ -923,10 +925,10 @@ img.av { object-fit: cover; object-position: center top; display: block; }
 </section>
 
 <!-- 8 · TRUST + ENTERPRISE -->
-<section data-title="Trust and enterprise">
+<section data-title="Trust and enterprise" class="trust">
   <p class="eb r" style="--i:0">Trusted and enterprise ready</p>
   <h2 class="t r" style="--i:1">Built with leading partners. <span class="grad">Built for your IP.</span></h2>
-  <div class="body" style="display: flex; flex-direction: column; gap: 26px;">
+  <div class="body" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
     <div class="panel r" style="--i:2">
       <p class="lbl">In collaboration with</p>
       <div class="logos4">
@@ -939,12 +941,6 @@ img.av { object-fit: cover; object-position: center top; display: block; }
         <div class="pl r" style="--i:9"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
         <div class="pl r" style="--i:10"><img src="{{img:l-dsci}}" alt="DSCI"></div>
       </div>
-    </div>
-    <div class="ent" style="margin-top: 0;">
-      <div class="ec r" style="--i:11"><span class="fbadge">{{icon:lock}}</span><h3>You own your IP</h3><p>Designs, masks and prompts are never used to train shared AI models. Export everything, any time.</p></div>
-      <div class="ec r" style="--i:12"><span class="fbadge">{{icon:cloud}}</span><h3>Private cloud</h3><p>End-to-end cryptographic isolation and role-based access for your teams.</p></div>
-      <div class="ec r" style="--i:13"><span class="fbadge">{{icon:chip}}</span><h3>Any foundry, any PDK</h3><p>Works with your own substrates, metals, design rules and foundry.</p></div>
-      <div class="ec r" style="--i:14"><span class="fbadge">{{icon:plug}}</span><h3>Fits your stack</h3><p>API access, version history and AI-agent integration (Claude via MCP).</p></div>
     </div>
   </div>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>12</span></div>
@@ -1078,18 +1074,18 @@ img.av { object-fit: cover; object-position: center top; display: block; }
     <div class="donut r" style="--i:2">
       <svg viewBox="0 0 600 600" aria-hidden="true">
         <circle cx="300" cy="300" r="240" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="54"/>
-        <circle class="seg" cx="300" cy="300" r="240" stroke="#6D5CFF" stroke-dasharray="597 911" stroke-dashoffset="0"/>
-        <circle class="seg" cx="300" cy="300" r="240" stroke="#A99BFF" stroke-dasharray="296 1212" stroke-dashoffset="-603"/>
-        <circle class="seg" cx="300" cy="300" r="240" stroke="#D3A6F5" stroke-dasharray="296 1212" stroke-dashoffset="-905"/>
-        <circle class="seg" cx="300" cy="300" r="240" stroke="#F0A6D8" stroke-dasharray="145 1363" stroke-dashoffset="-1206"/>
-        <circle class="seg" cx="300" cy="300" r="240" stroke="#7DD3FC" stroke-dasharray="145 1363" stroke-dashoffset="-1357"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#6D5CFF" stroke-dasharray="603 1508" stroke-dashoffset="0"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#A99BFF" stroke-dasharray="302 1508" stroke-dashoffset="-603"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#D3A6F5" stroke-dasharray="302 1508" stroke-dashoffset="-905"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#F0A6D8" stroke-dasharray="151 1508" stroke-dashoffset="-1207"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#7DD3FC" stroke-dasharray="151 1508" stroke-dashoffset="-1358"/>
       </svg>
       <div class="mid"><p class="big count">$2.5M</p><span>TOTAL RAISE</span></div>
     </div>
     <div class="uses">
-      <div class="use r" style="--i:3"><i style="background:#6D5CFF"></i><div><h3>Engineering and AI R&amp;D</h3><p>Design Copilot, simulation and verification depth</p></div><span class="amt">$1.0M</span><span class="pc">40%</span></div>
-      <div class="use r" style="--i:4"><i style="background:#A99BFF"></i><div><h3>Architecture expansion</h3><p>Photonic and neutral-atom support</p></div><span class="amt">$0.5M</span><span class="pc">20%</span></div>
-      <div class="use r" style="--i:5"><i style="background:#D3A6F5"></i><div><h3>Go-to-market and pilots</h3><p>Early access, labs and enterprise rollouts</p></div><span class="amt">$0.5M</span><span class="pc">20%</span></div>
+      <div class="use r" style="--i:3"><i style="background:#6D5CFF"></i><div><h3>Engineering and AI R&amp;D</h3><p>Design Copilot, simulation and verification depth</p></div><span class="amt">$1.00M</span><span class="pc">40%</span></div>
+      <div class="use r" style="--i:4"><i style="background:#A99BFF"></i><div><h3>Architecture expansion</h3><p>Photonic and neutral-atom support</p></div><span class="amt">$0.50M</span><span class="pc">20%</span></div>
+      <div class="use r" style="--i:5"><i style="background:#D3A6F5"></i><div><h3>Go-to-market and pilots</h3><p>Early access, labs and enterprise rollouts</p></div><span class="amt">$0.50M</span><span class="pc">20%</span></div>
       <div class="use r" style="--i:6"><i style="background:#F0A6D8"></i><div><h3>Cloud and fab validation</h3><p>Compute plus fab-measurement partnerships</p></div><span class="amt">$0.25M</span><span class="pc">10%</span></div>
       <div class="use r" style="--i:7"><i style="background:#7DD3FC"></i><div><h3>Team and operations</h3><p>Hiring support and company operations</p></div><span class="amt">$0.25M</span><span class="pc">10%</span></div>
     </div>
