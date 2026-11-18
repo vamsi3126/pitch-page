@@ -620,6 +620,8 @@
 .xcard li { display: flex; gap: 8px; font-size: 16px; line-height: 1.35; color: var(--body); }
 .xcard li .ico { width: 16px; height: 16px; color: var(--accent); margin-top: 2px; flex: none; }
 .xprice { font-size: 20px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+/* Team slide: real portraits in the avatar circles */
+img.av { object-fit: cover; object-position: center top; display: block; }
 </style>
 
 <!-- 1 · COVER -->
@@ -1012,21 +1014,21 @@
   <h2 class="t r" style="--i:1">Chip designers and AI researchers, <span class="grad">building the design layer of the quantum stack.</span></h2>
   <div class="body team">
     <div class="founder r" style="--i:2">
-      <span class="av">MN</span>
+      <img class="av" src="{{img:team-ceo}}" alt="Manan Narang">
       <h3>Manan Narang</h3>
       <p class="role">FOUNDER &amp; CEO</p>
       <p>Leads Silicofeller’s vision of AI-native design for quantum processors.</p>
     </div>
     <div class="members">
-      <div class="mem r" style="--i:3"><span class="av">AV</span><div><h3>Amrutha Varshini</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:3"><span class="av">HG</span><div><h3>Harshith Gude</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:4"><span class="av">SP</span><div><h3>Sathwik Potu</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:4"><span class="av">SK</span><div><h3>Sathesh Kumar</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:5"><span class="av">GV</span><div><h3>G Naga Vamsi</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:5"><span class="av">HK</span><div><h3>Harshitha Kurra</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:6"><span class="av">HB</span><div><h3>P Hima Bindu</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:6"><span class="av">MS</span><div><h3>Muni Sankar</h3><p>Quantum AI Agent</p></div></div>
-      <div class="mem r" style="--i:7"><span class="av">PR</span><div><h3>Pushpam Raj</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:3"><img class="av" src="{{img:team-amrutha}}" alt="Amrutha Varshini"><div><h3>Amrutha Varshini</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:3"><img class="av" src="{{img:team-harshith}}" alt="Harshith Gude"><div><h3>Harshith Gude</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:4"><img class="av" src="{{img:team-sathwik}}" alt="Sathwik Potu"><div><h3>Sathwik Potu</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:4"><img class="av" src="{{img:team-sathesh}}" alt="Sathesh Kumar"><div><h3>Sathesh Kumar</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:5"><img class="av" src="{{img:team-satya}}" alt="G Naga Vamsi"><div><h3>G Naga Vamsi</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:5"><img class="av" src="{{img:team-harshitha}}" alt="Harshitha Kurra"><div><h3>Harshitha Kurra</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:6"><img class="av" src="{{img:team-hima}}" alt="P Hima Bindu"><div><h3>P Hima Bindu</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:6"><img class="av" src="{{img:team-muni}}" alt="Muni Sankar"><div><h3>Muni Sankar</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:7"><img class="av" src="{{img:team-pushpam}}" alt="Pushpam Raj"><div><h3>Pushpam Raj</h3><p>Quantum AI Agent</p></div></div>
     </div>
   </div>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>16</span></div>
