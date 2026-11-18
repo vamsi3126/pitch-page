@@ -17,6 +17,7 @@ const ICONS = {
   cloud: sv('<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9a4 4 0 0 1 0 9z"/>'),
   chip: sv('<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'),
   plug: sv('<path d="M9 2v6M15 2v6"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v5"/>'),
+  check: sv('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
   arrow: sv('<path d="M5 12h14M13 6l6 6-6 6"/>'),
 };
 src = src.replace(/\{\{icon:([a-z]+)\}\}/g, (_, n) => {
@@ -68,6 +69,7 @@ body:hover .hud { opacity: 1; }
   .deck > section { position: relative !important; display: flex !important; break-after: page; page-break-after: always; }
   .deck .r, .deck .zoom { animation: none !important; }
   .hud, .notes { display: none !important; }
+  .deck section, .deck section * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>`;
 
@@ -79,10 +81,12 @@ const script = `
   const counter = document.getElementById('counter');
   const notes = document.getElementById('notes');
   let i = 0;
+  // Page numbers follow the slide order, so slides can be added or moved freely.
+  slides.forEach((s, j) => { const p = s.querySelector('.foot > span:last-child'); if (p) p.textContent = String(j + 1).padStart(2, '0') + ' / ' + slides.length; });
   const fit = () => { deck.style.transform = 'scale(' + Math.min(innerWidth / 1920, innerHeight / 1080) + ')'; };
   // Numbers such as "10×", "58+", "<0.5%" and "~6 months" count up when their slide appears.
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const counters = [...deck.querySelectorAll('.stat .n, .cost .n')]
+  const counters = [...deck.querySelectorAll('.stat .n, .cost .n, .count')]
     .map((el) => {
       const m = el.textContent.match(/^(\\D*?)(\\d+(?:\\.\\d+)?)([\\s\\S]*)$/);
       return m && { el, pre: m[1], val: parseFloat(m[2]), dec: (m[2].split('.')[1] || '').length, post: m[3], final: el.textContent };
@@ -162,7 +166,7 @@ const out = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Silicofeller — Quantum Studio Pitch</title>
+<title>Silicofeller — AI-powered quantum chip design</title>
 <style>${fs.readFileSync(path.join(path.dirname(srcFile), "deck-fonts.css"), "utf8")}</style>
 ${player}
 ${style}

@@ -299,39 +299,223 @@
 .chap:hover { transform: translateY(-3px); border-color: #D9D5FC; box-shadow: 0 14px 30px rgba(10, 15, 30, .07); }
 .chap.on { border-color: var(--accent); background: #FBFAFF; box-shadow: 0 16px 34px rgba(91, 75, 245, .16); }
 
-/* ===== Classic type: EB Garamond for headlines and big numbers, Source Sans 3 for everything else ===== */
-.deck section, .deck section * { font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif !important; }
+/* ===== Pro type: Inter Tight for headlines and numbers, Inter for text, JetBrains Mono for labels ===== */
+.deck section, .deck section * { font-family: Inter, 'Segoe UI', Arial, sans-serif !important; }
 .deck section .t, .deck section .t *, .deck section .hero, .deck section .hero *, .deck section .contact .thanks,
-.deck section .n, .deck section .pn, .deck section .sp .k { font-family: 'EB Garamond', Garamond, Georgia, serif !important; }
-.t, .hero { font-weight: 500; letter-spacing: -.5px; }
-.hero { letter-spacing: -1px; }
-.n { font-weight: 500; letter-spacing: -1px; }
-.pn { font-weight: 500; font-size: 44px; }
+.deck section .n, .deck section .pn, .deck section .sp .k, .deck section h3, .deck section h4, .deck section .big,
+.deck section .ps, .deck section .disp, .deck section .disp * { font-family: 'Inter Tight', Inter, sans-serif !important; }
+.deck section .eb, .deck section .lbl, .deck section .grp, .deck section .phases span, .deck section .ph, .deck section .ph *,
+.deck section .chl, .deck section .steps9 .no, .deck section .foot, .deck section .foot span, .deck section .ts, .deck section .st,
+.deck section .mono, .deck section .cvfoot b, .deck section .pil .k, .deck section .src { font-family: 'JetBrains Mono', Consolas, monospace !important; }
+:root { --ink: #090B1A; --body: #474F68; --muted: #7A8199; --rule: #E6E8EF; --accent: #5B4BF5; --accent-soft: #EFEDFF; --night: #07081A; }
+.t { font-size: 62px; font-weight: 600; letter-spacing: -.03em; line-height: 1.08; }
+.hero { font-size: 100px; font-weight: 600; letter-spacing: -.04em; line-height: 1.03; }
+.close .hero { font-size: 86px; }
+.t .grad, .t .grad-warm, .hero .grad { font-style: normal; }
+.eb { font-size: 16px; font-weight: 500; letter-spacing: .16em; margin-bottom: 30px; }
+.eb::before { width: 28px; }
+.sub { font-size: 25px; line-height: 1.5; margin-top: 22px; }
+.n { font-weight: 600; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+.cost .n { font-size: 66px; }
+.stat .n { font-size: 64px; }
+.pn { font-weight: 600; font-size: 34px; letter-spacing: -.02em; }
+.ps { font-weight: 600; font-size: 26px; letter-spacing: -.01em; }
+.ph { font-size: 14px; letter-spacing: .14em; }
+.foot { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+.foot img { height: 24px; }
+.nc h3, .rc h3, .ec h3, .fi h3, .chap h3, .sp h3 { font-weight: 600; letter-spacing: -.02em; }
+.sp .k { font-weight: 600; font-size: 36px; letter-spacing: -.02em; }
+.phases span { font-size: 14px; }
+.steps9 .no { font-size: 13px; }
+.lbl, .grp, .chl { font-size: 15px; }
+.st { font-size: 13px; }
+.contact .thanks { font-style: normal; font-weight: 500; font-size: 24px; letter-spacing: -.01em; }
+.caption { font-size: 16px; }
+.src { font-size: 13px; letter-spacing: .06em; color: var(--muted); }
+.navy .grad, .night .grad { background: linear-gradient(90deg, #9DAAFF 0%, #C4B5FD 55%, #F0A6D8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* dark slides: the Silicofeller wave artwork (cover, close, founder card) and plain night (result, ask) */
+.deck section.wv { background: url({{img:wave-dark}}) center / cover, #07081A !important; }
+.deck section.night { background: radial-gradient(ellipse 60% 70% at 85% 30%, rgba(91, 75, 245, .28), transparent 70%), #07081A !important; color: #FFFFFF; }
+.night .eb { color: #A5B4FF; }
+.night .t { color: #FFFFFF; }
+.night .sub { color: rgba(255, 255, 255, .68); }
+.night .foot { color: rgba(255, 255, 255, .5); border-top-color: rgba(255, 255, 255, .14); }
+.cover .brand { top: 88px; height: 44px; }
+.cvfoot { font-size: 21px; color: rgba(255, 255, 255, .62); border-top-color: rgba(255, 255, 255, .16); }
+.cvfoot b { font-size: 14px; color: #A5B4FF; letter-spacing: .16em; }
+
+/* purpose: the prompt that becomes a chip, then the four pillars */
+.purpose { display: flex; flex-direction: column; }
+.prompt { display: flex; align-items: center; gap: 26px; margin-top: 8px; }
+.pbox { flex: 1; display: flex; align-items: center; gap: 22px; height: 108px; padding: 0 34px; border-radius: 22px; background: var(--night); color: #E8EAF6; font-size: 27px; box-shadow: 0 26px 60px rgba(9, 11, 26, .2); }
+.pbox .ico { color: #A5B4FF; width: 30px; height: 30px; }
+.pbox .typed { white-space: nowrap; }
+.active .pbox .typed { animation: type 2.4s steps(64) .5s both; }
+@keyframes type { from { clip-path: inset(0 100% 0 0); } }
+.pbox .caret { width: 3px; height: 34px; background: #A5B4FF; animation: blink 1s steps(1) infinite; margin-left: -12px; }
+@keyframes blink { 50% { opacity: 0; } }
+.parr { color: var(--accent); width: 44px; height: 44px; }
+.parr .ico { width: 44px; height: 44px; }
+.pout { height: 108px; padding: 0 34px; border-radius: 22px; border: 1.5px solid #D9D5FC; background: #F6F4FF; display: flex; align-items: center; gap: 16px; font-size: 25px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.pout .ico { width: 32px; height: 32px; }
+.pillars { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink); }
+.pil { padding: 32px 34px 0 0; }
+.pil + .pil { border-left: 1px solid var(--rule); padding-left: 34px; }
+.pil .k { display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 500; letter-spacing: .14em; color: var(--accent); }
+.pil .k .ico { width: 34px; height: 34px; }
+.pil h3 { font-size: 30px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); margin-top: 26px; line-height: 1.15; }
+.pil p { font-size: 20px; line-height: 1.45; color: var(--body); margin-top: 12px; }
+
+/* why now */
+.why { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
+.trend { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.trend li { display: grid; grid-template-columns: 64px 1fr; padding: 28px 0; border-top: 1px solid var(--rule); font-size: 24px; line-height: 1.45; color: var(--body); }
+.trend li:first-child { border-top: 2px solid var(--ink); }
+.trend li b { font-size: 15px; font-weight: 500; letter-spacing: .14em; color: var(--accent); padding-top: 6px; }
+.trend li strong { color: var(--ink); font-weight: 600; }
+.mstats { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; }
+.ms { border-radius: 22px; background: #F6F7FB; border: 1px solid var(--rule); padding: 34px 36px; display: flex; flex-direction: column; justify-content: flex-end; }
+.ms .n { font-size: 78px; color: var(--ink); line-height: 1; }
+.ms p { font-size: 20px; line-height: 1.45; color: var(--body); margin-top: 14px; }
+.ms.hl { background: var(--night); border-color: var(--night); }
+.ms.hl .n { background: linear-gradient(90deg, #9DAAFF, #C4B5FD 55%, #F0A6D8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ms.hl p { color: rgba(255, 255, 255, .7); }
+
+/* the result: before and after, with the product on the right */
+.result .lap { position: absolute !important; right: -150px; top: 170px; width: 1080px; z-index: 0 !important; mix-blend-mode: lighten; opacity: .95; }
+.result .col { width: 820px; }
+.bigrow { display: flex; align-items: flex-end; gap: 30px; margin-top: 34px; }
+.big { font-size: 190px; font-weight: 600; line-height: .82; letter-spacing: -.05em; background: linear-gradient(90deg, #9DAAFF, #C4B5FD 55%, #F0A6D8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bigrow p:not(.big) { font-size: 26px; line-height: 1.4; color: rgba(255, 255, 255, .8); padding-bottom: 6px; }
+.ft { margin-top: 46px; }
+.ftr { display: grid; grid-template-columns: 330px 56px 1fr; align-items: center; padding: 15px 0; border-top: 1px solid rgba(255, 255, 255, .12); font-size: 23px; }
+.ftr .fr { color: rgba(255, 255, 255, .48); }
+.ftr .ar { color: #A5B4FF; }
+.ftr .ar .ico { width: 24px; height: 24px; }
+.ftr .to { color: #FFFFFF; font-weight: 600; }
+.result .src { color: rgba(255, 255, 255, .42); margin-top: 18px; }
+
+/* market size */
+.mkt { display: grid; grid-template-columns: 700px 1fr; gap: 100px; align-items: center; }
+.rings { width: 700px; height: 700px; display: block; }
+.tiers { display: flex; flex-direction: column; }
+.tier { display: grid; grid-template-columns: 200px 1fr; gap: 36px; padding: 32px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.tier:first-child { border-top: 2px solid var(--ink); }
+.tier .k { font-family: 'JetBrains Mono', monospace !important; font-size: 15px; font-weight: 500; letter-spacing: .14em; color: var(--accent); }
+.tier .n { font-size: 60px; color: var(--ink); line-height: 1; }
+.tier h3 { font-size: 27px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.tier p { font-size: 21px; line-height: 1.45; color: var(--body); margin-top: 8px; }
+
+/* competition */
+.comp { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.alts { display: flex; flex-direction: column; }
+.alt { display: grid; grid-template-columns: 330px 1fr; gap: 30px; padding: 24px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.alt:first-of-type { border-top: 2px solid var(--ink); }
+.alt h3 { font-size: 25px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.alt p { font-size: 21px; line-height: 1.42; color: var(--body); }
+.alt.sq h3, .alt.sq p { color: var(--clay); }
+.adv { border-radius: 24px; background: var(--night); color: #FFFFFF; padding: 40px 46px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 30px 70px rgba(9, 11, 26, .2); }
+.adv .lbl { color: #A5B4FF; margin-bottom: 14px; }
+.adv li { list-style: none; display: flex; gap: 18px; align-items: flex-start; font-size: 22px; line-height: 1.4; padding: 11px 0; border-top: 1px solid rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .9); }
+.adv li:first-of-type { border-top: none; }
+.adv li .ico { color: #A5B4FF; width: 26px; height: 26px; margin-top: 2px; }
+.adv li small { display: block; font-size: 15px; color: rgba(255, 255, 255, .45); margin-top: 2px; }
+.adv ul { padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.adv li { font-size: 23px; }
+.tier .k { text-transform: uppercase; }
+.prompt { margin-top: auto; }
+.pillars { margin-top: auto; }
+
+/* business model */
+.gtm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 6px; }
+.gs { position: relative; padding: 46px 70px 46px 44px; background: #F6F4FF; border: 1px solid #E2DEFD; border-left: none; }
+.gs:first-child { border-left: 1px solid #E2DEFD; border-radius: 22px 0 0 22px; }
+.gs:last-child { border-radius: 0 22px 22px 0; background: var(--accent); border-color: var(--accent); }
+.gs:last-child * { color: #FFFFFF !important; }
+.gs .k { font-family: 'JetBrains Mono', monospace !important; font-size: 15px; letter-spacing: .14em; color: var(--accent); }
+.gs h3 { font-size: 34px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); margin-top: 14px; }
+.gs p { font-size: 20px; line-height: 1.45; color: var(--body); margin-top: 8px; }
+.gs:not(:last-child)::after { content: "\2192"; position: absolute; right: 0; top: 50%; width: 52px; height: 52px; border-radius: 50%; border: 1px solid #D9D5FC; background: #FFFFFF; color: var(--accent); font-size: 24px; display: flex; align-items: center; justify-content: center; transform: translate(50%, -50%); z-index: 2; box-shadow: 0 8px 20px rgba(91, 75, 245, .12); }
+.bm { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 72px; }
+.bmc { border-top: 2px solid var(--ink); padding-top: 28px; }
+.bmc .lbl { color: var(--accent); margin-bottom: 10px; }
+.bmr { display: flex; gap: 22px; align-items: flex-start; padding: 16px 0; }
+.bmr + .bmr { border-top: 1px solid var(--rule); }
+.bmr h3 { font-size: 27px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.bmr p { font-size: 20px; line-height: 1.45; color: var(--body); margin-top: 4px; }
+.cust { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+.cust span { font-size: 22px; font-weight: 500; padding: 14px 24px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink); background: #FFFFFF; }
+
+/* the ask */
+.ask { display: grid; grid-template-columns: 600px 1fr; gap: 100px; align-items: center; margin-top: 30px; }
+.donut { position: relative; width: 600px; height: 600px; }
+.donut svg { width: 600px; height: 600px; display: block; transform: rotate(-90deg); }
+.donut circle.seg { fill: none; stroke-width: 54; }
+.active .donut circle.seg { animation: seg 1.2s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes seg { from { stroke-dasharray: 0 1000; } }
+.donut .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.donut .mid .big { font-size: 112px; line-height: 1; }
+.donut .mid span { font-family: 'JetBrains Mono', monospace !important; font-size: 16px; letter-spacing: .16em; color: rgba(255, 255, 255, .6); margin-top: 14px; }
+.uses { display: flex; flex-direction: column; }
+.use { display: grid; grid-template-columns: 22px 1fr 150px 90px; gap: 24px; align-items: center; padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+.use:first-child { border-top: 2px solid rgba(255, 255, 255, .5); }
+.use i { width: 16px; height: 16px; border-radius: 4px; }
+.use h3 { font-size: 28px; font-weight: 600; letter-spacing: -.01em; color: #FFFFFF; }
+.use p { font-size: 19px; color: rgba(255, 255, 255, .6); margin-top: 4px; }
+.use .amt { font-family: 'Inter Tight', sans-serif !important; font-size: 36px; font-weight: 600; color: #FFFFFF; text-align: right; letter-spacing: -.02em; }
+.use .pc { font-family: 'JetBrains Mono', monospace !important; font-size: 18px; color: #A5B4FF; text-align: right; }
+
+/* team */
+.team { display: grid; grid-template-columns: 500px 1fr; gap: 40px; }
+.founder { border-radius: 26px; padding: 44px; display: flex; flex-direction: column; justify-content: flex-end; color: #FFFFFF; background: linear-gradient(0deg, rgba(7, 8, 26, .96) 20%, rgba(7, 8, 26, .2) 100%), url({{img:wave}}) 30% center / cover, var(--night); box-shadow: 0 30px 70px rgba(9, 11, 26, .22); }
+.av { display: flex; align-items: center; justify-content: center; border-radius: 50%; flex: none; font-family: 'Inter Tight', sans-serif !important; font-weight: 600; letter-spacing: -.02em; }
+.founder .av { width: 120px; height: 120px; font-size: 42px; background: linear-gradient(135deg, #6D5CFF, #B57CF0); color: #FFFFFF; box-shadow: 0 0 0 6px rgba(255, 255, 255, .1); }
+.founder h3 { font-size: 44px; font-weight: 600; letter-spacing: -.02em; margin-top: 30px; }
+.founder .role { font-family: 'JetBrains Mono', monospace !important; font-size: 16px; letter-spacing: .14em; color: #A5B4FF; margin-top: 10px; }
+.founder p { font-size: 21px; line-height: 1.5; color: rgba(255, 255, 255, .72); margin-top: 22px; }
+.members { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 18px; }
+.mem { display: flex; align-items: center; gap: 22px; padding: 22px 26px; border: 1px solid var(--rule); border-radius: 20px; background: #FFFFFF; transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .3s; }
+.mem:hover { transform: translateY(-4px); border-color: #D9D5FC; box-shadow: 0 16px 34px rgba(9, 11, 26, .08); }
+.mem .av { width: 72px; height: 72px; font-size: 25px; background: var(--accent-soft); color: var(--accent); }
+.mem h3 { font-size: 25px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
+.mem p { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; letter-spacing: .1em; color: var(--muted); margin-top: 6px; text-transform: uppercase; }
+
+/* close */
+.close .contact { font-size: 22px; }
+.close .contact b { font-weight: 600; }
 </style>
 
 <!-- 1 · COVER -->
-<section class="cover navy" data-title="Cover">
-  <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
-    <g class="spin">
-      <g stroke="#A5B4FF" stroke-opacity=".22" stroke-width="1.4">
-        <ellipse cx="500" cy="500" rx="470" ry="170"/>
-        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
-        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
-        <circle cx="500" cy="500" r="330" stroke-opacity=".10"/>
-        <circle cx="500" cy="500" r="470" stroke-opacity=".07"/>
-      </g>
-      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-    </g>
-    <circle class="core-glow" cx="500" cy="500" r="34" fill="#A5B4FF" fill-opacity=".14"/>
-    <circle class="core" cx="500" cy="500" r="16" fill="#A5B4FF" fill-opacity=".85"/>
-  </svg>
+<section class="cover navy wv" data-title="Cover">
   <img class="brand r" style="--i:0" src="{{img:logo}}" alt="Silicofeller">
-  <p class="eb r" style="--i:1">Silicofeller Quantum Studio</p>
+  <p class="eb r" style="--i:1">AI-powered quantum chip design platform</p>
   <h1 class="hero r" style="--i:2">Design quantum chips with AI.<br><span class="grad">In hours, not months.</span></h1>
   <p class="sub r" style="--i:3">One platform to design, simulate, verify and tape out quantum processors, with an AI copilot at every step.</p>
-  <aside>Thank you for your time. I’m [name] from Silicofeller. In the next ten minutes I want to show you one thing: quantum chips are still designed largely by hand, and that has become the bottleneck for the whole quantum roadmap. Silicofeller removes it with AI. First, two minutes on how it is done today.</aside>
+  <div class="cvfoot r" style="--i:4"><span><b>Silicofeller Quantum Studio</b>Investor and partner briefing</span><span>silicofeller.com</span></div>
+  <aside>Thank you for your time. I’m Manan Narang, founder and CEO of Silicofeller. In the next ten minutes I want to show you one thing: quantum chips are still designed largely by hand, and that has become the bottleneck for the whole quantum roadmap. Silicofeller removes it with AI. First, two minutes on how it is done today.</aside>
+</section>
+
+<!-- COMPANY PURPOSE -->
+<section data-title="Company purpose">
+  <p class="eb r" style="--i:0">Company purpose</p>
+  <h2 class="t r" style="--i:1">From a plain-language prompt<br>to a <span class="grad">fabrication-ready quantum chip.</span></h2>
+  <p class="sub r" style="--i:2">Silicofeller is a cloud-based, AI-powered platform for quantum hardware engineers: describe the processor you need, and get a verified design ready for the foundry.</p>
+  <div class="body purpose">
+    <div class="prompt r" style="--i:3">
+      <div class="pbox">{{icon:sparkles}}<span class="typed">Design a 4-qubit transmon processor with tunable couplers and readout</span><span class="caret"></span></div>
+      <span class="parr">{{icon:arrow}}</span>
+      <div class="pout">{{icon:chip}}GDSII, verified</div>
+    </div>
+    <div class="pillars">
+      <div class="pil r" style="--i:4"><p class="k">01{{icon:route}}</p><h3>End-to-end quantum design</h3><p>Research, architecture, schematic, layout and tapeout in one workspace.</p></div>
+      <div class="pil r" style="--i:5"><p class="k">02{{icon:activity}}</p><h3>Integrated physics and verification</h3><p>Simulation, DRC, LVS and fault-tolerance checks built into the flow.</p></div>
+      <div class="pil r" style="--i:6"><p class="k">03{{icon:layers}}</p><h3>Multi-architecture support</h3><p>Superconducting and trapped-ion today, with more architectures on the roadmap.</p></div>
+      <div class="pil r" style="--i:7"><p class="k">04{{icon:cloud}}</p><h3>Cloud-native and collaborative</h3><p>Runs in the browser on GPU-accelerated cloud, with version history and team access.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>2</span></div>
+  <aside>Our purpose in one sentence: Silicofeller takes a quantum hardware engineer from a plain-language prompt to a fabrication-ready chip design. Four things make that possible: the platform is end to end, from research to tapeout; physics and verification are built in rather than bolted on; it supports multiple qubit architectures; and it is cloud native, so teams work on the same design together, with simulation running on GPU-accelerated cloud.</aside>
 </section>
 
 <!-- 2 · MANUAL: THE PROCESS -->
@@ -373,6 +557,28 @@
   <aside>Here is why that process breaks down. On the left is the real tool chain: KLayout, HFSS, Python, Excel, MATLAB, Qiskit Metal, and more, connected only by people moving files around. The result: a design cycle of around six months, more than ten tools per chip, days for every simulation, and most faults discovered only after fabrication, which means a respin. In a world where AI writes code and designs proteins, doing this by hand is the most expensive choice a hardware team can make.</aside>
 </section>
 
+<!-- WHY NOW -->
+<section data-title="Why now">
+  <p class="eb r" style="--i:0">Why now</p>
+  <h2 class="t r" style="--i:1">Quantum hardware is scaling. <span class="grad">Its design tools are not.</span></h2>
+  <div class="body why">
+    <ol class="trend">
+      <li class="r" style="--i:2"><b>01</b><span>Quantum chips have mostly been <strong>custom-built for proof-of-concept</strong> demonstrations.</span></li>
+      <li class="r" style="--i:3"><b>02</b><span>Superconducting systems are <strong>scaling toward hundreds of qubits</strong>, beyond what hand-built design flows can handle.</span></li>
+      <li class="r" style="--i:4"><b>03</b><span><strong>Design automation</strong>, the quantum counterpart of classical EDA, is now emerging as hardware scales.</span></li>
+      <li class="r" style="--i:5"><b>04</b><span><strong>AI can now generate QPU designs</strong> from plain-language prompts.</span></li>
+    </ol>
+    <div class="mstats">
+      <div class="ms r" style="--i:3"><p class="n count">$1.4B</p><p>quantum computing revenue in 2025, projected near $3B by 2028</p></div>
+      <div class="ms r" style="--i:4"><p class="n count">$4.9B</p><p>of private venture funding into quantum in 2025</p></div>
+      <div class="ms r" style="--i:5"><p class="n count">$56.7B</p><p>in public funding commitments worldwide</p></div>
+      <div class="ms hl r" style="--i:6"><p class="n">AI</p><p>can now turn a plain-language prompt into a QPU design</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>5</span></div>
+  <aside>Why now? Until recently, quantum chips were one-off, hand-built proof-of-concept devices. That is changing fast: superconducting systems are heading toward hundreds of qubits, and the money is following, with about 1.4 billion dollars of quantum computing revenue in 2025, heading toward 3 billion by 2028, 4.9 billion of private venture funding in 2025, and more than 56 billion in public funding commitments. Design automation, the quantum version of classical EDA, is only now emerging, and for the first time AI can generate QPU designs from a prompt. That is the window we are building for.</aside>
+</section>
+
 <!-- 4 · SILICOFELLER: ONE PLATFORM -->
 <section data-title="One platform">
   <p class="eb r" style="--i:0">The solution · Silicofeller Quantum Studio</p>
@@ -402,15 +608,15 @@
   <div class="body" style="margin-top: 64px">
     <div class="r" style="--i:2"><div class="pipe"><div class="phases"><span style="grid-column: 1 / 5">Design</span><span style="grid-column: 5 / 7">Verify &amp; fabricate</span><span style="grid-column: 7 / 10">Operate</span></div><ol class="steps9" aria-label="Silicofeller workflow, research to cloud execution"><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="4" width="26" height="34" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13 H28 M13 19 H28 M13 25 H21" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="8" fill="#5B4BF5" fill-opacity=".14" stroke="#5B4BF5" stroke-width="2.2"/><path d="M38 38 L45 45" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">01</span><h4>Research</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M24 6 L38 14 V30 L24 38 L10 30 V14 Z M10 14 L24 22 L38 14 M24 22 V38" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">02</span><h4>Architecture</h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-schematic" aria-label="See the Schematic step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 16 H44 M4 32 H44 M16 16 V32 M32 16 V32" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="16" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><path d="M21 20 L27 28 M27 20 L21 28" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="no">03</span><h4>Schematic<small class="see">Click to see it</small></h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-layout" aria-label="See the Layout step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="2" fill="#5B4BF5" fill-opacity=".14" stroke="#0A0F1E" stroke-width="2"/><path d="M18 6 V12 M24 6 V12 M30 6 V12 M18 36 V42 M24 36 V42 M30 36 V42 M6 18 H12 M6 24 H12 M6 30 H12 M36 18 H42 M36 24 H42 M36 30 H42" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19 H31 M17 24 H31 M17 29 H31" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg></button><span class="no">04</span><h4>Layout<small class="see">Click to see it</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 40 H44" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">05</span><h4>Simulation</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 26 L42 33 L24 40 L6 33 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 18 L42 25 L24 32 L6 25 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#fff" stroke="#5B4BF5" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#5B4BF5" fill-opacity=".14"/></svg></span><span class="no">06</span><h4>Fabrication ready<small>GDSII</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="6" width="40" height="36" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".35"/><path d="M6 24 H12 L15 18 L18 30 L21 11 L24 37 L27 14 L30 32 L33 20 L36 24 H42" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">07</span><h4>Calibration<small>&amp; testing</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M20 8 L34 16 V32 L20 40 L6 32 V16 Z M6 16 L20 24 L34 16 M20 24 V40" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4 L42 12 V28 L36 31.5" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/><circle cx="14" cy="26" r="1.8" fill="#5B4BF5"/><circle cx="14" cy="32" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="28" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="34" r="1.8" fill="#5B4BF5"/><circle cx="20" cy="15" r="1.8" fill="#5B4BF5"/></svg></span><span class="no">08</span><h4>Digital twin<small>VDPU</small></h4></li><li class="goal"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35 H35 A8.5 8.5 0 0 0 35.5 18 A11.5 11.5 0 0 0 13.5 20.5 A7.3 7.3 0 0 0 13 35 Z" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28 L24 24 L28 28 M24 24 V33" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">09</span><h4>Cloud execution</h4></li></ol></div></div>
     <div class="stats">
-      <div class="stat r" style="--i:4"><p class="n">10×</p><p class="l">faster design cycles: months become hours</p></div>
+      <div class="stat r" style="--i:4"><p class="n">9</p><p class="l">stages, from research to cloud execution, in one workspace</p></div>
       <div class="stat r" style="--i:5"><p class="n">58+</p><p class="l">pre-characterised cryogenic components</p></div>
-      <div class="stat r" style="--i:6"><p class="n">100%</p><p class="l">automated design-rule checks and routing</p></div>
-      <div class="stat r" style="--i:7"><p class="n">&lt;0.5%</p><p class="l">deviation from real fabricated-chip measurements</p></div>
+      <div class="stat r" style="--i:6"><p class="n">4</p><p class="l">simulation types built in: eigenmode, driven-modal, EPR, capacitance</p></div>
+      <div class="stat r" style="--i:7"><p class="n">1</p><p class="l">click from verified layout to GDSII and Python export</p></div>
     </div>
   </div>
   <template id="pop-schematic"><figure class="popfig"><img src="{{img:step-schematic}}" alt="Schematic view in Silicofeller Quantum Studio"><figcaption><b>Schematic</b> A 7-qubit chip in the visual schematic editor: qubits, couplers, readout resonators and launch pads, placed and connected by drag and drop.</figcaption></figure></template><template id="pop-layout"><figure class="popfig"><img src="{{img:step-layout}}" alt="Layout view in Silicofeller Quantum Studio"><figcaption><b>Layout</b> The same chip as physical layout, with live design-rule checks for die boundary, edge margin, overlaps and connectivity.</figcaption></figure></template>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>5</span></div>
-  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. The results: ten times faster design cycles, more than 58 ready components, design-rule checking and routing fully automated, and less than half a percent deviation between our simulation and measurements on the real fabricated chip. That last number answers the biggest fear in this industry: you know how the chip will behave before it is built. [Click the Schematic or Layout tile to show that step in the product; Esc closes it, left/right arrows switch between them.]</aside>
+  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. Nine stages in one workspace, more than 58 ready cryogenic components, four simulation types built in, and one click from a verified layout to GDSII and Python. [Click the Schematic or Layout tile to show that step in the product; Esc closes it, left/right arrows switch between them.]</aside>
 </section>
 
 <!-- 6 · DEMO VIDEO -->
@@ -503,6 +709,83 @@
   <aside>We don’t bet on a single qubit technology, and neither should you. Superconducting and trapped-ion design are available today. Photonic, neutral-atom and topological architectures are on our roadmap, with topological support starting as experimental. [Tailor this to the client: point to the architecture their quantum team is pursuing.] Whatever architecture wins, your design flow stays in one place.</aside>
 </section>
 
+<!-- THE RESULT -->
+<section class="night result" data-title="The result">
+  <img class="lap" src="{{img:laptop}}" alt="Silicofeller Quantum Studio on a laptop, running a driven-modal simulation">
+  <div class="col">
+    <p class="eb r" style="--i:0">The result</p>
+    <h2 class="t r" style="--i:1">From 10+ tools <span class="grad">to one platform.</span></h2>
+    <div class="bigrow r" style="--i:2"><p class="big count">10×</p><p>faster design cycles:<br>months of layout become hours.</p></div>
+    <div class="ft">
+      <div class="ftr r" style="--i:3"><span class="fr">Months of layout</span><span class="ar">{{icon:arrow}}</span><span class="to">Hours</span></div>
+      <div class="ftr r" style="--i:4"><span class="fr">10+ disconnected tools</span><span class="ar">{{icon:arrow}}</span><span class="to">One platform</span></div>
+      <div class="ftr r" style="--i:5"><span class="fr">Faults found after fab</span><span class="ar">{{icon:arrow}}</span><span class="to">Physics validated before fab</span></div>
+      <div class="ftr r" style="--i:6"><span class="fr">Hand-drawn routing</span><span class="ar">{{icon:arrow}}</span><span class="to">100% automated DRC and routing</span></div>
+      <div class="ftr r" style="--i:7"><span class="fr">Guesswork at tapeout</span><span class="ar">{{icon:arrow}}</span><span class="to">&lt;0.5% deviation versus fab</span></div>
+    </div>
+    <p class="src r" style="--i:8">Company-reported figures.</p>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>10</span></div>
+  <aside>Here is what that adds up to. Ten times faster design cycles: months of layout become hours. Ten-plus tools become one platform. Physics is validated before fabrication instead of after. Design-rule checks and routing are fully automated. And our simulations land within half a percent of measurements on the fabricated chip, which answers the biggest fear in this industry: you know how the chip will behave before it is built. These are our own reported figures, and we are happy to show the data.</aside>
+</section>
+
+<!-- MARKET SIZE -->
+<section data-title="Market size">
+  <p class="eb r" style="--i:0">Market size</p>
+  <h2 class="t r" style="--i:1">The design layer for a <span class="grad">fast-growing industry.</span></h2>
+  <div class="body mkt">
+    <svg class="rings r" style="--i:2" viewBox="0 0 700 700" role="img" aria-label="Market: TAM 1.4 billion dollars, SAM 556 pure-play quantum companies, beachhead superconducting and trapped-ion hardware teams">
+      <circle cx="350" cy="350" r="340" fill="#F4F2FF" stroke="#DCD7FD" stroke-width="2"/>
+      <circle cx="350" cy="350" r="228" fill="#E6E2FF" stroke="#C9C2FB" stroke-width="2"/>
+      <circle cx="350" cy="350" r="118" fill="#5B4BF5"/>
+      <text x="350" y="58" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="#5B4BF5">TAM</text>
+      <text x="350" y="102" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="40" font-weight="600" fill="#090B1A">$1.4B</text>
+      <text x="350" y="170" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="#5B4BF5">SAM</text>
+      <text x="350" y="212" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="40" font-weight="600" fill="#090B1A">556</text>
+      <text x="350" y="326" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="3" fill="#FFFFFF" fill-opacity=".75">BEACHHEAD</text>
+      <text x="350" y="364" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="25" font-weight="600" fill="#FFFFFF">Superconducting</text>
+      <text x="350" y="394" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-size="25" font-weight="600" fill="#FFFFFF">+ trapped ion</text>
+    </svg>
+    <div class="tiers">
+      <div class="tier r" style="--i:3"><div><p class="k">TAM · top down</p><p class="n count">$1.4B</p></div><div><h3>Quantum computing market, 2025</h3><p>Projected near $3B by 2028.</p></div></div>
+      <div class="tier r" style="--i:4"><div><p class="k">SAM · customers</p><p class="n count">556</p></div><div><h3>Pure-play quantum companies</h3><p>Among 7,418 quantum-engaged organizations worldwide.</p></div></div>
+      <div class="tier r" style="--i:5"><div><p class="k">Beachhead</p><p class="n" style="font-size:44px">SC + ion</p></div><div><h3>Teams building quantum hardware</h3><p>Hardware engineers, national research labs and deeptech innovators, starting with superconducting and trapped-ion.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>11</span></div>
+  <aside>Who do we sell to? Top down, quantum computing was about a 1.4 billion dollar market in 2025, projected near 3 billion by 2028. Our serviceable market is the 556 pure-play quantum companies, out of more than 7,400 organizations engaged in quantum. And our beachhead is the teams actually building quantum hardware, hardware engineers, national research labs and deeptech innovators, starting with superconducting and trapped-ion, which we support today.</aside>
+</section>
+
+<!-- COMPETITION -->
+<section data-title="Competition">
+  <p class="eb r" style="--i:0">Competition</p>
+  <h2 class="t r" style="--i:1">Others cover part of the flow. <span class="grad">We cover all of it.</span></h2>
+  <div class="body comp">
+    <div class="alts">
+      <p class="lbl r" style="--i:2">COMPETITORS AND ALTERNATIVES</p>
+      <div class="alt r" style="--i:3"><h3>Keysight QuantumPro</h3><p>Integrated EDA workflow for superconducting qubits.</p></div>
+      <div class="alt r" style="--i:4"><h3>Qiskit Metal</h3><p>Framework for quantum device design.</p></div>
+      <div class="alt r" style="--i:5"><h3>Nanoacademic + Kothar</h3><p>Partnering on a quantum EDA suite.</p></div>
+      <div class="alt r" style="--i:6"><h3>EDA-Q</h3><p>Academic EDA for superconducting chips.</p></div>
+      <div class="alt sq r" style="--i:7"><h3>Status quo</h3><p>Manual scripts and 10+ disconnected tools.</p></div>
+    </div>
+    <div class="adv r" style="--i:4">
+      <p class="lbl">OUR ADVANTAGES</p>
+      <ul>
+        <li>{{icon:check}}<span>One unified platform instead of 10+ tools</span></li>
+        <li>{{icon:check}}<span>AI Design Copilot that generates QPU designs from prompts</span></li>
+        <li>{{icon:check}}<span>Integrated simulation, DRC, LVS and fault-tolerance checks</span></li>
+        <li>{{icon:check}}<span>Multi-architecture support, beyond superconducting</span></li>
+        <li>{{icon:check}}<span>Fabrication-ready GDSII and Python export</span></li>
+        <li>{{icon:check}}<span>10× faster design cycles<small>Company-reported</small></span></li>
+        <li>{{icon:check}}<span>Under 0.5% Hamiltonian deviation versus fab<small>Company-reported</small></span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>12</span></div>
+  <aside>The landscape: Keysight QuantumPro offers an integrated EDA workflow for superconducting qubits. Qiskit Metal is a framework for quantum device design. Nanoacademic and Kothar are partnering on a quantum EDA suite, and EDA-Q is an academic EDA for superconducting chips. But the real competitor is the status quo: manual scripts and ten-plus disconnected tools. What sets us apart is one platform with an AI copilot that generates designs from a prompt, verification built in, support beyond superconducting, and fabrication-ready export, with ten times faster cycles and under half a percent Hamiltonian deviation versus fab.</aside>
+</section>
+
 <!-- 8 · TRUST + ENTERPRISE -->
 <section data-title="Trust and enterprise">
   <p class="eb r" style="--i:0">Trusted and enterprise ready</p>
@@ -532,30 +815,98 @@
   <aside>We work with national labs, academia and industry: DRDO, C-DAC, IIT Bombay, NVIDIA Inception, Dell Technologies, NASSCOM DeepTech, Netweb and DSCI. And for a company your size, the first questions are about IP and control. You own every design, and nothing you create is used to train shared models. We offer private cloud deployment with role-based access, we are foundry and PDK agnostic, and the studio plugs into your own tools and AI agents through an API.</aside>
 </section>
 
+<!-- BUSINESS MODEL -->
+<section data-title="Business model">
+  <p class="eb r" style="--i:0">Business model</p>
+  <h2 class="t r" style="--i:1">Platform access, <span class="grad">plus engineering services.</span></h2>
+  <div class="body">
+    <p class="lbl r" style="--i:2">SALES AND DISTRIBUTION</p>
+    <div class="gtm r" style="--i:3">
+      <div class="gs"><p class="k">STAGE 01</p><h3>Early access program</h3><p>Hardware teams start designing on the platform.</p></div>
+      <div class="gs"><p class="k">STAGE 02</p><h3>Pilots and integrations</h3><p>A real chip rebuilt side by side, connected to the customer’s PDK and tools.</p></div>
+      <div class="gs"><p class="k">STAGE 03</p><h3>Enterprise deployments</h3><p>Private-cloud rollout across the customer’s hardware teams.</p></div>
+    </div>
+    <div class="bm">
+      <div class="bmc r" style="--i:4">
+        <p class="lbl">REVENUE MODEL</p>
+        <div class="bmr"><span class="fbadge">{{icon:cloud}}</span><div><h3>Platform access</h3><p>Usage and billing managed in the workspace.</p></div></div>
+        <div class="bmr"><span class="fbadge">{{icon:plug}}</span><div><h3>Engineering services</h3><p>Integration and design support on top of the platform.</p></div></div>
+      </div>
+      <div class="bmc r" style="--i:5">
+        <p class="lbl">CUSTOMERS</p>
+        <div class="cust"><span>Quantum hardware engineers</span><span>National research labs</span><span>Deeptech innovators</span><span>Enterprise quantum teams</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>14</span></div>
+  <aside>How we make money: customers pay for platform access, with usage and billing managed inside the workspace, and we add engineering services on top. We go to market in three stages: an early access program, then pilots and integrations where we rebuild a real chip and connect the customer’s PDK and tools, then enterprise deployments on private cloud. Our customers are quantum hardware engineers, national research labs and deeptech innovators.</aside>
+</section>
+
+<!-- THE ASK -->
+<section class="night" data-title="The ask">
+  <p class="eb r" style="--i:0">The ask</p>
+  <h2 class="t r" style="--i:1">Raising <span class="grad">$2.5 million</span> to scale the platform.</h2>
+  <div class="body ask">
+    <div class="donut r" style="--i:2">
+      <svg viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="240" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="54"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#6D5CFF" stroke-dasharray="597 911" stroke-dashoffset="0"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#A99BFF" stroke-dasharray="296 1212" stroke-dashoffset="-603"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#D3A6F5" stroke-dasharray="296 1212" stroke-dashoffset="-905"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#F0A6D8" stroke-dasharray="145 1363" stroke-dashoffset="-1206"/>
+        <circle class="seg" cx="300" cy="300" r="240" stroke="#7DD3FC" stroke-dasharray="145 1363" stroke-dashoffset="-1357"/>
+      </svg>
+      <div class="mid"><p class="big count">$2.5M</p><span>TOTAL RAISE</span></div>
+    </div>
+    <div class="uses">
+      <div class="use r" style="--i:3"><i style="background:#6D5CFF"></i><div><h3>Engineering and AI R&amp;D</h3><p>Design Copilot, simulation and verification depth</p></div><span class="amt">$1.0M</span><span class="pc">40%</span></div>
+      <div class="use r" style="--i:4"><i style="background:#A99BFF"></i><div><h3>Architecture expansion</h3><p>Photonic and neutral-atom support</p></div><span class="amt">$0.5M</span><span class="pc">20%</span></div>
+      <div class="use r" style="--i:5"><i style="background:#D3A6F5"></i><div><h3>Go-to-market and pilots</h3><p>Early access, labs and enterprise rollouts</p></div><span class="amt">$0.5M</span><span class="pc">20%</span></div>
+      <div class="use r" style="--i:6"><i style="background:#F0A6D8"></i><div><h3>Cloud and fab validation</h3><p>Compute plus fab-measurement partnerships</p></div><span class="amt">$0.25M</span><span class="pc">10%</span></div>
+      <div class="use r" style="--i:7"><i style="background:#7DD3FC"></i><div><h3>Team and operations</h3><p>Hiring support and company operations</p></div><span class="amt">$0.25M</span><span class="pc">10%</span></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>15</span></div>
+  <aside>Our ask: we are raising 2.5 million dollars. 40 percent, one million, goes into engineering and AI R&amp;D: the Design Copilot and deeper simulation and verification. 20 percent expands us to photonic and neutral-atom architectures. 20 percent goes to go-to-market and pilots with labs and enterprises. 10 percent funds cloud compute and fab-measurement partnerships to keep validating against real chips, and the last 10 percent covers hiring and operations.</aside>
+</section>
+
+<!-- TEAM -->
+<section data-title="Team">
+  <p class="eb r" style="--i:0">Meet the team</p>
+  <h2 class="t r" style="--i:1">Chip designers and AI researchers, <span class="grad">building the design layer of the quantum stack.</span></h2>
+  <div class="body team">
+    <div class="founder r" style="--i:2">
+      <span class="av">MN</span>
+      <h3>Manan Narang</h3>
+      <p class="role">FOUNDER &amp; CEO</p>
+      <p>Leads Silicofeller’s vision of AI-native design for quantum processors.</p>
+    </div>
+    <div class="members">
+      <div class="mem r" style="--i:3"><span class="av">AV</span><div><h3>Amrutha Varshini</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:3"><span class="av">HG</span><div><h3>Harshith Gude</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:4"><span class="av">SP</span><div><h3>Sathwik Potu</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:4"><span class="av">SK</span><div><h3>Sathesh Kumar</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:5"><span class="av">GV</span><div><h3>G Naga Vamsi</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:5"><span class="av">HK</span><div><h3>Harshitha Kurra</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:6"><span class="av">HB</span><div><h3>P Hima Bindu</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:6"><span class="av">MS</span><div><h3>Muni Sankar</h3><p>Quantum AI Agent</p></div></div>
+      <div class="mem r" style="--i:7"><span class="av">PR</span><div><h3>Pushpam Raj</h3><p>Quantum AI Agent</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>16</span></div>
+  <aside>And the team: a blend of chip designers and AI researchers. I lead the company as founder and CEO, with nine quantum AI engineers building the platform, from the design copilot to simulation and verification.</aside>
+</section>
+
 <!-- 9 · CLOSE -->
-<section class="close navy" data-title="Next step">
-  <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true" style="right: -320px; opacity: .55">
-    <g class="spin">
-      <g stroke="#A5B4FF" stroke-opacity=".22" stroke-width="1.4">
-        <ellipse cx="500" cy="500" rx="470" ry="170"/>
-        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
-        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
-      </g>
-      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
-    </g>
-    <circle class="core-glow" cx="500" cy="500" r="34" fill="#A5B4FF" fill-opacity=".14"/>
-    <circle class="core" cx="500" cy="500" r="16" fill="#A5B4FF" fill-opacity=".85"/>
-  </svg>
+<section class="close navy wv" data-title="Next step">
   <p class="eb r" style="--i:0">Next step</p>
   <h2 class="hero r" style="--i:1">Let’s design the future of<br><span class="grad">quantum silicon, together.</span></h2>
   <div class="steps">
-    <div class="sp r" style="--i:3"><p class="k">01</p><h3>Pilot</h3><p>Give us one of your chip designs. We rebuild and verify it in Silicofeller in [__] weeks, side by side with your current flow.</p></div>
+    <div class="sp r" style="--i:3"><p class="k">01</p><h3>Pilot</h3><p>Give us one of your chip designs. We rebuild and verify it in Silicofeller, side by side with your current flow.</p></div>
     <div class="sp r" style="--i:4"><p class="k">02</p><h3>Integrate</h3><p>Connect your foundry PDK, design rules and internal tools.</p></div>
     <div class="sp r" style="--i:5"><p class="k">03</p><h3>Deploy</h3><p>Roll out to your hardware teams on private cloud, with training and support.</p></div>
   </div>
-  <div class="contact r" style="--i:6"><span><b>silicofeller.com</b></span><span class="thanks">Thank you for your time.</span></div>
+  <div class="contact r" style="--i:6"><span><b>silicofeller.com</b> &nbsp;·&nbsp; quantum@silicofeller.com</span><span class="thanks">Thank you for your time.</span></div>
   <aside>To close: classical chips had their Cadence and Synopsys moment, and quantum chips need theirs. We believe Silicofeller is it. Our ask is simple: give us one of your existing designs for a short pilot, run side by side with your current flow, and compare the results yourself. Then we integrate your PDK and tools, and roll out to your teams. Thank you. I’m happy to take questions, or open the studio for a live demo right now.</aside>
 </section>
 
