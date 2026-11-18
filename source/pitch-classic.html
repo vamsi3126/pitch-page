@@ -731,42 +731,20 @@
 </section>
 
 <!-- THE RESULT -->
-<section class="night result" data-title="The result">
-  <div class="rleft">
-    <p class="eb r" style="--i:0">The result · technique by technique</p>
-    <h2 class="t r" style="--i:1">Traditional flow <span class="grad">vs Silicofeller.</span></h2>
-    <div class="ten r" style="--i:2"><p class="big count">10×</p><p>faster design cycles: months of layout become hours <small>(company-reported)</small></p></div>
-    <ol class="techs">
-      <li class="r" style="--i:3" data-k="0"><span class="num">01</span><div><h3>Chip design</h3><p class="was"><i class="tchip">Python</i><i class="tchip">Qiskit Metal</i><span>hand-written code, no picture of the chip</span></p><p class="now">{{icon:arrow}}<span>AI Design Copilot: target Hamiltonian in, qubit geometry out</span></p></div></li>
-      <li class="r" style="--i:4" data-k="1"><span class="num">02</span><div><h3>Layout and routing</h3><p class="was"><i class="tchip">KLayout</i><i class="tchip">CAD tools</i><span>waveguides drawn and re-routed by hand</span></p><p class="now">{{icon:arrow}}<span>Schematic editor with automatic, physics-aware routing</span></p></div></li>
-      <li class="r" style="--i:5" data-k="2"><span class="num">03</span><div><h3>EM simulation</h3><p class="was"><i class="tchip">Ansys HFSS</i><span>model rebuilt by hand, days per run</span></p><p class="now">{{icon:arrow}}<span>Built-in Palace FEM on the live design, cloud and GPU</span></p></div></li>
-      <li class="r" style="--i:6" data-k="3"><span class="num">04</span><div><h3>Capacitance and quantum analysis</h3><p class="was"><i class="tchip">Ansys Q3D</i><i class="tchip">pyEPR</i><i class="tchip">Excel</i><span>results copied between scripts</span></p><p class="now">{{icon:arrow}}<span>Capacitance, EPR and Hamiltonian analysis in one place</span></p></div></li>
-      <li class="r" style="--i:7" data-k="4"><span class="num">05</span><div><h3>Design-rule checks</h3><p class="was"><i class="tchip">Separate DRC run</i><span>faults often found after fabrication</span></p><p class="now">{{icon:arrow}}<span>Real-time DRC: boundary, margins, overlaps, connectivity</span></p></div></li>
-      <li class="r" style="--i:8" data-k="5"><span class="num">06</span><div><h3>Tapeout export</h3><p class="was"><i class="tchip">Manual GDS</i><span>files converted and cleaned up by hand</span></p><p class="now">{{icon:arrow}}<span>One-click GDSII plus the Qiskit Metal code</span></p></div></li>
-    </ol>
+<section data-title="Works with Claude">
+  <p class="eb r" style="--i:0">Claude integration · MCP</p>
+  <h2 class="t r" style="--i:1">Works with Claude, <span class="grad">designed as well as possible.</span></h2>
+  <p class="sub r" style="--i:2">Silicofeller supports Claude through the Model Context Protocol (MCP), so an engineer can ask for a design, check it and export it from a conversation.</p>
+  <div class="body" style="display: flex; flex-direction: column; justify-content: center; padding-bottom: 60px;">
+    <div class="ent" style="margin-top: 0;">
+      <div class="ec r" style="--i:3"><span class="fbadge">{{icon:plug}}</span><h3>Claude through MCP</h3><p>Connect Claude to your Silicofeller workspace and describe the chip you need in plain language.</p></div>
+      <div class="ec r" style="--i:4"><span class="fbadge">{{icon:sparkles}}</span><h3>The best design, not the first</h3><p>The copilot returns the closest matching design to your targets, then refines it toward the best result.</p></div>
+      <div class="ec r" style="--i:5"><span class="fbadge">{{icon:shield}}</span><h3>Checked as it is built</h3><p>Design-rule checks, layout checks and fault-tolerance analysis run on the same design.</p></div>
+      <div class="ec r" style="--i:6"><span class="fbadge">{{icon:check}}</span><h3>Yours to export</h3><p>Export GDSII when it is ready. Your designs are never used to train shared AI models.</p></div>
+    </div>
   </div>
-  <div class="pile">
-    <figure class="paper" style="--x:30px; --y:0px; --rot:-6deg; --d:0.30s"><img src="{{img:th-design}}" alt="Silicofeller: Chip design"><figcaption><b>01</b>Design Copilot</figcaption></figure>
-    <figure class="paper" style="--x:455px; --y:22px; --rot:5deg; --d:0.42s"><img src="{{img:th-schematic}}" alt="Silicofeller: Layout and routing"><figcaption><b>02</b>Schematic Editor</figcaption></figure>
-    <figure class="paper" style="--x:0px; --y:272px; --rot:4deg; --d:0.54s"><img src="{{img:th-em}}" alt="Silicofeller: EM simulation"><figcaption><b>03</b>Palace FEM solvers</figcaption></figure>
-    <figure class="paper" style="--x:440px; --y:296px; --rot:-4deg; --d:0.66s"><img src="{{img:th-q3d}}" alt="Silicofeller: Capacitance and quantum analysis"><figcaption><b>04</b>Electrostatic analysis</figcaption></figure>
-    <figure class="paper" style="--x:40px; --y:548px; --rot:-3deg; --d:0.78s"><img src="{{img:th-drc}}" alt="Silicofeller: Design-rule checks"><figcaption><b>05</b>Live DRC</figcaption></figure>
-    <figure class="paper" style="--x:460px; --y:560px; --rot:6deg; --d:0.90s"><img src="{{img:th-export}}" alt="Silicofeller: Tapeout export"><figcaption><b>06</b>Qiskit Metal code</figcaption></figure>
-  </div>
-  <script>
-  (() => {
-    // Pointing at a technique on the left lifts its screen on the right.
-    const sec = document.currentScript.closest("section");
-    const papers = [...sec.querySelectorAll(".paper")];
-    sec.querySelectorAll(".techs li").forEach((li) => {
-      const p = papers[+li.dataset.k];
-      li.addEventListener("mouseenter", () => p.classList.add("hot"));
-      li.addEventListener("mouseleave", () => p.classList.remove("hot"));
-    });
-  })();
-  </script>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>9</span></div>
-  <aside>This is the difference, technique by technique. Chip design: today an engineer hand-writes Python in Qiskit Metal; in Silicofeller the AI copilot turns a target Hamiltonian into geometry. Layout and routing: KLayout and CAD tools, re-routed by hand, versus our schematic editor with automatic routing. EM simulation: in Ansys HFSS the model is rebuilt by hand and a run takes days; we run eigenmode and driven-modal simulation with the Palace FEM solver on the live design, in the cloud with GPU acceleration. Capacitance and quantum analysis: Q3D, pyEPR and spreadsheets, versus capacitance, EPR and Hamiltonian analysis in one workspace. Design-rule checks: today they run after export and faults show up after fabrication; ours run in real time. And tapeout: one-click GDSII with the Qiskit Metal code behind it. Net result: design cycles about ten times faster, by our own measurements.</aside>
+  <aside>Silicofeller works with Claude through the Model Context Protocol. Claude connects to your workspace and designs with you: describe the chip, and the copilot returns the closest matching design, refined toward the best result. The design is checked for design rules, layout and fault tolerance as it is built, and when it is ready you export GDSII. Your designs stay yours and are never used to train shared models.</aside>
 </section>
 
 <!-- MARKET SIZE -->
