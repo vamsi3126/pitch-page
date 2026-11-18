@@ -509,34 +509,32 @@
 .active .tst.on::after { animation: tprog 6s linear both; }
 @keyframes tprog { to { width: 100%; } }
 
-/* the result: 10x and before/after on top, a row of every tool's live screen below */
-.rtop { display: grid; grid-template-columns: 640px 1fr; gap: 80px; align-items: center; margin-top: 34px; }
-.rtop .bigrow { margin-top: 0; }
-.rtop .big { font-size: 168px; }
-.rtop .bigrow p:not(.big) { font-size: 23px; white-space: nowrap; }
-.rtop .ft { margin-top: 0; }
-.rtop .ftr { grid-template-columns: 300px 50px 1fr; padding: 10px 0; font-size: 21px; }
-.rtop .ftr:first-child { border-top: none; }
-.strip { margin: 44px -136px 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
-.track { display: flex; gap: 24px; width: max-content; padding: 4px 136px; }
-.track.go { animation: marquee 60s linear infinite; }
-.strip:hover .track { animation-play-state: paused; }
-/* one full set of six cards (6 × (480px + 24px gap)) scrolls past, then the duplicate set takes over seamlessly */
-@keyframes marquee { to { transform: translateX(-3024px); } }
-.tcard { width: 480px; flex: none; margin: 0; }
-.tcard img { display: block; width: 480px; height: 300px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 20px 50px rgba(0, 0, 0, .45); }
-.tcard figcaption { display: flex; gap: 12px; align-items: baseline; margin-top: 14px; font-size: 18px; font-weight: 500; color: rgba(255, 255, 255, .86); }
-.tcard figcaption b { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; font-weight: 500; color: #A5B4FF; letter-spacing: .1em; }
-@media (prefers-reduced-motion: reduce) { .track.go { animation: none; } }
-@media print {
-  .track.go { animation: none !important; }
-  .strip { -webkit-mask-image: none; mask-image: none; }
-  .track { gap: 20px; }
-  .tcard[aria-hidden] { display: none; }
-  .tcard { width: 258px; }
-  .tcard img { width: 258px; height: 161px; border-radius: 10px; }
-  .tcard figcaption { font-size: 15px; }
-}
+/* the result: traditional flow vs Silicofeller, technique by technique */
+.rhead { margin-top: -20px; display: flex; justify-content: space-between; align-items: flex-end; }
+.ten { display: flex; align-items: center; gap: 22px; padding: 14px 30px 14px 26px; border-radius: 20px; border: 1px solid rgba(165, 180, 255, .28); background: rgba(91, 75, 245, .12); }
+.ten .big { font-size: 84px; line-height: 1; }
+.ten p:not(.big) { font-size: 19px; line-height: 1.4; color: rgba(255, 255, 255, .8); }
+.cmp { margin-top: 22px; }
+.chd, .cr { display: grid; grid-template-columns: 250px 1fr 40px 1fr 144px; gap: 22px; align-items: center; }
+.chd { padding: 0 0 12px; border-bottom: 1px solid rgba(255, 255, 255, .3); }
+.chd span { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+.chd .o { color: #F4A3A6; }
+.chd .n { color: #A5B4FF; }
+.cr { padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.k-tech { display: flex; gap: 14px; align-items: baseline; }
+.k-tech .mono { font-size: 13px; color: #A5B4FF; letter-spacing: .1em; }
+.k-tech h3 { font-size: 22px; font-weight: 600; color: #FFFFFF; letter-spacing: -.01em; line-height: 1.2; }
+.k-old .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.tchip { font-style: normal; font-size: 14px; font-weight: 600; padding: 3px 11px; border-radius: 999px; color: #F4A3A6; background: rgba(229, 72, 77, .14); border: 1px solid rgba(229, 72, 77, .35); }
+.k-old p { font-size: 17px; line-height: 1.4; color: rgba(255, 255, 255, .55); }
+.k-arr { color: #A5B4FF; }
+.k-arr .ico { width: 28px; height: 28px; }
+.k-new p { font-size: 19px; line-height: 1.4; font-weight: 500; color: #FFFFFF; }
+.k-th { width: 144px; height: 90px; border-radius: 8px; border: 3px solid #FFFFFF; box-shadow: 0 10px 26px rgba(0, 0, 0, .45); transform: rotate(-2deg); transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.cr:nth-child(odd) .k-th { transform: rotate(2deg); }
+.cr:hover .k-th { transform: rotate(0) scale(1.9) translateX(-30px); position: relative; z-index: 5; }
+.cr:hover { background: rgba(255, 255, 255, .03); }
+.result .src { margin-top: 16px; }
 
 /* close */
 .close .contact { font-size: 22px; }
@@ -733,39 +731,61 @@
 
 <!-- THE RESULT -->
 <section class="night result" data-title="The result">
-  <p class="eb r" style="--i:0">The result</p>
-  <h2 class="t r" style="--i:1">From 10+ tools <span class="grad">to one platform.</span></h2>
-  <div class="rtop">
-    <div class="bigrow r" style="--i:2"><p class="big count">10×</p><p>faster design cycles:<br>months of layout become hours.</p></div>
-    <div class="ft">
-        <div class="ftr r" style="--i:3"><span class="fr">Months of layout</span><span class="ar">{{icon:arrow}}</span><span class="to">Hours</span></div>
-        <div class="ftr r" style="--i:4"><span class="fr">10+ disconnected tools</span><span class="ar">{{icon:arrow}}</span><span class="to">One platform</span></div>
-        <div class="ftr r" style="--i:5"><span class="fr">Faults found after fab</span><span class="ar">{{icon:arrow}}</span><span class="to">Physics validated before fab</span></div>
-        <div class="ftr r" style="--i:6"><span class="fr">Hand-drawn routing</span><span class="ar">{{icon:arrow}}</span><span class="to">100% automated DRC and routing</span></div>
-        <div class="ftr r" style="--i:7"><span class="fr">Guesswork at tapeout</span><span class="ar">{{icon:arrow}}</span><span class="to">&lt;0.5% deviation versus fab</span></div>
+  <div class="rhead">
+    <div>
+      <p class="eb r" style="--i:0">The result · technique by technique</p>
+      <h2 class="t r" style="--i:1">Traditional flow <span class="grad">vs Silicofeller.</span></h2>
+    </div>
+    <div class="ten r" style="--i:2"><p class="big count">10×</p><p>faster design cycles:<br>months of layout become hours</p></div>
+  </div>
+  <div class="cmp">
+    <div class="chd"><span>Technique</span><span class="o">Traditional · 10+ separate tools</span><span></span><span class="n">Silicofeller · one platform</span><span>Live screen</span></div>
+      <div class="cr r" style="--i:3">
+        <div class="k-tech"><span class="mono">01</span><h3>Chip design</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">Python</i><i class="tchip">Qiskit Metal</i></div><p>Hand-written code, line by line, with no picture of the chip.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>AI Design Copilot turns a target Hamiltonian into qubit geometry.</p></div>
+        <img class="k-th" src="{{img:th-design}}" alt="Silicofeller: Chip design">
+      </div>
+      <div class="cr r" style="--i:4">
+        <div class="k-tech"><span class="mono">02</span><h3>Layout and routing</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">KLayout</i><i class="tchip">CAD tools</i></div><p>Waveguides drawn and re-routed by hand; overlaps found late.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>Visual schematic editor with automatic, physics-aware routing.</p></div>
+        <img class="k-th" src="{{img:th-schematic}}" alt="Silicofeller: Layout and routing">
+      </div>
+      <div class="cr r" style="--i:5">
+        <div class="k-tech"><span class="mono">03</span><h3>EM simulation</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">Ansys HFSS</i></div><p>Model rebuilt by hand in a separate solver; days per run.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>Built-in Palace FEM: eigenmode and driven-modal on the live design, cloud and GPU.</p></div>
+        <img class="k-th" src="{{img:th-em}}" alt="Silicofeller: EM simulation">
+      </div>
+      <div class="cr r" style="--i:6">
+        <div class="k-tech"><span class="mono">04</span><h3>Capacitance and quantum analysis</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">Ansys Q3D</i><i class="tchip">pyEPR</i><i class="tchip">Excel</i></div><p>Results copied between scripts and spreadsheets.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>Capacitance matrix, EPR and Hamiltonian analysis in the same workspace.</p></div>
+        <img class="k-th" src="{{img:th-q3d}}" alt="Silicofeller: Capacitance and quantum analysis">
+      </div>
+      <div class="cr r" style="--i:7">
+        <div class="k-tech"><span class="mono">05</span><h3>Design-rule checks</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">Separate DRC run</i></div><p>Run after export; faults often found only after fabrication.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>Real-time DRC: die boundary, edge margin, overlaps and connectivity.</p></div>
+        <img class="k-th" src="{{img:th-drc}}" alt="Silicofeller: Design-rule checks">
+      </div>
+      <div class="cr r" style="--i:8">
+        <div class="k-tech"><span class="mono">06</span><h3>Tapeout export</h3></div>
+        <div class="k-old"><div class="chips"><i class="tchip">Manual GDS</i></div><p>Files converted and polygons cleaned up by hand.</p></div>
+        <span class="k-arr">{{icon:arrow}}</span>
+        <div class="k-new"><p>One-click GDSII, plus the Qiskit Metal code behind the design.</p></div>
+        <img class="k-th" src="{{img:th-export}}" alt="Silicofeller: Tapeout export">
       </div>
   </div>
-  <div class="strip r" style="--i:8">
-    <div class="track">
-        <figure class="tcard"><img src="{{img:tool-copilot}}" alt="Silicofeller Design Copilot"><figcaption><b>01</b>Design Copilot</figcaption></figure>
-        <figure class="tcard"><img src="{{img:tool-qiskit}}" alt="Silicofeller Qiskit Metal code"><figcaption><b>02</b>Qiskit Metal code</figcaption></figure>
-        <figure class="tcard"><img src="{{img:tool-library}}" alt="Silicofeller Component Library"><figcaption><b>03</b>Component Library</figcaption></figure>
-        <figure class="tcard"><img src="{{img:tool-schematic}}" alt="Silicofeller Schematic Editor"><figcaption><b>04</b>Schematic Editor</figcaption></figure>
-        <figure class="tcard"><img src="{{img:tool-layout}}" alt="Silicofeller Layout + DRC"><figcaption><b>05</b>Layout + DRC</figcaption></figure>
-        <figure class="tcard"><img src="{{img:tool-simsetup}}" alt="Silicofeller Simulation"><figcaption><b>06</b>Simulation</figcaption></figure>
-    </div>
-  </div>
-  <p class="src r" style="--i:9">Company-reported figures. Screens: the live Silicofeller product.</p>
-  <script>
-  (() => {
-    // Duplicate the cards once so the row can scroll in an endless loop.
-    const track = document.currentScript.closest("section").querySelector(".track");
-    [...track.children].forEach((c) => { const d = c.cloneNode(true); d.setAttribute("aria-hidden", "true"); track.appendChild(d); });
-    track.classList.add("go");
-  })();
-  </script>
+  <p class="src r" style="--i:9">10× is company-reported. Thumbnails: the live Silicofeller product; hover a row to enlarge its screen.</p>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>9</span></div>
-  <aside>Here is what that adds up to. Ten times faster design cycles: months of layout become hours. Ten-plus tools become one platform. Physics is validated before fabrication instead of after. Design-rule checks and routing are fully automated. And our simulations land within half a percent of measurements on the fabricated chip, which answers the biggest fear in this industry: you know how the chip will behave before it is built. These are our own reported figures, and we are happy to show the data. Along the bottom are the live screens behind those numbers: the design copilot, the Qiskit Metal code it generates, the component library, the schematic editor, the layout with design-rule checks, and simulation set-up, all in one platform.</aside>
+  <aside>This is the difference, technique by technique. Chip design: today an engineer hand-writes Python in Qiskit Metal; in Silicofeller the AI copilot turns a target Hamiltonian into geometry. Layout and routing: KLayout and CAD tools, re-routed by hand, versus our schematic editor with automatic routing. EM simulation: in Ansys HFSS the model is rebuilt by hand and a run takes days; we run eigenmode and driven-modal simulation with the Palace FEM solver on the live design, in the cloud with GPU acceleration. Capacitance and quantum analysis: Q3D, pyEPR and spreadsheets, versus capacitance, EPR and Hamiltonian analysis in one workspace. Design-rule checks: today they run after export and faults show up after fabrication; ours run in real time. And tapeout: one-click GDSII with the Qiskit Metal code behind it. Net result: design cycles about ten times faster, by our own measurements.</aside>
 </section>
 
 <!-- MARKET SIZE -->
