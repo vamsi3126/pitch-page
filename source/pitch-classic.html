@@ -509,6 +509,35 @@
 .active .tst.on::after { animation: tprog 6s linear both; }
 @keyframes tprog { to { width: 100%; } }
 
+/* the result: 10x and before/after on top, a row of every tool's live screen below */
+.rtop { display: grid; grid-template-columns: 640px 1fr; gap: 80px; align-items: center; margin-top: 34px; }
+.rtop .bigrow { margin-top: 0; }
+.rtop .big { font-size: 168px; }
+.rtop .bigrow p:not(.big) { font-size: 23px; white-space: nowrap; }
+.rtop .ft { margin-top: 0; }
+.rtop .ftr { grid-template-columns: 300px 50px 1fr; padding: 10px 0; font-size: 21px; }
+.rtop .ftr:first-child { border-top: none; }
+.strip { margin: 44px -136px 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+.track { display: flex; gap: 24px; width: max-content; padding: 4px 136px; }
+.track.go { animation: marquee 60s linear infinite; }
+.strip:hover .track { animation-play-state: paused; }
+/* one full set of six cards (6 × (480px + 24px gap)) scrolls past, then the duplicate set takes over seamlessly */
+@keyframes marquee { to { transform: translateX(-3024px); } }
+.tcard { width: 480px; flex: none; margin: 0; }
+.tcard img { display: block; width: 480px; height: 300px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 20px 50px rgba(0, 0, 0, .45); }
+.tcard figcaption { display: flex; gap: 12px; align-items: baseline; margin-top: 14px; font-size: 18px; font-weight: 500; color: rgba(255, 255, 255, .86); }
+.tcard figcaption b { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; font-weight: 500; color: #A5B4FF; letter-spacing: .1em; }
+@media (prefers-reduced-motion: reduce) { .track.go { animation: none; } }
+@media print {
+  .track.go { animation: none !important; }
+  .strip { -webkit-mask-image: none; mask-image: none; }
+  .track { gap: 20px; }
+  .tcard[aria-hidden] { display: none; }
+  .tcard { width: 258px; }
+  .tcard img { width: 258px; height: 161px; border-radius: 10px; }
+  .tcard figcaption { font-size: 15px; }
+}
+
 /* close */
 .close .contact { font-size: 22px; }
 .close .contact b { font-weight: 600; }
@@ -704,22 +733,39 @@
 
 <!-- THE RESULT -->
 <section class="night result" data-title="The result">
-  <div class="bwin lapwin"><div class="bar"><i></i><i></i><i></i><span class="url">silicofeller.com/layout-viewer</span></div><img src="{{img:shot-layout}}" alt="Silicofeller Layout Viewer: generated layout with all design-rule checks passing"></div>
-  <div class="col">
-    <p class="eb r" style="--i:0">The result</p>
-    <h2 class="t r" style="--i:1">From 10+ tools <span class="grad">to one platform.</span></h2>
+  <p class="eb r" style="--i:0">The result</p>
+  <h2 class="t r" style="--i:1">From 10+ tools <span class="grad">to one platform.</span></h2>
+  <div class="rtop">
     <div class="bigrow r" style="--i:2"><p class="big count">10×</p><p>faster design cycles:<br>months of layout become hours.</p></div>
     <div class="ft">
-      <div class="ftr r" style="--i:3"><span class="fr">Months of layout</span><span class="ar">{{icon:arrow}}</span><span class="to">Hours</span></div>
-      <div class="ftr r" style="--i:4"><span class="fr">10+ disconnected tools</span><span class="ar">{{icon:arrow}}</span><span class="to">One platform</span></div>
-      <div class="ftr r" style="--i:5"><span class="fr">Faults found after fab</span><span class="ar">{{icon:arrow}}</span><span class="to">Physics validated before fab</span></div>
-      <div class="ftr r" style="--i:6"><span class="fr">Hand-drawn routing</span><span class="ar">{{icon:arrow}}</span><span class="to">100% automated DRC and routing</span></div>
-      <div class="ftr r" style="--i:7"><span class="fr">Guesswork at tapeout</span><span class="ar">{{icon:arrow}}</span><span class="to">&lt;0.5% deviation versus fab</span></div>
-    </div>
-    <p class="src r" style="--i:8">Company-reported figures.</p>
+        <div class="ftr r" style="--i:3"><span class="fr">Months of layout</span><span class="ar">{{icon:arrow}}</span><span class="to">Hours</span></div>
+        <div class="ftr r" style="--i:4"><span class="fr">10+ disconnected tools</span><span class="ar">{{icon:arrow}}</span><span class="to">One platform</span></div>
+        <div class="ftr r" style="--i:5"><span class="fr">Faults found after fab</span><span class="ar">{{icon:arrow}}</span><span class="to">Physics validated before fab</span></div>
+        <div class="ftr r" style="--i:6"><span class="fr">Hand-drawn routing</span><span class="ar">{{icon:arrow}}</span><span class="to">100% automated DRC and routing</span></div>
+        <div class="ftr r" style="--i:7"><span class="fr">Guesswork at tapeout</span><span class="ar">{{icon:arrow}}</span><span class="to">&lt;0.5% deviation versus fab</span></div>
+      </div>
   </div>
-  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>10</span></div>
-  <aside>Here is what that adds up to. Ten times faster design cycles: months of layout become hours. Ten-plus tools become one platform. Physics is validated before fabrication instead of after. Design-rule checks and routing are fully automated. And our simulations land within half a percent of measurements on the fabricated chip, which answers the biggest fear in this industry: you know how the chip will behave before it is built. These are our own reported figures, and we are happy to show the data.</aside>
+  <div class="strip r" style="--i:8">
+    <div class="track">
+        <figure class="tcard"><img src="{{img:tool-copilot}}" alt="Silicofeller Design Copilot"><figcaption><b>01</b>Design Copilot</figcaption></figure>
+        <figure class="tcard"><img src="{{img:tool-qiskit}}" alt="Silicofeller Qiskit Metal code"><figcaption><b>02</b>Qiskit Metal code</figcaption></figure>
+        <figure class="tcard"><img src="{{img:tool-library}}" alt="Silicofeller Component Library"><figcaption><b>03</b>Component Library</figcaption></figure>
+        <figure class="tcard"><img src="{{img:tool-schematic}}" alt="Silicofeller Schematic Editor"><figcaption><b>04</b>Schematic Editor</figcaption></figure>
+        <figure class="tcard"><img src="{{img:tool-layout}}" alt="Silicofeller Layout + DRC"><figcaption><b>05</b>Layout + DRC</figcaption></figure>
+        <figure class="tcard"><img src="{{img:tool-simsetup}}" alt="Silicofeller Simulation"><figcaption><b>06</b>Simulation</figcaption></figure>
+    </div>
+  </div>
+  <p class="src r" style="--i:9">Company-reported figures. Screens: the live Silicofeller product.</p>
+  <script>
+  (() => {
+    // Duplicate the cards once so the row can scroll in an endless loop.
+    const track = document.currentScript.closest("section").querySelector(".track");
+    [...track.children].forEach((c) => { const d = c.cloneNode(true); d.setAttribute("aria-hidden", "true"); track.appendChild(d); });
+    track.classList.add("go");
+  })();
+  </script>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>9</span></div>
+  <aside>Here is what that adds up to. Ten times faster design cycles: months of layout become hours. Ten-plus tools become one platform. Physics is validated before fabrication instead of after. Design-rule checks and routing are fully automated. And our simulations land within half a percent of measurements on the fabricated chip, which answers the biggest fear in this industry: you know how the chip will behave before it is built. These are our own reported figures, and we are happy to show the data. Along the bottom are the live screens behind those numbers: the design copilot, the Qiskit Metal code it generates, the component library, the schematic editor, the layout with design-rule checks, and simulation set-up, all in one platform.</aside>
 </section>
 
 <!-- MARKET SIZE -->
