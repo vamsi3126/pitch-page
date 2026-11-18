@@ -541,6 +541,11 @@
 .close .contact b { font-weight: 600; }
 /* eyebrow labels above headings: Fraunces in normal case (not spaced-out capitals) */
 .deck section .eb { font-family: 'Fraunces', Georgia, serif !important; font-weight: 600 !important; font-size: 27px !important; letter-spacing: 0 !important; text-transform: none !important; }
+/* Claude slide: a row of real product screens */
+.shots { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.shots figure { margin: 0; }
+.shots img { display: block; width: 100%; height: 160px; object-fit: cover; object-position: top left; border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 14px 30px rgba(10, 15, 30, .10); }
+.shots figcaption { margin-top: 10px; font-size: 17px; font-weight: 600; color: var(--ink); text-align: center; letter-spacing: -.1px; }
 </style>
 
 <!-- 1 · COVER -->
@@ -735,7 +740,15 @@
   <p class="eb r" style="--i:0">Claude integration · MCP</p>
   <h2 class="t r" style="--i:1">Works with Claude, <span class="grad">designed as well as possible.</span></h2>
   <p class="sub r" style="--i:2">Silicofeller supports Claude through the Model Context Protocol (MCP), so an engineer can ask for a design, check it and export it from a conversation.</p>
-  <div class="body" style="display: flex; flex-direction: column; justify-content: center; padding-bottom: 60px;">
+  <div class="body" style="display: flex; flex-direction: column; gap: 34px;">
+    <div class="shots">
+      <figure class="r" style="--i:3"><img src="{{img:shot-copilot}}" alt="Design Copilot and MCP: connect Claude to Silicofeller"><figcaption>Design Copilot &amp; MCP</figcaption></figure>
+      <figure class="r" style="--i:4"><img src="{{img:prod-schematic}}" alt="Schematic Editor"><figcaption>Schematic</figcaption></figure>
+      <figure class="r" style="--i:5"><img src="{{img:prod-layout}}" alt="Layout Viewer"><figcaption>Layout</figcaption></figure>
+      <figure class="r" style="--i:6"><img src="{{img:shot-simsetup}}" alt="Simulations on the Palace FEM solver"><figcaption>Simulations</figcaption></figure>
+      <figure class="r" style="--i:7"><img src="{{img:prod-fault}}" alt="Fault Tolerance Studio"><figcaption>Fault tolerant</figcaption></figure>
+      <figure class="r" style="--i:8"><img src="{{img:prod-packaging}}" alt="Packaging and PCB"><figcaption>Packaging</figcaption></figure>
+    </div>
     <div class="ent" style="margin-top: 0;">
       <div class="ec r" style="--i:3"><span class="fbadge">{{icon:plug}}</span><h3>Claude through MCP</h3><p>Connect Claude to your Silicofeller workspace and describe the chip you need in plain language.</p></div>
       <div class="ec r" style="--i:4"><span class="fbadge">{{icon:sparkles}}</span><h3>The best design, not the first</h3><p>The copilot returns the closest matching design to your targets, then refines it toward the best result.</p></div>
