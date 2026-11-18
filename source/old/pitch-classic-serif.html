@@ -1,0 +1,353 @@
+<style>
+:root {
+  --paper: #FAF8F3; --card: #FFFFFF; --ink: #0E1B33; --body: #3A465C; --muted: #6E788A;
+  --rule: #E3DDD0; --rule2: #EEE9DF;
+  --accent: #1F47C4; --accent-soft: #EAF0FC;
+  --clay: #A9472D; --clay-soft: #F6ECE6;
+  --navy: #0E1B33; --ivory: #F5F1E8; --ivory-dim: rgba(245, 241, 232, 0.68); --sky: #9DB8FF;
+}
+.deck section { position: absolute; inset: 0; width: 1920px; height: 1080px; padding: 100px 136px 130px; background: var(--paper); color: var(--ink); overflow: hidden; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; }
+.deck section > * { position: relative; z-index: 1; }
+.serif, .t, .hero, .n, .pn, .num { font-family: Fraunces, Georgia, 'Times New Roman', serif; font-optical-sizing: auto; }
+
+.eb { display: flex; align-items: center; gap: 18px; font-size: 19px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; }
+.eb::before { content: ""; width: 44px; height: 2px; background: currentColor; flex: none; }
+.eb.warn { color: var(--clay); }
+.t { font-size: 76px; font-weight: 400; letter-spacing: -1.2px; line-height: 1.08; color: var(--ink); }
+.grad { font-style: italic; color: var(--accent); }
+.grad-warm { font-style: italic; color: var(--clay); }
+.sub { font-size: 27px; line-height: 1.5; color: var(--body); margin-top: 20px; max-width: 1480px; }
+.body { margin-top: 48px; flex: 1; min-height: 0; }
+.ico { display: inline-flex; width: 26px; height: 26px; flex: none; }
+.ico svg { width: 100%; height: 100%; }
+
+.foot { position: absolute !important; left: 136px; right: 136px; bottom: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 18px; letter-spacing: .04em; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 18px; }
+.foot .fl { display: flex; align-items: center; gap: 16px; }
+.foot img { height: 26px; border-radius: 2px; }
+
+.r { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+
+/* bookend slides (cover, close): deep navy */
+.navy { background: var(--navy) !important; color: var(--ivory) !important; }
+.navy .eb { color: var(--sky); }
+.navy .grad { color: var(--sky); }
+.navy .sub { color: var(--ivory-dim); }
+/* the atom turns slowly (one full circle every 3 minutes), electrons fixed on their orbits; the core breathes */
+.orbit .spin { transform-box: view-box; transform-origin: 500px 500px; animation: spin 180s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.orbit .core, .orbit .core-glow { transform-box: fill-box; transform-origin: center; animation: breathe 4.5s ease-in-out infinite; }
+.orbit .core-glow { animation-duration: 4.5s; animation-name: glow; }
+@keyframes breathe { 50% { transform: scale(1.18); } }
+@keyframes glow { 0%, 100% { transform: scale(.8); opacity: .5; } 50% { transform: scale(1.5); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .orbit .spin, .orbit .core, .orbit .core-glow { animation: none; } }
+@media print { .orbit .spin, .orbit .core, .orbit .core-glow { animation: none !important; } }
+.orbit { position: absolute !important; right: -170px; top: 50%; transform: translateY(-50%); width: 1060px; height: 1060px; z-index: 0 !important; opacity: .9; }
+
+/* 1 · cover */
+.cover { justify-content: center; }
+.cover .brand { position: absolute !important; left: 136px; top: 92px; height: 48px; border-radius: 3px; }
+.hero { font-size: 112px; font-weight: 400; letter-spacing: -2.5px; line-height: 1.04; max-width: 1180px; }
+.cover .hero { max-width: 1500px; }
+.cover .sub { font-size: 30px; max-width: 980px; margin-top: 36px; }
+.cvfoot { position: absolute !important; left: 136px; right: 136px; bottom: 84px; display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid rgba(245, 241, 232, .18); padding-top: 26px; font-size: 22px; color: var(--ivory-dim); }
+.cvfoot b { font-weight: 600; color: var(--ivory); letter-spacing: .14em; text-transform: uppercase; font-size: 18px; margin-right: 14px; }
+
+/* 2 · the process today: an editorial table */
+.proc { display: flex; flex-direction: column; }
+.ph, .pr { display: grid; grid-template-columns: 64px 300px 1fr 290px 380px; gap: 30px; align-items: center; }
+.ph { padding: 0 6px 14px; font-size: 17px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--ink); }
+.pr { padding: 17px 6px; border-bottom: 1px solid var(--rule); min-height: 92px; }
+.pn { font-size: 40px; font-weight: 400; color: var(--clay); line-height: 1; }
+.ps { font-size: 27px; font-weight: 600; letter-spacing: -.2px; color: var(--ink); }
+.pd { font-size: 22px; line-height: 1.42; color: var(--body); }
+.pt { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-style: normal; font-size: 18px; font-weight: 500; padding: 5px 12px; border-radius: 4px; background: var(--card); border: 1px solid var(--rule); color: var(--body); white-space: nowrap; }
+.pw { display: flex; align-items: center; gap: 12px; font-size: 21px; font-weight: 500; line-height: 1.35; color: var(--clay); }
+.pw .ico { width: 24px; height: 24px; }
+
+/* 3 · why it fails */
+.split { display: flex; gap: 56px; height: 100%; }
+.crop { position: relative; overflow: hidden; border-radius: 10px; background: #000; flex: none; box-shadow: 0 1px 0 var(--rule), 0 24px 60px rgba(14, 27, 51, .16); }
+.crop img { position: absolute; display: block; }
+.shot { display: block; width: 960px; height: auto; border-radius: 10px; box-shadow: 0 1px 0 var(--rule), 0 24px 60px rgba(14, 27, 51, .16); }
+.caption { font-size: 18px; color: var(--muted); margin-top: 14px; letter-spacing: .02em; }
+.costs { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; border-top: 2px solid var(--ink); }
+.cost { padding: 34px 36px 30px 0; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--rule); }
+.cost:nth-child(odd) { border-right: 1px solid var(--rule); }
+.cost:nth-child(even) { padding-left: 40px; }
+.cost .n { font-size: 74px; font-weight: 400; letter-spacing: -1.5px; line-height: 1; color: var(--clay); font-style: normal; }
+.cost .h { font-size: 26px; font-weight: 600; margin-top: 10px; color: var(--ink); }
+.cost .d { font-size: 22px; line-height: 1.45; color: var(--body); }
+
+/* 4 · the platform */
+.feat { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.fi { display: flex; gap: 22px; align-items: flex-start; padding: 15px 0; border-top: 1px solid var(--rule); }
+.fi:first-child { border-top: 2px solid var(--ink); }
+.fbadge { width: 54px; height: 54px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; background: var(--card); border: 1px solid var(--rule); color: var(--accent); }
+.fi h3 { font-size: 27px; font-weight: 600; letter-spacing: -.2px; color: var(--ink); }
+.fi p { font-size: 21px; line-height: 1.4; color: var(--body); margin-top: 3px; }
+
+/* 5 · end to end */
+.wf { display: flex; justify-content: center; }
+.flow { display: block; width: 1648px; height: auto; }
+.wfpanel { background: #000; border-radius: 12px; padding: 0; box-shadow: 0 24px 60px rgba(14, 27, 51, .16); overflow: hidden; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; border-top: 2px solid var(--ink); }
+.stat { padding: 26px 32px 0 0; }
+.stat + .stat { border-left: 1px solid var(--rule); padding-left: 36px; }
+.stat .n { font-size: 70px; font-weight: 400; letter-spacing: -1.5px; line-height: 1; color: var(--accent); font-style: normal; }
+.stat .l { font-size: 22px; color: var(--body); margin-top: 12px; line-height: 1.4; }
+
+/* 6 · demo */
+.vwrap { display: flex; justify-content: center; }
+.video { width: 1240px; height: 698px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 1px 0 var(--rule), 0 30px 80px rgba(14, 27, 51, .22); }
+.video video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+
+/* 7 · every architecture: what is available today, then the roadmap */
+.archs { display: flex; flex-direction: column; gap: 54px; }
+.grp { display: flex; align-items: center; gap: 18px; font-size: 17px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.grp::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.grp.soon { color: var(--muted); }
+.now { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.nc { display: flex; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; height: 350px; box-shadow: 0 18px 44px rgba(14, 27, 51, .07); }
+.nc .art { width: 350px; height: 350px; flex: none; display: block; }
+.nc .in { padding: 40px 42px; display: flex; flex-direction: column; gap: 12px; }
+.nc h3 { font-family: Fraunces, Georgia, serif; font-size: 44px; font-weight: 400; letter-spacing: -.5px; color: var(--ink); line-height: 1.05; }
+.nc p { font-size: 22px; line-height: 1.45; color: var(--body); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.tag { font-style: normal; font-size: 17px; font-weight: 500; padding: 5px 12px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.st { align-self: flex-start; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.st::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.st.on { color: var(--accent); }
+.st.soon { color: var(--muted); }
+.road { display: grid; grid-template-columns: repeat(3, 1fr); }
+.rc { display: flex; gap: 26px; align-items: center; padding-right: 34px; }
+.rc + .rc { border-left: 1px solid var(--rule); padding-left: 34px; }
+.rc .art { width: 170px; height: 170px; border-radius: 10px; flex: none; display: block; }
+.rc .in { display: flex; flex-direction: column; gap: 6px; }
+.rc h3 { font-family: Fraunces, Georgia, serif; font-size: 32px; font-weight: 400; color: var(--ink); }
+.rc p { font-size: 20px; line-height: 1.42; color: var(--body); }
+
+/* 8 · trust and enterprise */
+.lbl { font-size: 17px; font-weight: 600; letter-spacing: .2em; color: var(--muted); margin-bottom: 20px; }
+.logos { display: grid; grid-template-columns: repeat(8, 1fr); gap: 16px; }
+.logo { height: 132px; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 22px; }
+.logo.dk { background: var(--navy); border-color: var(--navy); }
+.logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.trust { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 20px; }
+.ent { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
+.ec { border-top: 2px solid var(--ink); padding-top: 26px; display: flex; flex-direction: column; gap: 12px; }
+.ec h3 { font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 400; margin-top: 10px; color: var(--ink); white-space: nowrap; }
+.ec p { font-size: 22px; line-height: 1.45; color: var(--body); }
+
+/* 9 · close */
+.close { justify-content: center; }
+.close .hero { font-size: 96px; max-width: 1300px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 72px; width: 1460px; }
+.sp { border-top: 1px solid rgba(245, 241, 232, .28); padding-top: 26px; }
+.sp .k { font-family: Fraunces, Georgia, serif; font-size: 44px; color: var(--sky); line-height: 1; }
+.sp h3 { font-size: 30px; font-weight: 600; margin-top: 16px; color: var(--ivory); }
+.sp p { font-size: 22px; line-height: 1.45; color: var(--ivory-dim); margin-top: 10px; }
+.contact { position: absolute !important; left: 136px; right: 136px; bottom: 84px; display: flex; gap: 72px; font-size: 23px; color: var(--ivory-dim); border-top: 1px solid rgba(245, 241, 232, .18); padding-top: 26px; }
+.contact b { color: var(--ivory); font-weight: 600; }
+</style>
+
+<!-- 1 · COVER -->
+<section class="cover navy" data-title="Cover">
+  <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
+    <g class="spin">
+      <g stroke="#9DB8FF" stroke-opacity=".22" stroke-width="1.4">
+        <ellipse cx="500" cy="500" rx="470" ry="170"/>
+        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
+        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
+        <circle cx="500" cy="500" r="330" stroke-opacity=".10"/>
+        <circle cx="500" cy="500" r="470" stroke-opacity=".07"/>
+      </g>
+      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+    </g>
+    <circle class="core-glow" cx="500" cy="500" r="34" fill="#9DB8FF" fill-opacity=".14"/>
+    <circle class="core" cx="500" cy="500" r="16" fill="#9DB8FF" fill-opacity=".85"/>
+  </svg>
+  <img class="brand r" style="--i:0" src="{{img:logo}}" alt="Silicofeller">
+  <p class="eb r" style="--i:1">Silicofeller Quantum Studio</p>
+  <h1 class="hero r" style="--i:2">Design quantum chips with AI.<br><span class="grad">In hours, not months.</span></h1>
+  <p class="sub r" style="--i:3">One platform to design, simulate, verify and tape out quantum processors, with an AI copilot at every step.</p>
+  <aside>Thank you for your time. I’m [name] from Silicofeller. In the next ten minutes I want to show you one thing: quantum chips are still designed largely by hand, and that has become the bottleneck for the whole quantum roadmap. Silicofeller removes it with AI. First, two minutes on how it is done today.</aside>
+</section>
+
+<!-- 2 · MANUAL: THE PROCESS -->
+<section data-title="How it’s done today">
+  <p class="eb warn r" style="--i:0">The problem · 1 of 2</p>
+  <h2 class="t r" style="--i:1">How a quantum chip is designed <span class="grad-warm">today</span></h2>
+  <p class="sub r" style="--i:2">Six steps, six different tools, and every hand-off is done manually. Steps 3 to 5 repeat until the numbers look right.</p>
+  <div class="body proc">
+    <div class="ph r" style="--i:2"><span></span><span>Step</span><span>What engineers do by hand</span><span>Tools</span><span>What goes wrong</span></div>
+    <div class="pr r" style="--i:3"><span class="pn">1</span><span class="ps">Write the design</span><span class="pd">Code qubits, couplers and resonators line by line, with no picture of the chip.</span><span class="pt"><i class="chip">Python</i><i class="chip">Qiskit Metal</i></span><span class="pw">{{icon:warn}}Overlaps and bend errors go unseen</span></div>
+    <div class="pr r" style="--i:4"><span class="pn">2</span><span class="ps">Export the geometry</span><span class="pd">Convert the layout into CAD files (DXF / GDS) and clean up the polygons.</span><span class="pt"><i class="chip">CAD tools</i></span><span class="pw">{{icon:warn}}Layer and polygon errors</span></div>
+    <div class="pr r" style="--i:5"><span class="pn">3</span><span class="ps">Simulate</span><span class="pd">Rebuild the model in a separate 3D solver and set up the mesh by hand.</span><span class="pt"><i class="chip">Ansys HFSS</i><i class="chip">Q3D</i></span><span class="pw">{{icon:warn}}Days per run, workstations blocked</span></div>
+    <div class="pr r" style="--i:6"><span class="pn">4</span><span class="ps">Analyse results</span><span class="pd">Copy frequencies and couplings into spreadsheets and custom scripts.</span><span class="pt"><i class="chip">Excel</i><i class="chip">MATLAB</i></span><span class="pw">{{icon:warn}}Copy-paste mistakes, no single source of truth</span></div>
+    <div class="pr r" style="--i:7"><span class="pn">5</span><span class="ps">Fix and re-route</span><span class="pd">Redraw the waveguides by hand, then go back to step 3 and simulate again.</span><span class="pt"><i class="chip">Python</i><i class="chip">CAD tools</i></span><span class="pw">{{icon:warn}}Crosstalk and impedance mismatch</span></div>
+    <div class="pr r" style="--i:8"><span class="pn">6</span><span class="ps">Fabricate and test</span><span class="pd">Wait for the cleanroom, then cool the chip down and measure it.</span><span class="pt"><i class="chip">Foundry</i><i class="chip">Cryostat</i></span><span class="pw">{{icon:warn}}Faults found only at the very end</span></div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>2</span></div>
+  <aside>This is how most labs design a quantum chip today, step by step. One: an engineer writes the chip as code, hundreds of lines of Python, often in Qiskit Metal, with no picture of what they are drawing. Two: the geometry is exported into CAD files and cleaned up by hand. Three: the model is rebuilt in a separate 3D solver like Ansys HFSS or Q3D, where a single run can block a workstation for days. Four: the results are copied into Excel or MATLAB to work out frequencies and couplings. Five: the waveguides are redrawn by hand and the loop goes back to simulation, again and again. And six: the chip goes to the cleanroom, is cooled down and measured, and that is the first time anyone sees how it really behaves.</aside>
+</section>
+
+<!-- 3 · MANUAL: WHY IT FAILS -->
+<section data-title="Why it fails">
+  <p class="eb warn r" style="--i:0">The problem · 2 of 2</p>
+  <h2 class="t r" style="--i:1">Seven tools. <span class="grad-warm">None of them talk to each other.</span></h2>
+  <p class="sub r" style="--i:2">Every hand-off adds days, and every mistake surfaces later, often only after the chip is fabricated.</p>
+  <div class="body split">
+    <div class="r" style="--i:3">
+      <div class="crop" style="width: 560px; height: 560px"><img src="{{img:unified}}" alt="Disconnected workflow: KLayout, HFSS, Python, Excel, MATLAB, Qiskit Metal and other tools linked by manual hand-offs" style="width: 1792px; left: -6px; top: -106px"></div>
+      <p class="caption">Today’s tool chain, connected only by people moving files.</p>
+    </div>
+    <div class="costs">
+      <div class="cost r" style="--i:4"><p class="n">~6 months</p><p class="h">per design cycle</p><p class="d">Mostly spent writing code, converting files and re-running simulations.</p></div>
+      <div class="cost r" style="--i:5"><p class="n">10+</p><p class="h">disconnected tools</p><p class="d">Python, CAD, HFSS, Q3D, Excel, MATLAB and custom scripts for one chip.</p></div>
+      <div class="cost r" style="--i:6"><p class="n">Days</p><p class="h">for every simulation run</p><p class="d">Models are rebuilt by hand in separate 3D solvers on dedicated machines.</p></div>
+      <div class="cost r" style="--i:7"><p class="n">Too late</p><p class="h">when faults appear</p><p class="d">Design-rule and physics errors show up after fabrication, forcing a respin.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>3</span></div>
+  <aside>Here is why that process breaks down. On the left is the real tool chain: KLayout, HFSS, Python, Excel, MATLAB, Qiskit Metal, and more, connected only by people moving files around. The result: a design cycle of around six months, more than ten tools per chip, days for every simulation, and most faults discovered only after fabrication, which means a respin. In a world where AI writes code and designs proteins, doing this by hand is the most expensive choice a hardware team can make.</aside>
+</section>
+
+<!-- 4 · SILICOFELLER: ONE PLATFORM -->
+<section data-title="One platform">
+  <p class="eb r" style="--i:0">The solution · Silicofeller Quantum Studio</p>
+  <h2 class="t r" style="--i:1">One platform. One workflow. <span class="grad">Designed with AI.</span></h2>
+  <p class="sub r" style="--i:2">The whole tool chain replaced by a single browser-based studio, with an AI copilot that does the manual work.</p>
+  <div class="body split">
+    <div class="r" style="--i:3">
+      <img class="shot" src="{{img:laptop}}" alt="Silicofeller Quantum Studio running a driven-modal simulation with the Palace 3D mesh viewer">
+      <p class="caption">Silicofeller Quantum Studio running a driven-modal simulation.</p>
+    </div>
+    <div class="feat">
+      <div class="fi r" style="--i:4"><span class="fbadge">{{icon:sparkles}}</span><div><h3>AI design copilot</h3><p>Describe the chip in plain language or as a target Hamiltonian. The AI builds it.</p></div></div>
+      <div class="fi r" style="--i:5"><span class="fbadge">{{icon:layers}}</span><div><h3>Visual schematic editor</h3><p>Drag and drop from 58+ pre-characterised components.</p></div></div>
+      <div class="fi r" style="--i:6"><span class="fbadge">{{icon:route}}</span><div><h3>Automatic routing</h3><p>Physics-aware 50 Ω waveguides with airbridges. No hand drawing.</p></div></div>
+      <div class="fi r" style="--i:7"><span class="fbadge">{{icon:activity}}</span><div><h3>Built-in simulation</h3><p>Eigenmode, driven-modal, EPR and capacitance extraction in the cloud.</p></div></div>
+      <div class="fi r" style="--i:8"><span class="fbadge">{{icon:shield}}</span><div><h3>Verify and export</h3><p>Real-time DRC and surface-code checks, then GDSII in one click.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>4</span></div>
+  <aside>This is Silicofeller Quantum Studio. All seven tools become one studio that runs in the browser. You can start by simply describing the chip to our AI copilot, in plain language or as a target Hamiltonian, and it builds the design. You can refine it on a visual schematic editor with more than 58 pre-characterised components. Waveguides are routed automatically at 50 ohms with airbridges. Simulation, which used to mean rebuilding everything in HFSS, runs inside the platform: eigenmode, driven-modal, energy participation and capacitance extraction. On screen you can see a real driven-modal run. And when it is done, it is checked against design rules and surface-code requirements and exported as GDSII in one click.</aside>
+</section>
+
+<!-- 5 · SILICOFELLER: END TO END + RESULTS -->
+<section data-title="End to end">
+  <p class="eb r" style="--i:0">The solution · End to end</p>
+  <h2 class="t r" style="--i:1">Research to cloud execution, <span class="grad">automated.</span></h2>
+  <div class="body" style="margin-top: 40px">
+    <div class="wf r" style="--i:2"><svg class="flow" viewBox="0 0 1648 470" role="img" aria-label="Silicofeller workflow: research, architecture, schematic, layout, simulation, fabrication-ready GDSII, calibration and testing, digital twin (VDPU), cloud execution"><defs><marker id="fl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1F47C4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g fill="none" stroke="#1F47C4" stroke-opacity=".55" stroke-width="2" marker-end="url(#fl-arrow)"><path d="M184 104 H401"/><path d="M529 104 H746"/><path d="M874 104 H1091"/><path d="M1219 104 H1436"/><path d="M354 332 H571"/><path d="M699 332 H916"/><path d="M1044 332 H1261"/><path d="M1564 104 H1590 a40 40 0 0 1 40 40 V178 a40 40 0 0 1 -40 40 H100 a40 40 0 0 0 -40 40 V292 a40 40 0 0 0 40 40 H226"/></g><circle cx="120" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(90 74) scale(1.25)"><rect x="8" y="4" width="26" height="34" rx="3" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13 H28 M13 19 H28 M13 25 H21" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="8" fill="#1F47C4" fill-opacity=".14" stroke="#1F47C4" stroke-width="2.2"/><path d="M38 38 L45 45" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="120" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Research</text><circle cx="465" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(435 74) scale(1.25)"><path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#1F47C4" fill-opacity=".14"/><path d="M24 6 L38 14 V30 L24 38 L10 30 V14 Z M10 14 L24 22 L38 14 M24 22 V38" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="465" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Architecture</text><circle cx="810" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(780 74) scale(1.25)"><path d="M4 16 H44 M4 32 H44 M16 16 V32 M32 16 V32" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="32" cy="16" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="16" cy="32" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><path d="M21 20 L27 28 M27 20 L21 28" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="810" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Schematic</text><circle cx="1155" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(1125 74) scale(1.25)"><rect x="12" y="12" width="24" height="24" rx="2" fill="#1F47C4" fill-opacity=".14" stroke="#0E1B33" stroke-width="2"/><path d="M18 6 V12 M24 6 V12 M30 6 V12 M18 36 V42 M24 36 V42 M30 36 V42 M6 18 H12 M6 24 H12 M6 30 H12 M36 18 H42 M36 24 H42 M36 30 H42" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19 H31 M17 24 H31 M17 29 H31" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></g><text x="1155" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Layout</text><circle cx="1500" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(1470 74) scale(1.25)"><path d="M4 40 H44" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36 Z" fill="#1F47C4" fill-opacity=".14" stroke="none"/></g><text x="1500" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Simulation</text><circle cx="290" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(260 302) scale(1.25)"><path d="M24 26 L42 33 L24 40 L6 33 Z" fill="#fff" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 18 L42 25 L24 32 L6 25 Z" fill="#fff" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#fff" stroke="#1F47C4" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#1F47C4" fill-opacity=".14"/></g><text x="290" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Fabrication ready</text><text x="290" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">(GDSII)</text><circle cx="635" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(605 302) scale(1.25)"><rect x="4" y="6" width="40" height="36" rx="3" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".35"/><path d="M6 24 H12 L15 18 L18 30 L21 11 L24 37 L27 14 L30 32 L33 20 L36 24 H42" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="635" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Calibration</text><text x="635" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">& testing</text><circle cx="980" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(950 302) scale(1.25)"><path d="M20 8 L34 16 V32 L20 40 L6 32 V16 Z M6 16 L20 24 L34 16 M20 24 V40" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4 L42 12 V28 L36 31.5" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/><circle cx="14" cy="26" r="1.8" fill="#1F47C4"/><circle cx="14" cy="32" r="1.8" fill="#1F47C4"/><circle cx="26" cy="28" r="1.8" fill="#1F47C4"/><circle cx="26" cy="34" r="1.8" fill="#1F47C4"/><circle cx="20" cy="15" r="1.8" fill="#1F47C4"/></g><text x="980" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Digital twin</text><text x="980" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">(VDPU)</text><circle cx="1325" cy="332" r="50" fill="#FFFFFF" stroke="#1F47C4" stroke-width="2.5"/><circle cx="1325" cy="332" r="59" fill="none" stroke="#1F47C4" stroke-opacity=".25" stroke-width="1.5"/><g transform="translate(1295 302) scale(1.25)"><path d="M13 35 H35 A8.5 8.5 0 0 0 35.5 18 A11.5 11.5 0 0 0 13.5 20.5 A7.3 7.3 0 0 0 13 35 Z" fill="#1F47C4" fill-opacity=".14" stroke="#1F47C4" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28 L24 24 L28 28 M24 24 V33" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="1325" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Cloud execution</text></svg></div>
+    <div class="stats">
+      <div class="stat r" style="--i:4"><p class="n">10×</p><p class="l">faster design cycles: months become hours</p></div>
+      <div class="stat r" style="--i:5"><p class="n">58+</p><p class="l">pre-characterised cryogenic components</p></div>
+      <div class="stat r" style="--i:6"><p class="n">100%</p><p class="l">automated design-rule checks and routing</p></div>
+      <div class="stat r" style="--i:7"><p class="n">&lt;0.5%</p><p class="l">deviation from real fabricated-chip measurements</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>5</span></div>
+  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. The results: ten times faster design cycles, more than 58 ready components, design-rule checking and routing fully automated, and less than half a percent deviation between our simulation and measurements on the real fabricated chip. That last number answers the biggest fear in this industry: you know how the chip will behave before it is built.</aside>
+</section>
+
+<!-- 6 · DEMO VIDEO -->
+<section data-title="Demo">
+  <p class="eb r" style="--i:0">See it in action</p>
+  <h2 class="t r" style="--i:1">A quantum chip, <span class="grad">designed in one session.</span></h2>
+  <div class="body vwrap" style="margin-top: 44px">
+    <div class="video r" style="--i:2">
+      <video controls preload="metadata" playsinline poster="{{img:editor}}">
+        <source src="silicofeller-demo.mp4" type="video/mp4">
+        <source src="https://silicofeller.com/videos/demo_video_new.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>6</span></div>
+  <aside>Let me show you instead of telling you. [Play the demo. Click the video to play or pause; it does not change slides.] Point out three moments: the AI copilot building the layout from a prompt, the automatic routing, and the simulation results appearing inside the same window, with no export and no second tool.</aside>
+</section>
+
+<!-- 7 · EVERY ARCHITECTURE -->
+<section data-title="Every architecture">
+  <p class="eb r" style="--i:0">One platform, every architecture</p>
+  <h2 class="t r" style="--i:1">Built for today’s qubits, <span class="grad">and tomorrow’s.</span></h2>
+  <div class="body archs">
+    <div>
+      <p class="grp r" style="--i:2">Available today</p>
+      <div class="now">
+        <div class="nc r" style="--i:3"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Superconducting transmon qubit with readout resonator"><defs><pattern id="sc-dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#9DB8FF" fill-opacity=".16"/></pattern></defs><rect width="400" height="400" fill="#0E1B33"/><rect width="400" height="400" fill="url(#sc-dots)"/><path d="M0 46 H400" stroke="#F5F1E8" stroke-opacity=".75" stroke-width="7"/><path d="M120 64 H280 V82 H120 V100 H280 V118 H120 V136 H200 V150" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4" stroke-linejoin="round"/><path d="M176 160 V150 H224 V160" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4"/><path d="M177 162 H223 V227 H288 V273 H223 V338 H177 V273 H112 V227 H177 Z" fill="none" stroke="#9DB8FF" stroke-opacity=".35" stroke-width="1.5"/><path d="M185 170 H215 V235 H280 V265 H215 V330 H185 V265 H120 V235 H185 Z" fill="#9DB8FF" fill-opacity=".2" stroke="#9DB8FF" stroke-width="3"/><path d="M200 330 V352" stroke="#F5F1E8" stroke-width="3"/><rect x="192" y="336" width="16" height="10" fill="#F5F1E8"/><path d="M0 250 H98" stroke="#F5F1E8" stroke-opacity=".5" stroke-width="3"/><circle cx="200" cy="250" r="40" fill="#9DB8FF" fill-opacity=".10"/></svg><div class="in"><h3>Superconducting</h3><p>Transmon, fluxonium, SRF and other superconducting circuits, from schematic to GDSII.</p><div class="tags"><i class="tag">Transmon</i><i class="tag">Fluxonium</i><i class="tag">SRF</i></div></div></div>
+        <div class="nc r" style="--i:4"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Chain of trapped ions between RF rails and DC electrodes"><rect width="400" height="400" fill="#0E1B33"/><g fill="none" stroke="#9DB8FF" stroke-opacity=".5" stroke-width="2"><rect x="22" y="94" width="44" height="42" rx="3"/><rect x="22" y="264" width="44" height="42" rx="3"/><rect x="74" y="94" width="44" height="42" rx="3"/><rect x="74" y="264" width="44" height="42" rx="3"/><rect x="126" y="94" width="44" height="42" rx="3"/><rect x="126" y="264" width="44" height="42" rx="3"/><rect x="178" y="94" width="44" height="42" rx="3"/><rect x="178" y="264" width="44" height="42" rx="3"/><rect x="230" y="94" width="44" height="42" rx="3"/><rect x="230" y="264" width="44" height="42" rx="3"/><rect x="282" y="94" width="44" height="42" rx="3"/><rect x="282" y="264" width="44" height="42" rx="3"/><rect x="334" y="94" width="44" height="42" rx="3"/><rect x="334" y="264" width="44" height="42" rx="3"/></g><rect x="20" y="150" width="360" height="26" rx="3" fill="#9DB8FF" fill-opacity=".16" stroke="#9DB8FF" stroke-width="2.5"/><rect x="20" y="224" width="360" height="26" rx="3" fill="#9DB8FF" fill-opacity=".16" stroke="#9DB8FF" stroke-width="2.5"/><path d="M95 320 L335 80" stroke="#F5F1E8" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 5"/><g><circle cx="112" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="112" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="146" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="146" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="180" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="180" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="215" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="215" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="250" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="250" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="284" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="284" cy="200" r="5.5" fill="#F5F1E8"/></g><circle cx="215" cy="200" r="20" fill="none" stroke="#F5F1E8" stroke-opacity=".6" stroke-width="1.5"/></svg><div class="in"><h3>Trapped ion</h3><p>Traps, electrodes, optics and control for trapped-ion systems.</p><div class="tags"><i class="tag">Traps</i><i class="tag">Electrodes</i><i class="tag">Optics</i></div></div></div>
+      </div>
+    </div>
+    <div>
+      <p class="grp soon r" style="--i:5">On the roadmap</p>
+      <div class="road">
+        <div class="rc r" style="--i:6"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Photonic interferometer: waveguides, couplers and a phase shifter"><rect width="400" height="400" fill="#EEF1F8"/><g fill="none" stroke="#1F47C4" stroke-width="5" stroke-linecap="round"><path d="M20 150 H60 C95 150 95 192 130 192 H160 C195 192 195 118 230 118 H270 C305 118 305 192 340 192 H380"/><path d="M20 250 H60 C95 250 95 208 130 208 H160 C195 208 195 282 230 282 H270 C305 282 305 208 340 208 H380"/></g><rect x="220" y="102" width="60" height="32" rx="5" fill="#1F47C4" fill-opacity=".14" stroke="#0E1B33" stroke-opacity=".6" stroke-width="2"/><circle cx="38" cy="150" r="9" fill="#0E1B33"/><circle cx="365" cy="192" r="7" fill="#1F47C4" fill-opacity=".5"/><circle cx="365" cy="208" r="7" fill="#1F47C4" fill-opacity=".5"/></svg><div class="in"><h3>Photonic</h3><p>Integrated waveguides, modulators and interferometers.</p></div></div>
+        <div class="rc r" style="--i:7"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Neutral atoms held in an array of optical tweezers"><rect width="400" height="400" fill="#EEF1F8"/><circle cx="75" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="200" cy="175" r="52" fill="#1F47C4" fill-opacity=".08" stroke="#1F47C4" stroke-width="2" stroke-dasharray="6 5"/><circle cx="175" cy="175" r="9" fill="#1F47C4"/><circle cx="225" cy="175" r="9" fill="#1F47C4"/></svg><div class="in"><h3>Neutral atom</h3><p>Optical tweezers, lattices and control systems.</p></div></div>
+        <div class="rc r" style="--i:8"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Nanowire on a superconductor with Majorana modes at both ends"><rect width="400" height="400" fill="#EEF1F8"/><g fill="#0E1B33" fill-opacity=".18"><rect x="70" y="268" width="36" height="46" rx="3"/><rect x="126" y="268" width="36" height="46" rx="3"/><rect x="182" y="268" width="36" height="46" rx="3"/><rect x="238" y="268" width="36" height="46" rx="3"/><rect x="294" y="268" width="36" height="46" rx="3"/></g><rect x="40" y="212" width="320" height="34" rx="4" fill="#0E1B33" fill-opacity=".14" stroke="#0E1B33" stroke-opacity=".45" stroke-width="2"/><rect x="52" y="186" width="296" height="26" rx="13" fill="#1F47C4" fill-opacity=".18" stroke="#1F47C4" stroke-width="3"/><circle cx="66" cy="199" r="22" fill="#1F47C4" fill-opacity=".18"/><circle cx="66" cy="199" r="8" fill="#1F47C4"/><circle cx="334" cy="199" r="22" fill="#1F47C4" fill-opacity=".18"/><circle cx="334" cy="199" r="8" fill="#1F47C4"/><text x="66" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#0E1B33">γ₁</text><text x="334" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#0E1B33">γ₂</text><path d="M150 96 H250" stroke="#0E1B33" stroke-opacity=".55" stroke-width="2.5"/><path d="M242 88 L252 96 L242 104" fill="none" stroke="#0E1B33" stroke-opacity=".55" stroke-width="2.5"/><text x="200" y="82" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="26" fill="#0E1B33" fill-opacity=".7">B</text></svg><div class="in"><h3>Topological</h3><p>Majorana zero modes and nanowires (experimental).</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>7</span></div>
+  <aside>We don’t bet on a single qubit technology, and neither should you. Superconducting and trapped-ion design are available today. Photonic, neutral-atom and topological architectures are on our roadmap, with topological support starting as experimental. [Tailor this to the client: point to the architecture their quantum team is pursuing.] Whatever architecture wins, your design flow stays in one place.</aside>
+</section>
+
+<!-- 8 · TRUST + ENTERPRISE -->
+<section data-title="Trust and enterprise">
+  <p class="eb r" style="--i:0">Trusted and enterprise ready</p>
+  <h2 class="t r" style="--i:1">Built with leading partners. <span class="grad">Built for your IP.</span></h2>
+  <div class="body trust">
+    <div>
+    <p class="lbl r" style="--i:2">IN COLLABORATION WITH</p>
+    <div class="logos">
+      <div class="logo r" style="--i:2"><img src="{{img:l-drdo}}" alt="DRDO"></div>
+      <div class="logo r" style="--i:3"><img src="{{img:l-cdac}}" alt="C-DAC"></div>
+      <div class="logo r" style="--i:3"><img src="{{img:l-iitb}}" alt="IIT Bombay"></div>
+      <div class="logo dk r" style="--i:4"><img src="{{img:l-nvidia}}" alt="NVIDIA Inception"></div>
+      <div class="logo r" style="--i:4"><img src="{{img:l-dell}}" alt="Dell Technologies"></div>
+      <div class="logo r" style="--i:5"><img src="{{img:l-nasscom}}" alt="NASSCOM DeepTech Club"></div>
+      <div class="logo r" style="--i:5"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
+      <div class="logo r" style="--i:6"><img src="{{img:l-dsci}}" alt="DSCI"></div>
+    </div>
+    </div>
+    <div class="ent">
+      <div class="ec r" style="--i:6"><span class="fbadge">{{icon:lock}}</span><h3>You own your IP</h3><p>Designs, masks and prompts are never used to train shared AI models. Export everything, any time.</p></div>
+      <div class="ec r" style="--i:7"><span class="fbadge">{{icon:cloud}}</span><h3>Private cloud</h3><p>End-to-end cryptographic isolation and role-based access for your teams.</p></div>
+      <div class="ec r" style="--i:8"><span class="fbadge">{{icon:chip}}</span><h3>Any foundry, any PDK</h3><p>Works with your own substrates, metals, design rules and foundry.</p></div>
+      <div class="ec r" style="--i:9"><span class="fbadge">{{icon:plug}}</span><h3>Fits your stack</h3><p>API access, version history and AI-agent integration (Claude via MCP).</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>8</span></div>
+  <aside>We work with national labs, academia and industry: DRDO, C-DAC, IIT Bombay, NVIDIA Inception, Dell Technologies, NASSCOM DeepTech, Netweb and DSCI. And for a company your size, the first questions are about IP and control. You own every design, and nothing you create is used to train shared models. We offer private cloud deployment with role-based access, we are foundry and PDK agnostic, and the studio plugs into your own tools and AI agents through an API.</aside>
+</section>
+
+<!-- 9 · CLOSE -->
+<section class="close navy" data-title="Next step">
+  <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true" style="right: -320px; opacity: .55">
+    <g class="spin">
+      <g stroke="#9DB8FF" stroke-opacity=".22" stroke-width="1.4">
+        <ellipse cx="500" cy="500" rx="470" ry="170"/>
+        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
+        <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
+      </g>
+      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+    </g>
+    <circle class="core-glow" cx="500" cy="500" r="34" fill="#9DB8FF" fill-opacity=".14"/>
+    <circle class="core" cx="500" cy="500" r="16" fill="#9DB8FF" fill-opacity=".85"/>
+  </svg>
+  <p class="eb r" style="--i:0">Next step</p>
+  <h2 class="hero r" style="--i:1">Let’s design the future of<br><span class="grad">quantum silicon, together.</span></h2>
+  <div class="steps">
+    <div class="sp r" style="--i:3"><p class="k">01</p><h3>Pilot</h3><p>Give us one of your chip designs. We rebuild and verify it in Silicofeller in [__] weeks, side by side with your current flow.</p></div>
+    <div class="sp r" style="--i:4"><p class="k">02</p><h3>Integrate</h3><p>Connect your foundry PDK, design rules and internal tools.</p></div>
+    <div class="sp r" style="--i:5"><p class="k">03</p><h3>Deploy</h3><p>Roll out to your hardware teams on private cloud, with training and support.</p></div>
+  </div>
+  <div class="contact r" style="--i:6"><span><b>silicofeller.com</b></span><span>[Name, title]</span><span>[email address]</span></div>
+  <aside>To close: classical chips had their Cadence and Synopsys moment, and quantum chips need theirs. We believe Silicofeller is it. Our ask is simple: give us one of your existing designs for a short pilot, run side by side with your current flow, and compare the results yourself. Then we integrate your PDK and tools, and roll out to your teams. Thank you. I’m happy to take questions, or open the studio for a live demo right now.</aside>
+</section>

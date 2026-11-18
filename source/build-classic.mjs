@@ -46,7 +46,11 @@ body { background: #000; overflow: hidden; }
 .viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
 .deck { position: relative; width: 1920px; height: 1080px; flex: none; }
 .deck > section { display: none !important; }
-.deck > section.active { display: flex !important; }
+.deck > section.active { display: flex !important; animation: slideIn .55s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes slideIn { from { opacity: 0; transform: scale(.985); } }
+@media (prefers-reduced-motion: reduce) {
+  .deck > section, .deck *, .deck *::before, .deck *::after { animation: none !important; transition: none !important; }
+}
 .deck aside { display: none; }
 .hud { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; gap: 10px; align-items: center; font: 500 14px Inter, Arial, sans-serif; color: #C9CED6; background: rgba(10,14,24,.82); padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(148,163,184,.2); opacity: 0; transition: opacity .3s; user-select: none; z-index: 10; }
 body:hover .hud { opacity: 1; }
@@ -57,7 +61,8 @@ body:hover .hud { opacity: 1; }
 .notes b { display: block; margin-bottom: 6px; color: #7DA8FF; font-size: 12px; letter-spacing: 1.5px; }
 @media print {
   @page { size: 1920px 1080px; margin: 0; }
-  html, body { height: auto; overflow: visible; background: #FAF8F3; }
+  html, body { height: auto; overflow: visible; background: #FFFFFF; }
+  .deck > section, .deck *, .deck *::before, .deck *::after { animation: none !important; transition: none !important; }
   .viewport { position: static; display: block; }
   .deck { transform: none !important; width: 1920px; height: auto; }
   .deck > section { position: relative !important; display: flex !important; break-after: page; page-break-after: always; }
@@ -75,6 +80,32 @@ const script = `
   const notes = document.getElementById('notes');
   let i = 0;
   const fit = () => { deck.style.transform = 'scale(' + Math.min(innerWidth / 1920, innerHeight / 1080) + ')'; };
+  // Numbers such as "10×", "58+", "<0.5%" and "~6 months" count up when their slide appears.
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const counters = [...deck.querySelectorAll('.stat .n, .cost .n')]
+    .map((el) => {
+      const m = el.textContent.match(/^(\\D*?)(\\d+(?:\\.\\d+)?)([\\s\\S]*)$/);
+      return m && { el, pre: m[1], val: parseFloat(m[2]), dec: (m[2].split('.')[1] || '').length, post: m[3], final: el.textContent };
+    })
+    .filter(Boolean);
+  let countTimer = 0;
+  function countUp(slide) {
+    const list = counters.filter((c) => slide.contains(c.el));
+    if (!list.length || calm) return;
+    list.forEach((c) => (c.el.textContent = c.pre + (0).toFixed(c.dec) + c.post));
+    clearTimeout(countTimer);
+    countTimer = setTimeout(() => {
+      const t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / 1200);
+        const e = 1 - Math.pow(1 - k, 3);
+        list.forEach((c) => (c.el.textContent = k < 1 ? c.pre + (c.val * e).toFixed(c.dec) + c.post : c.final));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, 380);
+  }
+  addEventListener('beforeprint', () => counters.forEach((c) => (c.el.textContent = c.final)));
   function show(n) {
     i = Math.max(0, Math.min(slides.length - 1, n));
     slides.forEach((s, j) => {
@@ -82,6 +113,7 @@ const script = `
       s.classList.toggle('active', on);
       if (!on) s.querySelectorAll('video').forEach((v) => v.pause());
     });
+    countUp(slides[i]);
     counter.textContent = (i + 1) + ' / ' + slides.length;
     const aside = slides[i].querySelector('aside');
     notes.innerHTML = '<b>SPEAKER NOTES · SLIDE ' + (i + 1) + '</b>';
@@ -100,9 +132,13 @@ const script = `
     else if (e.key === 'f' || e.key === 'F') full();
     else if (e.key === 'n' || e.key === 'N') notes.classList.toggle('show');
   });
+  // Click the left 20% of the screen for the previous slide, the right 20% for the next one.
+  // The middle 60% does nothing, so videos, buttons and pop-ups on a slide can be clicked freely.
   document.querySelector('.viewport').addEventListener('click', (e) => {
-    if (e.target.closest('video')) return;
-    go(e.clientX > innerWidth / 3 ? 1 : -1);
+    if (e.target.closest('video, button, a, .popover')) return;
+    const x = e.clientX / innerWidth;
+    if (x <= 0.2) go(-1);
+    else if (x >= 0.8) go(1);
   });
   document.getElementById('prev').onclick = () => go(-1);
   document.getElementById('next').onclick = () => go(1);
@@ -127,7 +163,7 @@ const out = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Silicofeller — Quantum Studio Pitch</title>
-<style>${fs.readFileSync(path.join(path.dirname(srcFile), "classic-fonts.css"), "utf8")}</style>
+<style>${fs.readFileSync(path.join(path.dirname(srcFile), "deck-fonts.css"), "utf8")}</style>
 ${player}
 ${style}
 </head>

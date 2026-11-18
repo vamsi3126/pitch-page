@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; background: transparent; }
+  /* drawn at 2x (312 x 1124) and scaled to the 156 x 562 sidebar area of the laptop screen */
+  .sb { width: 312px; height: 1124px; box-sizing: border-box; background: #0B0C10; border-right: 2px solid #23282E;
+        border-top-left-radius: 10px; font-family: Inter, sans-serif; color: #C9CCD4; display: flex; flex-direction: column; overflow: hidden; }
+  svg { flex: none; }
+  .hd { height: 86px; display: flex; align-items: center; gap: 12px; padding: 0 16px; border-bottom: 2px solid #1A1D24; }
+  .logo { width: 44px; height: 44px; border-radius: 50%; background: #16131F; border: 2px solid #2A2540; display: flex; align-items: center; justify-content: center; }
+  .hd b { font-size: 25px; font-weight: 700; color: #F3F4F7; letter-spacing: -.3px; flex: 1; }
+  .ws { margin: 22px 16px 18px; height: 60px; border-radius: 18px; background: #12151E; border: 2px solid #242A3A; display: flex; align-items: center; gap: 10px; padding: 0 14px; }
+  .ws b { font-size: 19px; font-weight: 700; color: #EEF0F4; flex: 1; white-space: nowrap; }
+  .ws i { font-style: normal; font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #B8BDC9; background: #232836; border-radius: 999px; padding: 4px 10px; }
+  nav { display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+  .it { height: 54px; display: flex; align-items: center; gap: 16px; padding: 0 14px; border-radius: 14px; font-size: 21px; font-weight: 500; color: #C9CCD4; }
+  .it span { flex: 1; }
+  .it.active { background: #181238; color: #D9CCFF; }
+  .it.active svg { stroke: #B79BFF; }
+  .sub { display: flex; flex-direction: column; gap: 2px; padding: 2px 0 6px 40px; }
+  .s { height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-radius: 12px; font-size: 19.5px; font-weight: 500; color: #D3D6DD; }
+  .s span { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .s.lock { color: #5E6370; }
+  .s em { font-style: normal; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: #C9CCD4; background: #262A35; border-radius: 999px; padding: 4px 9px; }
+  .ft { margin-top: auto; padding: 0 12px 26px; }
+</style></head>
+<body>
+<div class="sb" id="sb">
+  <div class="hd">
+    <span class="logo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B48CFF" stroke-width="1.4"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.6" fill="#B48CFF"/></svg></span>
+    <b>Silicofeller</b>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8A8F9C" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg>
+  </div>
+  <div class="ws">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9CCD4" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 15v-2M12 15v-4M16 15v-3"/></svg>
+    <b>Quantum Lab</b><i>PRO</i>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+  <nav>
+    <div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></div>
+    <div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 16v-3M12 16v-5M16 16v-2"/></svg><span>Projects</span></div>
+    <div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg><span>Design</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></div>
+    <div class="sub">
+      <div class="s"><span>Design Copilot</span><em>NEW</em></div>
+      <div class="s lock"><span>Architecture</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E6370" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <div class="s"><span>Schematic</span></div>
+      <div class="s"><span>Layout</span></div>
+      <div class="s"><span>Components</span></div>
+    </div>
+    <div class="it active"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span>Simulate</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B79BFF" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></div>
+    <div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg><span>Compute</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></div>
+    <div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span>Manage</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></div>
+  </nav>
+  <div class="ft"><div class="it"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg><span>Help &amp; Support</span></div></div>
+</div>
+</body></html>

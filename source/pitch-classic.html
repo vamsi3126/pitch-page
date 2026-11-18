@@ -1,14 +1,14 @@
 <style>
 :root {
-  --paper: #FAF8F3; --card: #FFFFFF; --ink: #0E1B33; --body: #3A465C; --muted: #6E788A;
+  --paper: #FAF8F3; --card: #FFFFFF; --ink: #0A0F1E; --body: #3A465C; --muted: #6E788A;
   --rule: #E3DDD0; --rule2: #EEE9DF;
-  --accent: #1F47C4; --accent-soft: #EAF0FC;
+  --accent: #5B4BF5; --accent-soft: #EAF0FC;
   --clay: #A9472D; --clay-soft: #F6ECE6;
-  --navy: #0E1B33; --ivory: #F5F1E8; --ivory-dim: rgba(245, 241, 232, 0.68); --sky: #9DB8FF;
+  --navy: #0A0F1E; --ivory: #F5F1E8; --ivory-dim: rgba(245, 241, 232, 0.68); --sky: #A5B4FF;
 }
 .deck section { position: absolute; inset: 0; width: 1920px; height: 1080px; padding: 100px 136px 130px; background: var(--paper); color: var(--ink); overflow: hidden; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; }
 .deck section > * { position: relative; z-index: 1; }
-.serif, .t, .hero, .n, .pn, .num { font-family: Fraunces, Georgia, 'Times New Roman', serif; font-optical-sizing: auto; }
+.serif, .t, .hero, .n, .pn, .num { font-family: 'Inter Tight', Inter, sans-serif; font-optical-sizing: auto; }
 
 .eb { display: flex; align-items: center; gap: 18px; font-size: 19px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; }
 .eb::before { content: ""; width: 44px; height: 2px; background: currentColor; flex: none; }
@@ -71,6 +71,27 @@
 .crop { position: relative; overflow: hidden; border-radius: 10px; background: #000; flex: none; box-shadow: 0 1px 0 var(--rule), 0 24px 60px rgba(14, 27, 51, .16); }
 .crop img { position: absolute; display: block; }
 .shot { display: block; width: 960px; height: auto; border-radius: 10px; box-shadow: 0 1px 0 var(--rule), 0 24px 60px rgba(14, 27, 51, .16); }
+.tools { display: block; width: 600px; height: 560px; }
+.appwin { width: 860px; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid var(--rule); box-shadow: 0 30px 70px rgba(10, 15, 30, .14); }
+.appwin .bar { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #F6F7FA; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); }
+.appwin .bar i { width: 12px; height: 12px; border-radius: 50%; background: #DDE0E7; }
+.appwin .bar span { margin-left: 16px; }
+.appwin .screen { position: relative; }
+.appwin .screen img { display: block; width: 860px; height: auto; }
+.co { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(91, 75, 245, .35), 0 0 0 11px rgba(91, 75, 245, .14); }
+.co b { position: absolute; white-space: nowrap; font-size: 17px; font-weight: 600; color: #FFFFFF; background: var(--accent); padding: 8px 15px; border-radius: 999px; box-shadow: 0 10px 24px rgba(91, 75, 245, .35); }
+.pipe { margin-top: 18px; margin-bottom: 76px; }
+.phases { display: grid; grid-template-columns: repeat(9, 1fr); gap: 0 14px; margin-bottom: 44px; }
+.phases span { text-align: center; font-size: 16px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 11px 0; }
+.steps9 { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(9, 1fr); gap: 0 14px; position: relative; }
+.steps9::before { content: ""; position: absolute; left: 5.5%; right: 5.5%; top: 62px; height: 2px; background: #DAD6FC; }
+.steps9 li { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+.steps9 .ic { width: 124px; height: 124px; border-radius: 28px; background: #FFFFFF; border: 1.5px solid var(--rule); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(10, 15, 30, .06); }
+.steps9 .ic svg { width: 64px; height: 64px; }
+.steps9 .goal .ic { background: var(--accent); border-color: var(--accent); box-shadow: 0 16px 34px rgba(91, 75, 245, .35); }
+.steps9 .no { margin-top: 20px; font-size: 15px; font-weight: 600; letter-spacing: .14em; color: var(--accent); }
+.steps9 h4 { margin-top: 6px; font-size: 21px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.steps9 h4 small { display: block; font-size: 17px; font-weight: 400; color: var(--muted); margin-top: 2px; }
 .caption { font-size: 18px; color: var(--muted); margin-top: 14px; letter-spacing: .02em; }
 .costs { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; border-top: 2px solid var(--ink); }
 .cost { padding: 34px 36px 30px 0; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--rule); }
@@ -112,7 +133,7 @@
 .nc { display: flex; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; height: 350px; box-shadow: 0 18px 44px rgba(14, 27, 51, .07); }
 .nc .art { width: 350px; height: 350px; flex: none; display: block; }
 .nc .in { padding: 40px 42px; display: flex; flex-direction: column; gap: 12px; }
-.nc h3 { font-family: Fraunces, Georgia, serif; font-size: 44px; font-weight: 400; letter-spacing: -.5px; color: var(--ink); line-height: 1.05; }
+.nc h3 { font-family: 'Inter Tight', Inter, sans-serif; font-size: 44px; font-weight: 400; letter-spacing: -.5px; color: var(--ink); line-height: 1.05; }
 .nc p { font-size: 22px; line-height: 1.45; color: var(--body); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
 .tag { font-style: normal; font-size: 17px; font-weight: 500; padding: 5px 12px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
@@ -125,7 +146,7 @@
 .rc + .rc { border-left: 1px solid var(--rule); padding-left: 34px; }
 .rc .art { width: 170px; height: 170px; border-radius: 10px; flex: none; display: block; }
 .rc .in { display: flex; flex-direction: column; gap: 6px; }
-.rc h3 { font-family: Fraunces, Georgia, serif; font-size: 32px; font-weight: 400; color: var(--ink); }
+.rc h3 { font-family: 'Inter Tight', Inter, sans-serif; font-size: 32px; font-weight: 400; color: var(--ink); }
 .rc p { font-size: 20px; line-height: 1.42; color: var(--body); }
 
 /* 8 · trust and enterprise */
@@ -137,7 +158,7 @@
 .trust { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 20px; }
 .ent { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
 .ec { border-top: 2px solid var(--ink); padding-top: 26px; display: flex; flex-direction: column; gap: 12px; }
-.ec h3 { font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 400; margin-top: 10px; color: var(--ink); white-space: nowrap; }
+.ec h3 { font-family: 'Inter Tight', Inter, sans-serif; font-size: 34px; font-weight: 400; margin-top: 10px; color: var(--ink); white-space: nowrap; }
 .ec p { font-size: 22px; line-height: 1.45; color: var(--body); }
 
 /* 9 · close */
@@ -145,30 +166,166 @@
 .close .hero { font-size: 96px; max-width: 1300px; }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 72px; width: 1460px; }
 .sp { border-top: 1px solid rgba(245, 241, 232, .28); padding-top: 26px; }
-.sp .k { font-family: Fraunces, Georgia, serif; font-size: 44px; color: var(--sky); line-height: 1; }
+.sp .k { font-family: 'Inter Tight', Inter, sans-serif; font-size: 44px; color: var(--sky); line-height: 1; }
 .sp h3 { font-size: 30px; font-weight: 600; margin-top: 16px; color: var(--ivory); }
 .sp p { font-size: 22px; line-height: 1.45; color: var(--ivory-dim); margin-top: 10px; }
 .contact { position: absolute !important; left: 136px; right: 136px; bottom: 84px; display: flex; gap: 72px; font-size: 23px; color: var(--ivory-dim); border-top: 1px solid rgba(245, 241, 232, .18); padding-top: 26px; }
 .contact b { color: var(--ivory); font-weight: 600; }
+.contact { justify-content: space-between; align-items: baseline; }
+.contact .thanks { font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 26px; color: var(--ivory-dim); }
+
+/* ===== Modern light: white, bold sans headlines, Silicofeller blue-to-violet gradient ===== */
+:root { --paper: #FFFFFF; --card: #FFFFFF; --ink: #0A0F1E; --body: #4A5370; --muted: #7A8299; --rule: #E7E9F0; --rule2: #F0F1F6;
+  --accent: #5B4BF5; --accent-soft: #EEEBFF; --clay: #E5484D; --clay-soft: #FDECEC; --navy: #0A0D1A; --ivory: #FFFFFF;
+  --ivory-dim: rgba(255, 255, 255, .7); --sky: #A5B4FF; }
+/* mixed type: slide headings in the Fraunces serif (highlighted phrase in italic), everything else in Inter / Inter Tight */
+.t, .hero { font-family: Fraunces, Georgia, serif !important; font-weight: 400; }
+.t { letter-spacing: -1.2px; }
+.hero { letter-spacing: -2.5px; }
+.t .grad, .t .grad-warm, .hero .grad { font-style: italic; }
+.nc h3, .rc h3, .ec h3 { font-weight: 600; letter-spacing: -.8px; }
+.cost .n, .stat .n { font-weight: 600; letter-spacing: -2.5px; }
+.pn { font-weight: 600; }
+.sp .k { font-weight: 600; }
+/* white pages: solid colours only (gradients stay on the dark cover and closing slide) */
+.grad { font-style: normal; color: var(--accent); }
+.grad-warm { font-style: normal; color: var(--clay); }
+.navy { background: radial-gradient(ellipse 70% 60% at 75% 45%, rgba(91, 75, 245, .35), transparent 70%), #0A0D1A !important; }
+.navy .grad { background: linear-gradient(90deg, #8FA2FF, #C4B5FD); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.stat .n { color: var(--accent); }
+.nc, .logo { border-radius: 18px; }
+.rc .art, .shot { border-radius: 14px; }
+.crop { border-radius: 14px; }
+.video { border-radius: 16px; }
+.chip { border-radius: 999px; }
+.tag { border-radius: 999px; padding: 5px 14px; }
+.fbadge { border-color: #E2E0FB; }
+.eb::before { background: currentColor; }
+
+/* slide 5: steps that open a pop-up with the real product screen */
+.steps9 button.ic { cursor: pointer; font: inherit; padding: 0; position: relative; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.steps9 button.ic:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 18px 36px rgba(91, 75, 245, .22); }
+.steps9 h4 small.see { color: var(--accent); font-weight: 500; }
+.popover { position: fixed; inset: 0; z-index: 50; background: rgba(10, 13, 26, .74); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 4vh 4vw; cursor: zoom-out; }
+.popover[hidden] { display: none; }
+.popfig { margin: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; box-shadow: 0 40px 120px rgba(0, 0, 0, .45); display: flex; flex-direction: column; cursor: default; animation: pop .25s cubic-bezier(.2, .7, .2, 1); }
+@keyframes pop { from { opacity: 0; transform: scale(.97); } }
+.popfig img { display: block; max-width: 92vw; max-height: calc(90vh - 70px); object-fit: contain; background: #0B0D14; }
+.popfig figcaption { padding: 16px 22px; font: 16px/1.45 Inter, sans-serif; color: #4A5370; max-width: 92vw; }
+.popfig figcaption b { color: #0A0F1E; margin-right: 8px; }
+.popx { position: fixed; top: 18px; right: 22px; width: 46px; height: 46px; border-radius: 50%; border: none; background: rgba(255, 255, 255, .16); color: #FFFFFF; font: 28px/1 Inter, sans-serif; cursor: pointer; }
+.popx:hover { background: rgba(255, 255, 255, .28); }
+.pophint { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); font: 14px Inter, sans-serif; color: rgba(255, 255, 255, .7); }
+@media print { .popover { display: none !important; } }
+
+/* ===== Interactions and small animations (hover effects; entrances when a slide appears) ===== */
+.ease, .pr, .pn, .chip, .cost .n, .stat .n, .fbadge, .fi h3, .ec h3, .shot, .nc, .nc .art, .rc .art, .rc h3, .logo, .logo img, .sp, .video { transition: all .32s cubic-bezier(.2, .7, .2, 1); }
+/* slide 2: process table */
+.pr { border-radius: 10px; }
+.pr:hover { background: #FFF5F5; }
+.pn { display: inline-block; }
+.pr:hover .pn { transform: scale(1.18); }
+.pr:hover .chip { border-color: #F3C4C4; color: var(--ink); }
+/* slides 3 and 5: big numbers lift */
+.cost:hover .n, .stat:hover .n { transform: translateY(-5px); }
+/* slide 3: hand-offs keep moving */
+.tools path[stroke-dasharray] { animation: march 1.8s linear infinite; }
+@keyframes march { to { stroke-dashoffset: -26; } }
+/* slides 4 and 8: icons fill on hover */
+.fi:hover .fbadge, .ec:hover .fbadge { background: var(--accent); border-color: var(--accent); color: #FFFFFF; transform: rotate(-8deg) scale(1.08); }
+.fi:hover h3, .ec:hover h3, .rc:hover h3 { color: var(--accent); }
+.shot:hover { transform: translateY(-8px) scale(1.012); box-shadow: 0 1px 0 var(--rule), 0 40px 80px rgba(10, 15, 30, .22); }
+/* slide 5: the line draws itself, the steps arrive one by one */
+.active .phases span { animation: rise .6s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.active .steps9::before { transform-origin: left center; animation: drawline 1.3s cubic-bezier(.2, .7, .2, 1) .35s both; }
+@keyframes drawline { from { transform: scaleX(0); } }
+.active .steps9 li { animation: popin .55s cubic-bezier(.2, .8, .3, 1.25) both; }
+.steps9 li:nth-child(1) { animation-delay: .35s; } .steps9 li:nth-child(2) { animation-delay: .47s; } .steps9 li:nth-child(3) { animation-delay: .59s; }
+.steps9 li:nth-child(4) { animation-delay: .71s; } .steps9 li:nth-child(5) { animation-delay: .83s; } .steps9 li:nth-child(6) { animation-delay: .95s; }
+.steps9 li:nth-child(7) { animation-delay: 1.07s; } .steps9 li:nth-child(8) { animation-delay: 1.19s; } .steps9 li:nth-child(9) { animation-delay: 1.31s; }
+@keyframes popin { from { opacity: 0; transform: translateY(16px) scale(.9); } }
+.steps9 .ic { transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .3s; }
+.steps9 .ic:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 18px 36px rgba(91, 75, 245, .2); }
+.steps9 .goal .ic { animation: glowpulse 2.8s ease-in-out 1.8s infinite; }
+@keyframes glowpulse { 50% { box-shadow: 0 16px 34px rgba(91, 75, 245, .35), 0 0 0 10px rgba(91, 75, 245, .12); } }
+/* slide 6: video frame */
+.video:hover { box-shadow: 0 1px 0 var(--rule), 0 40px 100px rgba(10, 15, 30, .3); }
+/* slide 7: architecture cards */
+.nc:hover { transform: translateY(-6px); box-shadow: 0 28px 60px rgba(10, 15, 30, .12); border-color: #D9D5FC; }
+.nc:hover .art { transform: scale(1.04); }
+.rc:hover .art { transform: scale(1.06) rotate(-1.5deg); }
+/* slide 8: partner logos come forward */
+.logo img { filter: grayscale(.4) opacity(.85); }
+.logo.dk img { filter: none; }
+.logo:hover { transform: translateY(-5px); border-color: #D9D5FC; box-shadow: 0 16px 34px rgba(10, 15, 30, .08); }
+.logo:hover img { filter: none; }
+/* slide 9: next steps */
+.sp:hover { transform: translateY(-6px); border-top-color: var(--sky); }
+
+/* slide 7: still at rest; on hover, current flows through the superconducting circuit and the trapped ions hover */
+.current { opacity: 0; transition: opacity .35s; }
+.current path { stroke: #DCE3FF; stroke-dasharray: 10 34; animation: current 1.5s linear infinite; filter: drop-shadow(0 0 4px #A5B4FF); }
+@keyframes current { to { stroke-dashoffset: -44; } }
+.nc:hover .current { opacity: 1; }
+.qglow { transform-box: fill-box; transform-origin: center; }
+.nc:hover .qcross { animation: qcross 2.4s ease-in-out infinite; }
+@keyframes qcross { 50% { stroke: #E0E7FF; fill-opacity: .34; } }
+.nc:hover .qglow { animation: qglow 2.4s ease-in-out infinite; }
+@keyframes qglow { 50% { transform: scale(1.4); fill-opacity: .2; } }
+.nc:hover .ion { animation: hover 2.7s ease-in-out infinite; }
+@keyframes hover { 0%, 100% { transform: translateY(0); } 25% { transform: translateY(-6px); } 75% { transform: translateY(6px); } }
+.ion circle:first-child { transform-box: fill-box; transform-origin: center; }
+.nc:hover .ion circle:first-child { animation: ionglow 2.7s ease-in-out infinite; animation-delay: inherit; }
+@keyframes ionglow { 50% { transform: scale(1.35); fill-opacity: .38; } }
+.nc:hover .beam { animation: march 1.6s linear infinite; }
+
+/* slide 6: demo in a window, with clickable moments */
+.demo { display: flex; gap: 56px; align-items: flex-start; }
+.vwin { width: 1060px; flex: none; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid var(--rule); box-shadow: 0 30px 70px rgba(10, 15, 30, .16); }
+.vwin .bar { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #F6F7FA; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); }
+.vwin .bar i { width: 12px; height: 12px; border-radius: 50%; background: #DDE0E7; }
+.vwin .bar span { margin-left: 16px; }
+.vwin .bar em { margin-left: auto; font-style: normal; font-size: 14px; color: #9AA0AE; }
+.vwin .stage { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.vwin video { width: 100%; height: 100%; display: block; object-fit: cover; background: #000; }
+.chapters { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.chl { display: flex; justify-content: space-between; align-items: baseline; font-size: 17px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.chl span { font-size: 16px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
+.chap { position: relative; overflow: hidden; display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 16px; padding: 22px 26px 26px; cursor: pointer; transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .3s, background .3s; }
+.chap .ts { display: inline-block; font-size: 15px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; }
+.chap h3 { font-size: 26px; font-weight: 600; letter-spacing: -.5px; color: var(--ink); margin-top: 12px; }
+.chap p { font-size: 19px; line-height: 1.42; color: var(--body); margin-top: 6px; }
+.chap::after { content: ""; position: absolute; left: 0; bottom: 0; height: 4px; width: calc(var(--p, 0) * 100%); background: var(--accent); transition: width .25s linear; }
+.chap:hover { transform: translateY(-3px); border-color: #D9D5FC; box-shadow: 0 14px 30px rgba(10, 15, 30, .07); }
+.chap.on { border-color: var(--accent); background: #FBFAFF; box-shadow: 0 16px 34px rgba(91, 75, 245, .16); }
+
+/* ===== Classic type: EB Garamond for headlines and big numbers, Source Sans 3 for everything else ===== */
+.deck section, .deck section * { font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif !important; }
+.deck section .t, .deck section .t *, .deck section .hero, .deck section .hero *, .deck section .contact .thanks,
+.deck section .n, .deck section .pn, .deck section .sp .k { font-family: 'EB Garamond', Garamond, Georgia, serif !important; }
+.t, .hero { font-weight: 500; letter-spacing: -.5px; }
+.hero { letter-spacing: -1px; }
+.n { font-weight: 500; letter-spacing: -1px; }
+.pn { font-weight: 500; font-size: 44px; }
 </style>
 
 <!-- 1 · COVER -->
 <section class="cover navy" data-title="Cover">
   <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
     <g class="spin">
-      <g stroke="#9DB8FF" stroke-opacity=".22" stroke-width="1.4">
+      <g stroke="#A5B4FF" stroke-opacity=".22" stroke-width="1.4">
         <ellipse cx="500" cy="500" rx="470" ry="170"/>
         <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
         <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
         <circle cx="500" cy="500" r="330" stroke-opacity=".10"/>
         <circle cx="500" cy="500" r="470" stroke-opacity=".07"/>
       </g>
-      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
-      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
-      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
+      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
+      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
     </g>
-    <circle class="core-glow" cx="500" cy="500" r="34" fill="#9DB8FF" fill-opacity=".14"/>
-    <circle class="core" cx="500" cy="500" r="16" fill="#9DB8FF" fill-opacity=".85"/>
+    <circle class="core-glow" cx="500" cy="500" r="34" fill="#A5B4FF" fill-opacity=".14"/>
+    <circle class="core" cx="500" cy="500" r="16" fill="#A5B4FF" fill-opacity=".85"/>
   </svg>
   <img class="brand r" style="--i:0" src="{{img:logo}}" alt="Silicofeller">
   <p class="eb r" style="--i:1">Silicofeller Quantum Studio</p>
@@ -202,7 +359,7 @@
   <p class="sub r" style="--i:2">Every hand-off adds days, and every mistake surfaces later, often only after the chip is fabricated.</p>
   <div class="body split">
     <div class="r" style="--i:3">
-      <div class="crop" style="width: 560px; height: 560px"><img src="{{img:unified}}" alt="Disconnected workflow: KLayout, HFSS, Python, Excel, MATLAB, Qiskit Metal and other tools linked by manual hand-offs" style="width: 1792px; left: -6px; top: -106px"></div>
+      <svg class="tools" viewBox="0 0 600 560" role="img" aria-label="Seven design tools (KLayout, Ansys HFSS, Q3D, Python, Excel, MATLAB, Qiskit Metal), connected only by engineers moving files by hand"><rect x="1" y="1" width="598" height="558" rx="16" fill="#FFF8F7" stroke="#F6DCDA" stroke-width="1.5"/><path d="M300 50 Q349 267 391 453" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M464 130 Q295 212 95 309" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M505 309 Q335 227 136 130" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M209 453 Q258 236 300 50" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M136 130 Q253 279 391 453" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M95 309 Q283 309 505 309" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M464 130 Q326 304 209 453" fill="none" stroke="#9AA1B5" stroke-opacity=".4" stroke-width="1.6" stroke-dasharray="5 6"/><path d="M300 262 L300 50" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><path d="M300 262 L464 130" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><g transform="translate(376 182)"><path d="M0 0 H12 L18 6 V22 H0 Z" fill="#fff" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 0 V6 H18" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/></g><path d="M300 262 L505 309" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><path d="M300 262 L391 453" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><g transform="translate(338 350)"><path d="M0 0 H12 L18 6 V22 H0 Z" fill="#fff" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 0 V6 H18" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/></g><path d="M300 262 L209 453" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><path d="M300 262 L95 309" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><g transform="translate(185 276)"><path d="M0 0 H12 L18 6 V22 H0 Z" fill="#fff" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 0 V6 H18" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linejoin="round"/></g><path d="M300 262 L136 130" stroke="#E5484D" stroke-opacity=".6" stroke-width="2" stroke-dasharray="7 6"/><circle cx="300" cy="262" r="52" fill="#FDECEC" stroke="#E5484D" stroke-width="2"/><circle cx="300" cy="249" r="11" fill="none" stroke="#E5484D" stroke-width="2.4"/><path d="M279 286 C279 266 321 266 321 286" fill="none" stroke="#E5484D" stroke-width="2.4" stroke-linecap="round"/><rect x="246" y="23" width="108" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="300" y="57" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">KLayout</text><rect x="393" y="103" width="142" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="464" y="137" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">Ansys HFSS</text><rect x="474" y="282" width="62" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="505" y="316" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">Q3D</text><rect x="343" y="426" width="96" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="391" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">Python</text><rect x="166" y="426" width="85" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="209" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">Excel</text><rect x="47" y="282" width="96" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="95" y="316" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">MATLAB</text><rect x="53" y="103" width="165" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9F0" stroke-width="1.5"/><text x="136" y="137" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A0F1E">Qiskit Metal</text><path d="M28 530 H66" stroke="#E5484D" stroke-opacity=".7" stroke-width="2" stroke-dasharray="7 6"/><text x="78" y="536" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#8A6F70">manual hand-off: an engineer moving files</text></svg>
       <p class="caption">Today’s tool chain, connected only by people moving files.</p>
     </div>
     <div class="costs">
@@ -242,8 +399,8 @@
 <section data-title="End to end">
   <p class="eb r" style="--i:0">The solution · End to end</p>
   <h2 class="t r" style="--i:1">Research to cloud execution, <span class="grad">automated.</span></h2>
-  <div class="body" style="margin-top: 40px">
-    <div class="wf r" style="--i:2"><svg class="flow" viewBox="0 0 1648 470" role="img" aria-label="Silicofeller workflow: research, architecture, schematic, layout, simulation, fabrication-ready GDSII, calibration and testing, digital twin (VDPU), cloud execution"><defs><marker id="fl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1F47C4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g fill="none" stroke="#1F47C4" stroke-opacity=".55" stroke-width="2" marker-end="url(#fl-arrow)"><path d="M184 104 H401"/><path d="M529 104 H746"/><path d="M874 104 H1091"/><path d="M1219 104 H1436"/><path d="M354 332 H571"/><path d="M699 332 H916"/><path d="M1044 332 H1261"/><path d="M1564 104 H1590 a40 40 0 0 1 40 40 V178 a40 40 0 0 1 -40 40 H100 a40 40 0 0 0 -40 40 V292 a40 40 0 0 0 40 40 H226"/></g><circle cx="120" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(90 74) scale(1.25)"><rect x="8" y="4" width="26" height="34" rx="3" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13 H28 M13 19 H28 M13 25 H21" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="8" fill="#1F47C4" fill-opacity=".14" stroke="#1F47C4" stroke-width="2.2"/><path d="M38 38 L45 45" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="120" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Research</text><circle cx="465" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(435 74) scale(1.25)"><path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#1F47C4" fill-opacity=".14"/><path d="M24 6 L38 14 V30 L24 38 L10 30 V14 Z M10 14 L24 22 L38 14 M24 22 V38" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="465" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Architecture</text><circle cx="810" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(780 74) scale(1.25)"><path d="M4 16 H44 M4 32 H44 M16 16 V32 M32 16 V32" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="32" cy="16" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="16" cy="32" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="#0E1B33" stroke-width="2"/><path d="M21 20 L27 28 M27 20 L21 28" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="810" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Schematic</text><circle cx="1155" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(1125 74) scale(1.25)"><rect x="12" y="12" width="24" height="24" rx="2" fill="#1F47C4" fill-opacity=".14" stroke="#0E1B33" stroke-width="2"/><path d="M18 6 V12 M24 6 V12 M30 6 V12 M18 36 V42 M24 36 V42 M30 36 V42 M6 18 H12 M6 24 H12 M6 30 H12 M36 18 H42 M36 24 H42 M36 30 H42" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19 H31 M17 24 H31 M17 29 H31" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></g><text x="1155" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Layout</text><circle cx="1500" cy="104" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(1470 74) scale(1.25)"><path d="M4 40 H44" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36 Z" fill="#1F47C4" fill-opacity=".14" stroke="none"/></g><text x="1500" y="194" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Simulation</text><circle cx="290" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(260 302) scale(1.25)"><path d="M24 26 L42 33 L24 40 L6 33 Z" fill="#fff" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 18 L42 25 L24 32 L6 25 Z" fill="#fff" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#fff" stroke="#1F47C4" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#1F47C4" fill-opacity=".14"/></g><text x="290" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Fabrication ready</text><text x="290" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">(GDSII)</text><circle cx="635" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(605 302) scale(1.25)"><rect x="4" y="6" width="40" height="36" rx="3" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".35"/><path d="M6 24 H12 L15 18 L18 30 L21 11 L24 37 L27 14 L30 32 L33 20 L36 24 H42" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="635" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Calibration</text><text x="635" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">& testing</text><circle cx="980" cy="332" r="50" fill="#FFFFFF" stroke="#E3DDD0" stroke-width="1.5"/><g transform="translate(950 302) scale(1.25)"><path d="M20 8 L34 16 V32 L20 40 L6 32 V16 Z M6 16 L20 24 L34 16 M20 24 V40" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4 L42 12 V28 L36 31.5" fill="none" stroke="#1F47C4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/><circle cx="14" cy="26" r="1.8" fill="#1F47C4"/><circle cx="14" cy="32" r="1.8" fill="#1F47C4"/><circle cx="26" cy="28" r="1.8" fill="#1F47C4"/><circle cx="26" cy="34" r="1.8" fill="#1F47C4"/><circle cx="20" cy="15" r="1.8" fill="#1F47C4"/></g><text x="980" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Digital twin</text><text x="980" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#6E788A">(VDPU)</text><circle cx="1325" cy="332" r="50" fill="#FFFFFF" stroke="#1F47C4" stroke-width="2.5"/><circle cx="1325" cy="332" r="59" fill="none" stroke="#1F47C4" stroke-opacity=".25" stroke-width="1.5"/><g transform="translate(1295 302) scale(1.25)"><path d="M13 35 H35 A8.5 8.5 0 0 0 35.5 18 A11.5 11.5 0 0 0 13.5 20.5 A7.3 7.3 0 0 0 13 35 Z" fill="#1F47C4" fill-opacity=".14" stroke="#1F47C4" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28 L24 24 L28 28 M24 24 V33" fill="none" stroke="#0E1B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="1325" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="600" fill="#0E1B33">Cloud execution</text></svg></div>
+  <div class="body" style="margin-top: 64px">
+    <div class="r" style="--i:2"><div class="pipe"><div class="phases"><span style="grid-column: 1 / 5">Design</span><span style="grid-column: 5 / 7">Verify &amp; fabricate</span><span style="grid-column: 7 / 10">Operate</span></div><ol class="steps9" aria-label="Silicofeller workflow, research to cloud execution"><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="4" width="26" height="34" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13 H28 M13 19 H28 M13 25 H21" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="8" fill="#5B4BF5" fill-opacity=".14" stroke="#5B4BF5" stroke-width="2.2"/><path d="M38 38 L45 45" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">01</span><h4>Research</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M24 6 L38 14 V30 L24 38 L10 30 V14 Z M10 14 L24 22 L38 14 M24 22 V38" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">02</span><h4>Architecture</h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-schematic" aria-label="See the Schematic step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 16 H44 M4 32 H44 M16 16 V32 M32 16 V32" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="16" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><path d="M21 20 L27 28 M27 20 L21 28" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="no">03</span><h4>Schematic<small class="see">Click to see it</small></h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-layout" aria-label="See the Layout step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="2" fill="#5B4BF5" fill-opacity=".14" stroke="#0A0F1E" stroke-width="2"/><path d="M18 6 V12 M24 6 V12 M30 6 V12 M18 36 V42 M24 36 V42 M30 36 V42 M6 18 H12 M6 24 H12 M6 30 H12 M36 18 H42 M36 24 H42 M36 30 H42" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19 H31 M17 24 H31 M17 29 H31" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg></button><span class="no">04</span><h4>Layout<small class="see">Click to see it</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 40 H44" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">05</span><h4>Simulation</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 26 L42 33 L24 40 L6 33 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 18 L42 25 L24 32 L6 25 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#fff" stroke="#5B4BF5" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#5B4BF5" fill-opacity=".14"/></svg></span><span class="no">06</span><h4>Fabrication ready<small>GDSII</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="6" width="40" height="36" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".35"/><path d="M6 24 H12 L15 18 L18 30 L21 11 L24 37 L27 14 L30 32 L33 20 L36 24 H42" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">07</span><h4>Calibration<small>&amp; testing</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M20 8 L34 16 V32 L20 40 L6 32 V16 Z M6 16 L20 24 L34 16 M20 24 V40" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4 L42 12 V28 L36 31.5" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/><circle cx="14" cy="26" r="1.8" fill="#5B4BF5"/><circle cx="14" cy="32" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="28" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="34" r="1.8" fill="#5B4BF5"/><circle cx="20" cy="15" r="1.8" fill="#5B4BF5"/></svg></span><span class="no">08</span><h4>Digital twin<small>VDPU</small></h4></li><li class="goal"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35 H35 A8.5 8.5 0 0 0 35.5 18 A11.5 11.5 0 0 0 13.5 20.5 A7.3 7.3 0 0 0 13 35 Z" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28 L24 24 L28 28 M24 24 V33" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">09</span><h4>Cloud execution</h4></li></ol></div></div>
     <div class="stats">
       <div class="stat r" style="--i:4"><p class="n">10×</p><p class="l">faster design cycles: months become hours</p></div>
       <div class="stat r" style="--i:5"><p class="n">58+</p><p class="l">pre-characterised cryogenic components</p></div>
@@ -251,24 +408,74 @@
       <div class="stat r" style="--i:7"><p class="n">&lt;0.5%</p><p class="l">deviation from real fabricated-chip measurements</p></div>
     </div>
   </div>
+  <template id="pop-schematic"><figure class="popfig"><img src="{{img:step-schematic}}" alt="Schematic view in Silicofeller Quantum Studio"><figcaption><b>Schematic</b> A 7-qubit chip in the visual schematic editor: qubits, couplers, readout resonators and launch pads, placed and connected by drag and drop.</figcaption></figure></template><template id="pop-layout"><figure class="popfig"><img src="{{img:step-layout}}" alt="Layout view in Silicofeller Quantum Studio"><figcaption><b>Layout</b> The same chip as physical layout, with live design-rule checks for die boundary, edge margin, overlaps and connectivity.</figcaption></figure></template>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>5</span></div>
-  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. The results: ten times faster design cycles, more than 58 ready components, design-rule checking and routing fully automated, and less than half a percent deviation between our simulation and measurements on the real fabricated chip. That last number answers the biggest fear in this industry: you know how the chip will behave before it is built.</aside>
+  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. The results: ten times faster design cycles, more than 58 ready components, design-rule checking and routing fully automated, and less than half a percent deviation between our simulation and measurements on the real fabricated chip. That last number answers the biggest fear in this industry: you know how the chip will behave before it is built. [Click the Schematic or Layout tile to show that step in the product; Esc closes it, left/right arrows switch between them.]</aside>
 </section>
 
 <!-- 6 · DEMO VIDEO -->
 <section data-title="Demo">
   <p class="eb r" style="--i:0">See it in action</p>
   <h2 class="t r" style="--i:1">A quantum chip, <span class="grad">designed in one session.</span></h2>
-  <div class="body vwrap" style="margin-top: 44px">
-    <div class="video r" style="--i:2">
-      <video controls preload="metadata" playsinline poster="{{img:editor}}">
-        <source src="silicofeller-demo.mp4" type="video/mp4">
-        <source src="https://silicofeller.com/videos/demo_video_new.mp4" type="video/mp4">
-      </video>
+  <div class="body demo" style="margin-top: 44px">
+    <div class="vwin r" style="--i:2">
+      <div class="bar"><i></i><i></i><i></i><span>Silicofeller Schematic Editor · demo</span><em>plays muted · use the controls for sound</em></div>
+      <div class="stage">
+        <video preload="auto" playsinline muted loop controls poster="{{img:demo-poster}}">
+          <source src="silicofeller-demo.mp4" type="video/mp4">
+          <source src="https://silicofeller.com/videos/demo_video_new.mp4" type="video/mp4">
+        </video>
+        
+      </div>
+    </div>
+    <div class="chapters">
+      <p class="chl r" style="--i:3">What you’ll see <span>click a moment to jump</span></p>
+      <button class="chap r" style="--i:4" type="button" data-t="4"><span class="ts">0:04</span><h3>Visual schematic editor</h3><p>Place transmon qubits and route resonators by drag and drop.</p></button>
+      <button class="chap r" style="--i:5" type="button" data-t="19"><span class="ts">0:19</span><h3>AI design assistant</h3><p>Describe the chip in plain language. The copilot builds it.</p></button>
+      <button class="chap r" style="--i:6" type="button" data-t="23" data-end="28"><span class="ts">0:23</span><h3>Design as code</h3><p>The finished 4-qubit chip, mirrored live in Python.</p></button>
     </div>
   </div>
+  <script>
+  (() => {
+    const sec = document.currentScript.closest('section');
+    const v = sec.querySelector('video');
+    const chs = [...sec.querySelectorAll('.chap')];
+    const start = () => { v.play().catch(() => {}); };
+    // The demo plays by itself (muted) while this slide is on screen, and pauses when the slide changes.
+    new MutationObserver(() => { if (sec.classList.contains('active')) start(); else v.pause(); }).observe(sec, { attributes: true, attributeFilter: ['class'] });
+    if (sec.classList.contains('active')) start();
+    // silicofeller.com serves the video without partial downloads, so a moment can only be jumped to once that part
+    // has loaded: wait for it (the video starts loading when the deck opens), then jump and play from there.
+    let want = null;
+    const canJump = (t) => { for (let k = 0; k < v.seekable.length; k++) if (t >= v.seekable.start(k) && t <= v.seekable.end(k)) return true; return false; };
+    const tryJump = () => {
+      if (want === null || v.readyState < 1 || !canJump(want)) return;
+      const t = want; want = null;
+      v.currentTime = t;
+      v.addEventListener('seeked', start, { once: true });
+    };
+    ['loadedmetadata', 'progress', 'canplay'].forEach((e) => v.addEventListener(e, tryJump));
+    chs.forEach((c) => c.addEventListener('click', () => {
+      want = +c.dataset.t;
+      tryJump();
+      // Still not reachable after 1.5 s (slow connection): keep playing rather than wait.
+      setTimeout(() => { if (want !== null) { want = null; start(); } }, 1500);
+    }));
+    v.addEventListener('timeupdate', () => {
+      const t = v.currentTime;
+      let k = -1;
+      chs.forEach((c, j) => { if (t >= +c.dataset.t) k = j; });
+      chs.forEach((c, j) => {
+        const t0 = +c.dataset.t;
+        const t1 = j + 1 < chs.length ? +chs[j + 1].dataset.t : +(c.dataset.end || v.duration || t0 + 1);
+        c.classList.toggle('on', j === k && t < t1);
+        c.style.setProperty('--p', j < k ? 1 : j === k ? Math.min(1, (t - t0) / (t1 - t0)) : 0);
+      });
+    });
+  })();
+  </script>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>6</span></div>
-  <aside>Let me show you instead of telling you. [Play the demo. Click the video to play or pause; it does not change slides.] Point out three moments: the AI copilot building the layout from a prompt, the automatic routing, and the simulation results appearing inside the same window, with no export and no second tool.</aside>
+  <aside>Let me show you instead of telling you. [Click the play button, or click a moment on the right to jump straight to it.] Point out three moments: the visual schematic editor at 0:04, the AI design assistant building the chip from a plain-language prompt at 0:19, and the finished design mirrored live in Python code at 0:23. All in one window, with no export and no second tool.</aside>
 </section>
 
 <!-- 7 · EVERY ARCHITECTURE -->
@@ -279,16 +486,16 @@
     <div>
       <p class="grp r" style="--i:2">Available today</p>
       <div class="now">
-        <div class="nc r" style="--i:3"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Superconducting transmon qubit with readout resonator"><defs><pattern id="sc-dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#9DB8FF" fill-opacity=".16"/></pattern></defs><rect width="400" height="400" fill="#0E1B33"/><rect width="400" height="400" fill="url(#sc-dots)"/><path d="M0 46 H400" stroke="#F5F1E8" stroke-opacity=".75" stroke-width="7"/><path d="M120 64 H280 V82 H120 V100 H280 V118 H120 V136 H200 V150" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4" stroke-linejoin="round"/><path d="M176 160 V150 H224 V160" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4"/><path d="M177 162 H223 V227 H288 V273 H223 V338 H177 V273 H112 V227 H177 Z" fill="none" stroke="#9DB8FF" stroke-opacity=".35" stroke-width="1.5"/><path d="M185 170 H215 V235 H280 V265 H215 V330 H185 V265 H120 V235 H185 Z" fill="#9DB8FF" fill-opacity=".2" stroke="#9DB8FF" stroke-width="3"/><path d="M200 330 V352" stroke="#F5F1E8" stroke-width="3"/><rect x="192" y="336" width="16" height="10" fill="#F5F1E8"/><path d="M0 250 H98" stroke="#F5F1E8" stroke-opacity=".5" stroke-width="3"/><circle cx="200" cy="250" r="40" fill="#9DB8FF" fill-opacity=".10"/></svg><div class="in"><h3>Superconducting</h3><p>Transmon, fluxonium, SRF and other superconducting circuits, from schematic to GDSII.</p><div class="tags"><i class="tag">Transmon</i><i class="tag">Fluxonium</i><i class="tag">SRF</i></div></div></div>
-        <div class="nc r" style="--i:4"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Chain of trapped ions between RF rails and DC electrodes"><rect width="400" height="400" fill="#0E1B33"/><g fill="none" stroke="#9DB8FF" stroke-opacity=".5" stroke-width="2"><rect x="22" y="94" width="44" height="42" rx="3"/><rect x="22" y="264" width="44" height="42" rx="3"/><rect x="74" y="94" width="44" height="42" rx="3"/><rect x="74" y="264" width="44" height="42" rx="3"/><rect x="126" y="94" width="44" height="42" rx="3"/><rect x="126" y="264" width="44" height="42" rx="3"/><rect x="178" y="94" width="44" height="42" rx="3"/><rect x="178" y="264" width="44" height="42" rx="3"/><rect x="230" y="94" width="44" height="42" rx="3"/><rect x="230" y="264" width="44" height="42" rx="3"/><rect x="282" y="94" width="44" height="42" rx="3"/><rect x="282" y="264" width="44" height="42" rx="3"/><rect x="334" y="94" width="44" height="42" rx="3"/><rect x="334" y="264" width="44" height="42" rx="3"/></g><rect x="20" y="150" width="360" height="26" rx="3" fill="#9DB8FF" fill-opacity=".16" stroke="#9DB8FF" stroke-width="2.5"/><rect x="20" y="224" width="360" height="26" rx="3" fill="#9DB8FF" fill-opacity=".16" stroke="#9DB8FF" stroke-width="2.5"/><path d="M95 320 L335 80" stroke="#F5F1E8" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 5"/><g><circle cx="112" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="112" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="146" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="146" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="180" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="180" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="215" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="215" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="250" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="250" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="284" cy="200" r="13" fill="#9DB8FF" fill-opacity=".22"/><circle cx="284" cy="200" r="5.5" fill="#F5F1E8"/></g><circle cx="215" cy="200" r="20" fill="none" stroke="#F5F1E8" stroke-opacity=".6" stroke-width="1.5"/></svg><div class="in"><h3>Trapped ion</h3><p>Traps, electrodes, optics and control for trapped-ion systems.</p><div class="tags"><i class="tag">Traps</i><i class="tag">Electrodes</i><i class="tag">Optics</i></div></div></div>
+        <div class="nc r" style="--i:3"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Superconducting transmon qubit with readout resonator"><defs><pattern id="sc-dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#A5B4FF" fill-opacity=".16"/></pattern></defs><rect width="400" height="400" fill="#0A0F1E"/><rect width="400" height="400" fill="url(#sc-dots)"/><path d="M0 46 H400" stroke="#F5F1E8" stroke-opacity=".75" stroke-width="7"/><path d="M120 64 H280 V82 H120 V100 H280 V118 H120 V136 H200 V150" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4" stroke-linejoin="round"/><path d="M176 160 V150 H224 V160" fill="none" stroke="#F5F1E8" stroke-opacity=".8" stroke-width="4"/><path d="M177 162 H223 V227 H288 V273 H223 V338 H177 V273 H112 V227 H177 Z" fill="none" stroke="#A5B4FF" stroke-opacity=".35" stroke-width="1.5"/><path class="qcross" d="M185 170 H215 V235 H280 V265 H215 V330 H185 V265 H120 V235 H185 Z" fill="#A5B4FF" fill-opacity=".2" stroke="#A5B4FF" stroke-width="3"/><path d="M200 330 V352" stroke="#F5F1E8" stroke-width="3"/><rect x="192" y="336" width="16" height="10" fill="#F5F1E8"/><path d="M0 250 H98" stroke="#F5F1E8" stroke-opacity=".5" stroke-width="3"/><g class="current" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 46 H400" stroke-width="4"/><path d="M120 64 H280 V82 H120 V100 H280 V118 H120 V136 H200 V150" stroke-width="3" style="animation-delay: -.5s"/><path d="M0 250 H98" stroke-width="2.5" style="animation-delay: -1s"/></g><circle class="qglow" cx="200" cy="250" r="40" fill="#A5B4FF" fill-opacity=".10"/></svg><div class="in"><h3>Superconducting</h3><p>Transmon, fluxonium, SRF and other superconducting circuits, from schematic to GDSII.</p><div class="tags"><i class="tag">Transmon</i><i class="tag">Fluxonium</i><i class="tag">SRF</i></div></div></div>
+        <div class="nc r" style="--i:4"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Chain of trapped ions between RF rails and DC electrodes"><rect width="400" height="400" fill="#0A0F1E"/><g fill="none" stroke="#A5B4FF" stroke-opacity=".5" stroke-width="2"><rect x="22" y="94" width="44" height="42" rx="3"/><rect x="22" y="264" width="44" height="42" rx="3"/><rect x="74" y="94" width="44" height="42" rx="3"/><rect x="74" y="264" width="44" height="42" rx="3"/><rect x="126" y="94" width="44" height="42" rx="3"/><rect x="126" y="264" width="44" height="42" rx="3"/><rect x="178" y="94" width="44" height="42" rx="3"/><rect x="178" y="264" width="44" height="42" rx="3"/><rect x="230" y="94" width="44" height="42" rx="3"/><rect x="230" y="264" width="44" height="42" rx="3"/><rect x="282" y="94" width="44" height="42" rx="3"/><rect x="282" y="264" width="44" height="42" rx="3"/><rect x="334" y="94" width="44" height="42" rx="3"/><rect x="334" y="264" width="44" height="42" rx="3"/></g><rect x="20" y="150" width="360" height="26" rx="3" fill="#A5B4FF" fill-opacity=".16" stroke="#A5B4FF" stroke-width="2.5"/><rect x="20" y="224" width="360" height="26" rx="3" fill="#A5B4FF" fill-opacity=".16" stroke="#A5B4FF" stroke-width="2.5"/><path class="beam" d="M95 320 L335 80" stroke="#F5F1E8" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 5"/><g><g class="ion" style="animation-delay: 0.00s"><circle cx="112" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="112" cy="200" r="5.5" fill="#F5F1E8"/></g><g class="ion" style="animation-delay: 0.22s"><circle cx="146" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="146" cy="200" r="5.5" fill="#F5F1E8"/></g><g class="ion" style="animation-delay: 0.44s"><circle cx="180" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="180" cy="200" r="5.5" fill="#F5F1E8"/></g><g class="ion" style="animation-delay: 0.66s"><circle cx="215" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="215" cy="200" r="5.5" fill="#F5F1E8"/><circle cx="215" cy="200" r="20" fill="none" stroke="#F5F1E8" stroke-opacity=".6" stroke-width="1.5"/></g><g class="ion" style="animation-delay: 0.88s"><circle cx="250" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="250" cy="200" r="5.5" fill="#F5F1E8"/></g><g class="ion" style="animation-delay: 1.10s"><circle cx="284" cy="200" r="13" fill="#A5B4FF" fill-opacity=".22"/><circle cx="284" cy="200" r="5.5" fill="#F5F1E8"/></g></g></svg><div class="in"><h3>Trapped ion</h3><p>Traps, electrodes, optics and control for trapped-ion systems.</p><div class="tags"><i class="tag">Traps</i><i class="tag">Electrodes</i><i class="tag">Optics</i></div></div></div>
       </div>
     </div>
     <div>
       <p class="grp soon r" style="--i:5">On the roadmap</p>
       <div class="road">
-        <div class="rc r" style="--i:6"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Photonic interferometer: waveguides, couplers and a phase shifter"><rect width="400" height="400" fill="#EEF1F8"/><g fill="none" stroke="#1F47C4" stroke-width="5" stroke-linecap="round"><path d="M20 150 H60 C95 150 95 192 130 192 H160 C195 192 195 118 230 118 H270 C305 118 305 192 340 192 H380"/><path d="M20 250 H60 C95 250 95 208 130 208 H160 C195 208 195 282 230 282 H270 C305 282 305 208 340 208 H380"/></g><rect x="220" y="102" width="60" height="32" rx="5" fill="#1F47C4" fill-opacity=".14" stroke="#0E1B33" stroke-opacity=".6" stroke-width="2"/><circle cx="38" cy="150" r="9" fill="#0E1B33"/><circle cx="365" cy="192" r="7" fill="#1F47C4" fill-opacity=".5"/><circle cx="365" cy="208" r="7" fill="#1F47C4" fill-opacity=".5"/></svg><div class="in"><h3>Photonic</h3><p>Integrated waveguides, modulators and interferometers.</p></div></div>
-        <div class="rc r" style="--i:7"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Neutral atoms held in an array of optical tweezers"><rect width="400" height="400" fill="#EEF1F8"/><circle cx="75" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="125" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="125" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="175" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="175" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="225" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="225" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="225" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="275" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="275" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="75" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="125" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="175" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="275" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="325" cy="325" r="15" fill="none" stroke="#1F47C4" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="325" r="6.5" fill="#0E1B33" fill-opacity=".6"/><circle cx="200" cy="175" r="52" fill="#1F47C4" fill-opacity=".08" stroke="#1F47C4" stroke-width="2" stroke-dasharray="6 5"/><circle cx="175" cy="175" r="9" fill="#1F47C4"/><circle cx="225" cy="175" r="9" fill="#1F47C4"/></svg><div class="in"><h3>Neutral atom</h3><p>Optical tweezers, lattices and control systems.</p></div></div>
-        <div class="rc r" style="--i:8"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Nanowire on a superconductor with Majorana modes at both ends"><rect width="400" height="400" fill="#EEF1F8"/><g fill="#0E1B33" fill-opacity=".18"><rect x="70" y="268" width="36" height="46" rx="3"/><rect x="126" y="268" width="36" height="46" rx="3"/><rect x="182" y="268" width="36" height="46" rx="3"/><rect x="238" y="268" width="36" height="46" rx="3"/><rect x="294" y="268" width="36" height="46" rx="3"/></g><rect x="40" y="212" width="320" height="34" rx="4" fill="#0E1B33" fill-opacity=".14" stroke="#0E1B33" stroke-opacity=".45" stroke-width="2"/><rect x="52" y="186" width="296" height="26" rx="13" fill="#1F47C4" fill-opacity=".18" stroke="#1F47C4" stroke-width="3"/><circle cx="66" cy="199" r="22" fill="#1F47C4" fill-opacity=".18"/><circle cx="66" cy="199" r="8" fill="#1F47C4"/><circle cx="334" cy="199" r="22" fill="#1F47C4" fill-opacity=".18"/><circle cx="334" cy="199" r="8" fill="#1F47C4"/><text x="66" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#0E1B33">γ₁</text><text x="334" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#0E1B33">γ₂</text><path d="M150 96 H250" stroke="#0E1B33" stroke-opacity=".55" stroke-width="2.5"/><path d="M242 88 L252 96 L242 104" fill="none" stroke="#0E1B33" stroke-opacity=".55" stroke-width="2.5"/><text x="200" y="82" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="26" fill="#0E1B33" fill-opacity=".7">B</text></svg><div class="in"><h3>Topological</h3><p>Majorana zero modes and nanowires (experimental).</p></div></div>
+        <div class="rc r" style="--i:6"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Photonic interferometer: waveguides, couplers and a phase shifter"><rect width="400" height="400" fill="#F3F3FA"/><g fill="none" stroke="#5B4BF5" stroke-width="5" stroke-linecap="round"><path d="M20 150 H60 C95 150 95 192 130 192 H160 C195 192 195 118 230 118 H270 C305 118 305 192 340 192 H380"/><path d="M20 250 H60 C95 250 95 208 130 208 H160 C195 208 195 282 230 282 H270 C305 282 305 208 340 208 H380"/></g><rect x="220" y="102" width="60" height="32" rx="5" fill="#5B4BF5" fill-opacity=".14" stroke="#0A0F1E" stroke-opacity=".6" stroke-width="2"/><circle cx="38" cy="150" r="9" fill="#0A0F1E"/><circle cx="365" cy="192" r="7" fill="#5B4BF5" fill-opacity=".5"/><circle cx="365" cy="208" r="7" fill="#5B4BF5" fill-opacity=".5"/></svg><div class="in"><h3>Photonic</h3><p>Integrated waveguides, modulators and interferometers.</p></div></div>
+        <div class="rc r" style="--i:7"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Neutral atoms held in an array of optical tweezers"><rect width="400" height="400" fill="#F3F3FA"/><circle cx="75" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="75" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="125" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="75" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="175" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="75" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="225" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="75" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="275" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="75" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="75" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="125" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="175" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="225" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="275" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="325" cy="125" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="125" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="75" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="175" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="125" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="175" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="325" cy="175" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="175" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="75" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="225" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="125" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="225" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="175" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="225" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="225" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="225" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="275" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="225" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="325" cy="225" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="275" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="175" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="175" cy="275" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="225" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="275" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="275" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="275" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="325" cy="275" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="275" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="75" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="75" cy="325" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="125" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="125" cy="325" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="175" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="225" cy="325" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="275" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="275" cy="325" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="325" cy="325" r="15" fill="none" stroke="#5B4BF5" stroke-opacity=".22" stroke-width="1.5"/><circle cx="325" cy="325" r="6.5" fill="#0A0F1E" fill-opacity=".6"/><circle cx="200" cy="175" r="52" fill="#5B4BF5" fill-opacity=".08" stroke="#5B4BF5" stroke-width="2" stroke-dasharray="6 5"/><circle cx="175" cy="175" r="9" fill="#5B4BF5"/><circle cx="225" cy="175" r="9" fill="#5B4BF5"/></svg><div class="in"><h3>Neutral atom</h3><p>Optical tweezers, lattices and control systems.</p></div></div>
+        <div class="rc r" style="--i:8"><svg class="art" viewBox="0 0 400 400" role="img" aria-label="Nanowire on a superconductor with Majorana modes at both ends"><rect width="400" height="400" fill="#F3F3FA"/><g fill="#0A0F1E" fill-opacity=".18"><rect x="70" y="268" width="36" height="46" rx="3"/><rect x="126" y="268" width="36" height="46" rx="3"/><rect x="182" y="268" width="36" height="46" rx="3"/><rect x="238" y="268" width="36" height="46" rx="3"/><rect x="294" y="268" width="36" height="46" rx="3"/></g><rect x="40" y="212" width="320" height="34" rx="4" fill="#0A0F1E" fill-opacity=".14" stroke="#0A0F1E" stroke-opacity=".45" stroke-width="2"/><rect x="52" y="186" width="296" height="26" rx="13" fill="#5B4BF5" fill-opacity=".18" stroke="#5B4BF5" stroke-width="3"/><circle cx="66" cy="199" r="22" fill="#5B4BF5" fill-opacity=".18"/><circle cx="66" cy="199" r="8" fill="#5B4BF5"/><circle cx="334" cy="199" r="22" fill="#5B4BF5" fill-opacity=".18"/><circle cx="334" cy="199" r="8" fill="#5B4BF5"/><text x="66" y="160" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-style="italic" font-size="30" fill="#0A0F1E">γ₁</text><text x="334" y="160" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-style="italic" font-size="30" fill="#0A0F1E">γ₂</text><path d="M150 96 H250" stroke="#0A0F1E" stroke-opacity=".55" stroke-width="2.5"/><path d="M242 88 L252 96 L242 104" fill="none" stroke="#0A0F1E" stroke-opacity=".55" stroke-width="2.5"/><text x="200" y="82" text-anchor="middle" font-family="'Inter Tight', Inter, sans-serif" font-style="italic" font-size="26" fill="#0A0F1E" fill-opacity=".7">B</text></svg><div class="in"><h3>Topological</h3><p>Majorana zero modes and nanowires (experimental).</p></div></div>
       </div>
     </div>
   </div>
@@ -329,17 +536,17 @@
 <section class="close navy" data-title="Next step">
   <svg class="orbit" viewBox="0 0 1000 1000" fill="none" aria-hidden="true" style="right: -320px; opacity: .55">
     <g class="spin">
-      <g stroke="#9DB8FF" stroke-opacity=".22" stroke-width="1.4">
+      <g stroke="#A5B4FF" stroke-opacity=".22" stroke-width="1.4">
         <ellipse cx="500" cy="500" rx="470" ry="170"/>
         <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(60 500 500)"/>
         <ellipse cx="500" cy="500" rx="470" ry="170" transform="rotate(120 500 500)"/>
       </g>
-      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
-      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
-      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#9DB8FF" fill-opacity=".75"/></g>
+      <g transform="rotate(0 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
+      <g transform="rotate(60 500 500)"><circle cx="30" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
+      <g transform="rotate(120 500 500)"><circle cx="970" cy="500" r="7" fill="#A5B4FF" fill-opacity=".75"/></g>
     </g>
-    <circle class="core-glow" cx="500" cy="500" r="34" fill="#9DB8FF" fill-opacity=".14"/>
-    <circle class="core" cx="500" cy="500" r="16" fill="#9DB8FF" fill-opacity=".85"/>
+    <circle class="core-glow" cx="500" cy="500" r="34" fill="#A5B4FF" fill-opacity=".14"/>
+    <circle class="core" cx="500" cy="500" r="16" fill="#A5B4FF" fill-opacity=".85"/>
   </svg>
   <p class="eb r" style="--i:0">Next step</p>
   <h2 class="hero r" style="--i:1">Let’s design the future of<br><span class="grad">quantum silicon, together.</span></h2>
@@ -348,6 +555,39 @@
     <div class="sp r" style="--i:4"><p class="k">02</p><h3>Integrate</h3><p>Connect your foundry PDK, design rules and internal tools.</p></div>
     <div class="sp r" style="--i:5"><p class="k">03</p><h3>Deploy</h3><p>Roll out to your hardware teams on private cloud, with training and support.</p></div>
   </div>
-  <div class="contact r" style="--i:6"><span><b>silicofeller.com</b></span><span>[Name, title]</span><span>[email address]</span></div>
+  <div class="contact r" style="--i:6"><span><b>silicofeller.com</b></span><span class="thanks">Thank you for your time.</span></div>
   <aside>To close: classical chips had their Cadence and Synopsys moment, and quantum chips need theirs. We believe Silicofeller is it. Our ask is simple: give us one of your existing designs for a short pilot, run side by side with your current flow, and compare the results yourself. Then we integrate your PDK and tools, and roll out to your teams. Thank you. I’m happy to take questions, or open the studio for a live demo right now.</aside>
 </section>
+
+<script>
+// Pop-up viewer for the clickable workflow steps on slide 5. It sits outside the slides, so clicks and keys
+// inside it never change slides; Esc closes it, left/right arrows switch between the screens.
+(() => {
+  const buttons = [...document.querySelectorAll('[data-pop]')];
+  if (!buttons.length) return;
+  const ov = document.createElement('div');
+  ov.className = 'popover';
+  ov.hidden = true;
+  ov.innerHTML = '<button class="popx" type="button" aria-label="Close">&times;</button><div class="popbody"></div><p class="pophint">Esc to close · ← → to switch</p>';
+  document.body.appendChild(ov);
+  const body = ov.querySelector('.popbody');
+  const ids = buttons.map((b) => b.dataset.pop);
+  let cur = -1;
+  const open = (i) => {
+    cur = (i + ids.length) % ids.length;
+    body.replaceChildren(document.getElementById(ids[cur]).content.cloneNode(true));
+    ov.hidden = false;
+  };
+  const close = () => { ov.hidden = true; cur = -1; };
+  buttons.forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); open(ids.indexOf(b.dataset.pop)); }));
+  ov.addEventListener('click', (e) => { if (e.target === ov || e.target.closest('.popx')) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (ov.hidden) return;
+    e.stopPropagation();
+    e.preventDefault();
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') open(cur + 1);
+    else if (e.key === 'ArrowLeft') open(cur - 1);
+  }, true);
+})();
+</script>
