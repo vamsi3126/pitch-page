@@ -546,6 +546,20 @@
 .shots figure { margin: 0; }
 .shots img { display: block; width: 100%; height: 160px; object-fit: cover; object-position: top left; border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 14px 30px rgba(10, 15, 30, .10); }
 .shots figcaption { margin-top: 10px; font-size: 17px; font-weight: 600; color: var(--ink); text-align: center; letter-spacing: -.1px; }
+/* Partners slide: a clear logo wall on a soft panel */
+.panel { background: #F5F4FE; border: 1px solid #E7E4FB; border-radius: 28px; padding: 28px 36px 30px; }
+.panel .lbl { margin-bottom: 22px; color: var(--accent); }
+.logos4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.pl { height: 124px; background: #FFFFFF; border: 1px solid #E6E6F3; border-radius: 18px; display: flex; align-items: center; justify-content: center; padding: 14px 22px; box-shadow: 0 10px 26px rgba(10, 15, 30, .06); transition: transform .3s cubic-bezier(.2, .7, .2, 1), box-shadow .3s, border-color .3s; }
+.pl img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.pl.dk { background: #0A0D1A; border-color: #0A0D1A; }
+.pl:hover { transform: translateY(-5px); border-color: #D9D5FC; box-shadow: 0 18px 36px rgba(91, 75, 245, .16); }
+.pl.dk:hover { border-color: #0A0D1A; }
+.ent .ec h3 { font-size: 28px; margin-top: 8px; }
+.ent .ec p { font-size: 20px; line-height: 1.4; }
+.ent .ec .fbadge { width: 56px; height: 56px; background: #EEEBFF; border-color: transparent; color: var(--accent); }
+/* Product screenshots: rounded window corners everywhere */
+.tstage img, .shots img, .bwin img, img.shot { border-radius: 18px !important; overflow: hidden; }
 </style>
 
 <!-- 1 · COVER -->
@@ -821,28 +835,28 @@
 <section data-title="Trust and enterprise">
   <p class="eb r" style="--i:0">Trusted and enterprise ready</p>
   <h2 class="t r" style="--i:1">Built with leading partners. <span class="grad">Built for your IP.</span></h2>
-  <div class="body trust">
-    <div>
-    <p class="lbl r" style="--i:2">IN COLLABORATION WITH</p>
-    <div class="logos">
-      <div class="logo r" style="--i:2"><img src="{{img:l-drdo}}" alt="DRDO"></div>
-      <div class="logo r" style="--i:3"><img src="{{img:l-cdac}}" alt="C-DAC"></div>
-      <div class="logo r" style="--i:3"><img src="{{img:l-iitb}}" alt="IIT Bombay"></div>
-      <div class="logo dk r" style="--i:4"><img src="{{img:l-nvidia}}" alt="NVIDIA Inception"></div>
-      <div class="logo r" style="--i:4"><img src="{{img:l-dell}}" alt="Dell Technologies"></div>
-      <div class="logo r" style="--i:5"><img src="{{img:l-nasscom}}" alt="NASSCOM DeepTech Club"></div>
-      <div class="logo r" style="--i:5"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
-      <div class="logo r" style="--i:6"><img src="{{img:l-dsci}}" alt="DSCI"></div>
+  <div class="body" style="display: flex; flex-direction: column; gap: 26px;">
+    <div class="panel r" style="--i:2">
+      <p class="lbl">In collaboration with</p>
+      <div class="logos4">
+        <div class="pl r" style="--i:3"><img src="{{img:l-drdo}}" alt="DRDO"></div>
+        <div class="pl r" style="--i:4"><img src="{{img:l-cdac}}" alt="C-DAC"></div>
+        <div class="pl r" style="--i:5"><img src="{{img:l-iitb}}" alt="IIT Bombay"></div>
+        <div class="pl dk r" style="--i:6"><img src="{{img:l-nvidia}}" alt="NVIDIA Inception"></div>
+        <div class="pl r" style="--i:7"><img src="{{img:l-dell}}" alt="Dell Technologies"></div>
+        <div class="pl r" style="--i:8"><img src="{{img:l-nasscom}}" alt="NASSCOM DeepTech Club"></div>
+        <div class="pl r" style="--i:9"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
+        <div class="pl r" style="--i:10"><img src="{{img:l-dsci}}" alt="DSCI"></div>
+      </div>
     </div>
-    </div>
-    <div class="ent">
-      <div class="ec r" style="--i:6"><span class="fbadge">{{icon:lock}}</span><h3>You own your IP</h3><p>Designs, masks and prompts are never used to train shared AI models. Export everything, any time.</p></div>
-      <div class="ec r" style="--i:7"><span class="fbadge">{{icon:cloud}}</span><h3>Private cloud</h3><p>End-to-end cryptographic isolation and role-based access for your teams.</p></div>
-      <div class="ec r" style="--i:8"><span class="fbadge">{{icon:chip}}</span><h3>Any foundry, any PDK</h3><p>Works with your own substrates, metals, design rules and foundry.</p></div>
-      <div class="ec r" style="--i:9"><span class="fbadge">{{icon:plug}}</span><h3>Fits your stack</h3><p>API access, version history and AI-agent integration (Claude via MCP).</p></div>
+    <div class="ent" style="margin-top: 0;">
+      <div class="ec r" style="--i:11"><span class="fbadge">{{icon:lock}}</span><h3>You own your IP</h3><p>Designs, masks and prompts are never used to train shared AI models. Export everything, any time.</p></div>
+      <div class="ec r" style="--i:12"><span class="fbadge">{{icon:cloud}}</span><h3>Private cloud</h3><p>End-to-end cryptographic isolation and role-based access for your teams.</p></div>
+      <div class="ec r" style="--i:13"><span class="fbadge">{{icon:chip}}</span><h3>Any foundry, any PDK</h3><p>Works with your own substrates, metals, design rules and foundry.</p></div>
+      <div class="ec r" style="--i:14"><span class="fbadge">{{icon:plug}}</span><h3>Fits your stack</h3><p>API access, version history and AI-agent integration (Claude via MCP).</p></div>
     </div>
   </div>
-  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>8</span></div>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>12</span></div>
   <aside>We work with national labs, academia and industry: DRDO, C-DAC, IIT Bombay, NVIDIA Inception, Dell Technologies, NASSCOM DeepTech, Netweb and DSCI. And for a company your size, the first questions are about IP and control. You own every design, and nothing you create is used to train shared models. We offer private cloud deployment with role-based access, we are foundry and PDK agnostic, and the studio plugs into your own tools and AI agents through an API.</aside>
 </section>
 
