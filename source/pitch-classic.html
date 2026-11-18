@@ -555,11 +555,22 @@
 .pl.dk { background: #0A0D1A; border-color: #0A0D1A; }
 .pl:hover { transform: translateY(-5px); border-color: #D9D5FC; box-shadow: 0 18px 36px rgba(91, 75, 245, .16); }
 .pl.dk:hover { border-color: #0A0D1A; }
-/* Trust slide: the logo wall fills the slide */
-.trust .panel { flex: 1; display: flex; flex-direction: column; padding: 34px 40px 40px; }
-.trust .logos4 { flex: 1; grid-template-rows: repeat(2, 1fr); gap: 26px; }
-.trust .pl { height: auto; min-height: 0; padding: 22px 30px; }
-.trust .pl img { max-height: 140px; }
+/* Trust slide: dark split layout, icon trust points and a large logo wall */
+.trust-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; flex: 1; min-height: 0; margin-top: 44px; }
+.trust-lead { display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+.trust-big { font-size: 40px; line-height: 1.25; font-weight: 600; letter-spacing: -.8px; color: #FFFFFF; max-width: 640px; }
+.trust-chips { display: flex; flex-direction: column; gap: 12px; }
+.trust-chip { display: flex; align-items: center; gap: 22px; padding: 12px 22px; border-radius: 20px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .09); }
+.trust-chip h3 { font-size: 30px; font-weight: 600; letter-spacing: -.4px; color: #FFFFFF; }
+.trust-ic { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; flex: none; background: rgba(165, 180, 255, .14); border: 1px solid rgba(165, 180, 255, .28); color: #A5B4FF; }
+.trust-ic .ico { width: 28px; height: 28px; color: #A5B4FF; }
+.trust-wall { display: flex; flex-direction: column; padding: 30px 32px 32px; border-radius: 32px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .09); box-shadow: 0 40px 90px rgba(0, 0, 0, .35); }
+.trust-wall .lbl { color: #A5B4FF; margin-bottom: 20px; }
+.trust-wall .logos4 { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.trust-wall .pl { height: auto; min-height: 0; padding: 14px 28px; border-radius: 18px; background: #FFFFFF; border: 1px solid rgba(255, 255, 255, .6); box-shadow: 0 12px 28px rgba(0, 0, 0, .25); }
+.trust-wall .pl.dk { background: #0A0D1A; border-color: rgba(255, 255, 255, .14); }
+.trust-wall .pl img { max-height: 96px; max-width: 80%; }
+.trust-wall .pl:hover { transform: translateY(-4px); }
 /* Product screenshots: rounded window corners everywhere */
 .tstage img, .shots img, .bwin img, img.shot { border-radius: 18px !important; overflow: hidden; }
 .tstage img { object-position: left top !important; }
@@ -925,21 +936,30 @@ img.av { object-fit: cover; object-position: center top; display: block; }
 </section>
 
 <!-- 8 · TRUST + ENTERPRISE -->
-<section data-title="Trust and enterprise" class="trust">
+<section class="night trust" data-title="Trust and enterprise">
   <p class="eb r" style="--i:0">Trusted and enterprise ready</p>
   <h2 class="t r" style="--i:1">Built with leading partners. <span class="grad">Built for your IP.</span></h2>
-  <div class="body" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
-    <div class="panel r" style="--i:2">
+  <div class="body trust-grid">
+    <div class="trust-lead">
+      <p class="trust-big r" style="--i:2">Government, research, industry and the NVIDIA ecosystem.</p>
+      <div class="trust-chips">
+        <div class="trust-chip r" style="--i:3"><span class="trust-ic">{{icon:lock}}</span><h3>You own your IP</h3></div>
+        <div class="trust-chip r" style="--i:4"><span class="trust-ic">{{icon:cloud}}</span><h3>Private cloud</h3></div>
+        <div class="trust-chip r" style="--i:5"><span class="trust-ic">{{icon:chip}}</span><h3>Any foundry, any PDK</h3></div>
+        <div class="trust-chip r" style="--i:6"><span class="trust-ic">{{icon:plug}}</span><h3>Fits your stack</h3></div>
+      </div>
+    </div>
+    <div class="trust-wall r" style="--i:3">
       <p class="lbl">In collaboration with</p>
       <div class="logos4">
-        <div class="pl r" style="--i:3"><img src="{{img:l-drdo}}" alt="DRDO"></div>
-        <div class="pl r" style="--i:4"><img src="{{img:l-cdac}}" alt="C-DAC"></div>
-        <div class="pl r" style="--i:5"><img src="{{img:l-iitb}}" alt="IIT Bombay"></div>
-        <div class="pl dk r" style="--i:6"><img src="{{img:l-nvidia}}" alt="NVIDIA Inception"></div>
-        <div class="pl r" style="--i:7"><img src="{{img:l-dell}}" alt="Dell Technologies"></div>
-        <div class="pl r" style="--i:8"><img src="{{img:l-nasscom}}" alt="NASSCOM DeepTech Club"></div>
-        <div class="pl r" style="--i:9"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
-        <div class="pl r" style="--i:10"><img src="{{img:l-dsci}}" alt="DSCI"></div>
+        <div class="pl r" style="--i:4"><img src="{{img:l-drdo}}" alt="DRDO"></div>
+        <div class="pl r" style="--i:5"><img src="{{img:l-cdac}}" alt="C-DAC"></div>
+        <div class="pl r" style="--i:6"><img src="{{img:l-iitb}}" alt="IIT Bombay"></div>
+        <div class="pl dk r" style="--i:7"><img src="{{img:l-nvidia}}" alt="NVIDIA Inception"></div>
+        <div class="pl r" style="--i:8"><img src="{{img:l-dell}}" alt="Dell Technologies"></div>
+        <div class="pl r" style="--i:9"><img src="{{img:l-nasscom}}" alt="NASSCOM DeepTech Club"></div>
+        <div class="pl r" style="--i:10"><img src="{{img:l-netweb}}" alt="Netweb Technologies"></div>
+        <div class="pl r" style="--i:11"><img src="{{img:l-dsci}}" alt="DSCI"></div>
       </div>
     </div>
   </div>
