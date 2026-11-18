@@ -560,6 +560,20 @@
 .ent .ec .fbadge { width: 56px; height: 56px; background: #EEEBFF; border-color: transparent; color: var(--accent); }
 /* Product screenshots: rounded window corners everywhere */
 .tstage img, .shots img, .bwin img, img.shot { border-radius: 18px !important; overflow: hidden; }
+.tstage img { object-position: left top !important; }
+/* Claude slide: the connection flow */
+.flow { display: flex; align-items: center; justify-content: center; gap: 0; }
+.fl-node { width: 290px; height: 190px; border-radius: 24px; background: #F5F4FE; border: 1px solid #E4E1FB; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 0 22px; box-shadow: 0 14px 30px rgba(10, 15, 30, .06); }
+.fl-node .fl-ico { width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; color: var(--accent); display: flex; align-items: center; justify-content: center; }
+.fl-node .fl-ico .ico { width: 30px; height: 30px; }
+.fl-node b { font-size: 28px; font-weight: 600; color: var(--ink); letter-spacing: -.3px; }
+.fl-node small { font-size: 19px; color: var(--body); }
+.fl-node.dark { background: #0A0D1A; border-color: #0A0D1A; }
+.fl-node.dark .fl-ico { background: #1A1F38; color: #A5B4FF; }
+.fl-node.dark b { color: #FFFFFF; }
+.fl-node.dark small { color: rgba(255, 255, 255, .72); }
+.fl-arrow { width: 90px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+.fl-arrow .ico { width: 44px; height: 44px; }
 </style>
 
 <!-- 1 · COVER -->
@@ -752,26 +766,19 @@
 <!-- THE RESULT -->
 <section data-title="Works with Claude">
   <p class="eb r" style="--i:0">Claude integration · MCP</p>
-  <h2 class="t r" style="--i:1">Works with Claude, <span class="grad">designed as well as possible.</span></h2>
-  <p class="sub r" style="--i:2">Silicofeller supports Claude through the Model Context Protocol (MCP), so an engineer can ask for a design, check it and export it from a conversation.</p>
-  <div class="body" style="display: flex; flex-direction: column; gap: 34px;">
-    <div class="shots">
-      <figure class="r" style="--i:3"><img src="{{img:shot-copilot}}" alt="Design Copilot and MCP: connect Claude to Silicofeller"><figcaption>Design Copilot &amp; MCP</figcaption></figure>
-      <figure class="r" style="--i:4"><img src="{{img:prod-schematic}}" alt="Schematic Editor"><figcaption>Schematic</figcaption></figure>
-      <figure class="r" style="--i:5"><img src="{{img:prod-layout}}" alt="Layout Viewer"><figcaption>Layout</figcaption></figure>
-      <figure class="r" style="--i:6"><img src="{{img:shot-simsetup}}" alt="Simulations on the Palace FEM solver"><figcaption>Simulations</figcaption></figure>
-      <figure class="r" style="--i:7"><img src="{{img:prod-fault}}" alt="Fault Tolerance Studio"><figcaption>Fault tolerant</figcaption></figure>
-      <figure class="r" style="--i:8"><img src="{{img:prod-packaging}}" alt="Packaging and PCB"><figcaption>Packaging</figcaption></figure>
-    </div>
+  <h2 class="t r" style="--i:1">Connect Claude, <span class="grad">design by conversation.</span></h2>
+  <p class="sub r" style="--i:2">Silicofeller supports Claude through the Model Context Protocol (MCP). Connect once, describe the chip you need, and Claude works in your Silicofeller workspace.</p>
+  <div class="body" style="display: flex; flex-direction: column; gap: 56px;">
+    <div class="flow r" style="--i:3"><div class="fl-node"><span class="fl-ico">{{icon:layers}}</span><b>You</b><small>Describe the chip</small></div><span class="fl-arrow">{{icon:arrow}}</span><div class="fl-node"><span class="fl-ico">{{icon:sparkles}}</span><b>Claude</b><small>Turns it into a plan</small></div><span class="fl-arrow">{{icon:arrow}}</span><div class="fl-node"><span class="fl-ico">{{icon:plug}}</span><b>MCP</b><small>Secure connection</small></div><span class="fl-arrow">{{icon:arrow}}</span><div class="fl-node dark"><span class="fl-ico">{{icon:chip}}</span><b>Silicofeller</b><small>Design, check, export</small></div></div>
     <div class="ent" style="margin-top: 0;">
-      <div class="ec r" style="--i:3"><span class="fbadge">{{icon:plug}}</span><h3>Claude through MCP</h3><p>Connect Claude to your Silicofeller workspace and describe the chip you need in plain language.</p></div>
-      <div class="ec r" style="--i:4"><span class="fbadge">{{icon:sparkles}}</span><h3>The best design, not the first</h3><p>The copilot returns the closest matching design to your targets, then refines it toward the best result.</p></div>
-      <div class="ec r" style="--i:5"><span class="fbadge">{{icon:shield}}</span><h3>Checked as it is built</h3><p>Design-rule checks, layout checks and fault-tolerance analysis run on the same design.</p></div>
-      <div class="ec r" style="--i:6"><span class="fbadge">{{icon:check}}</span><h3>Yours to export</h3><p>Export GDSII when it is ready. Your designs are never used to train shared AI models.</p></div>
+      <div class="ec r" style="--i:5"><span class="fbadge">{{icon:plug}}</span><h3>Design by conversation</h3><p>Describe the processor in plain language, and Claude turns it into a Silicofeller design.</p></div>
+      <div class="ec r" style="--i:6"><span class="fbadge">{{icon:lock}}</span><h3>Your workspace, your data</h3><p>The connection runs through your own account, with version history and role-based access for your team.</p></div>
+      <div class="ec r" style="--i:7"><span class="fbadge">{{icon:shield}}</span><h3>Checked before you export</h3><p>Design-rule, layout and fault-tolerance checks run on the design before you export GDSII.</p></div>
+      <div class="ec r" style="--i:8"><span class="fbadge">{{icon:layers}}</span><h3>Built on an open standard</h3><p>MCP is an open protocol, so the same connection can serve other AI agents as well as Claude.</p></div>
     </div>
   </div>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>9</span></div>
-  <aside>Silicofeller works with Claude through the Model Context Protocol. Claude connects to your workspace and designs with you: describe the chip, and the copilot returns the closest matching design, refined toward the best result. The design is checked for design rules, layout and fault tolerance as it is built, and when it is ready you export GDSII. Your designs stay yours and are never used to train shared models.</aside>
+  <aside>Here is how the Claude connection works. You connect Claude to Silicofeller once through MCP, the open Model Context Protocol. Then you describe the chip in plain language, Claude turns that into a Silicofeller design, and the design is checked before you export GDSII. The advantages: you design by conversation, the work stays in your own account with version history and role-based access, every design is checked before export, and because MCP is an open standard the same connection can serve other AI agents.</aside>
 </section>
 
 <!-- MARKET SIZE -->
