@@ -481,6 +481,34 @@
 .mem h3 { font-size: 25px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
 .mem p { font-family: 'JetBrains Mono', monospace !important; font-size: 13px; letter-spacing: .1em; color: var(--muted); margin-top: 6px; text-transform: uppercase; }
 
+/* real product screens in a browser frame */
+.bwin { width: 960px; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid var(--rule); box-shadow: 0 2px 0 rgba(9, 11, 26, .03), 0 30px 70px rgba(9, 11, 26, .16); }
+.bwin .bar { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #F4F5F9; border-bottom: 1px solid var(--rule); }
+.bwin .bar i { width: 11px; height: 11px; border-radius: 50%; background: #DCDFE7; }
+.bwin .bar i:nth-child(1) { background: #FF5F57; } .bwin .bar i:nth-child(2) { background: #FEBC2E; } .bwin .bar i:nth-child(3) { background: #28C840; }
+.bwin .url { margin-left: 18px; flex: 1; max-width: 520px; height: 26px; border-radius: 7px; background: #FFFFFF; border: 1px solid var(--rule); display: flex; align-items: center; padding: 0 12px; font-family: 'JetBrains Mono', monospace !important; font-size: 13px; color: var(--muted); }
+.bwin .url b { font-family: inherit !important; font-weight: 500; color: var(--ink); }
+.bwin > img { display: block; width: 100%; height: auto; }
+.result .lapwin { position: absolute !important; right: -110px; top: 250px; width: 1000px; z-index: 0 !important; border-color: rgba(255, 255, 255, .14); box-shadow: 0 40px 120px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .06); }
+
+/* product tour */
+.tour { display: flex; gap: 44px; margin-top: 40px; }
+.twin { width: 1110px; flex: none; }
+.tstage { position: relative; aspect-ratio: 16 / 9; background: #F7F7FA; }
+.tstage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
+.tstage img.on { opacity: 1; }
+.tsteps { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.tst { position: relative; overflow: hidden; display: flex; gap: 18px; align-items: flex-start; width: 100%; text-align: left; font: inherit; color: inherit; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 16px; padding: 18px 22px; cursor: pointer; transition: border-color .3s, background .3s, box-shadow .3s; }
+.tst .k { font-family: 'JetBrains Mono', monospace !important; font-size: 14px; font-weight: 500; color: var(--muted); padding-top: 5px; }
+.tst h3 { font-size: 23px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
+.tst p { font-size: 17px; line-height: 1.4; color: var(--body); margin-top: 4px; }
+.tst:hover { border-color: #D9D5FC; }
+.tst.on { border-color: var(--accent); background: #FBFAFF; box-shadow: 0 14px 30px rgba(91, 75, 245, .14); }
+.tst.on .k { color: var(--accent); }
+.tst::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--accent); }
+.active .tst.on::after { animation: tprog 6s linear both; }
+@keyframes tprog { to { width: 100%; } }
+
 /* close */
 .close .contact { font-size: 22px; }
 .close .contact b { font-weight: 600; }
@@ -586,8 +614,8 @@
   <p class="sub r" style="--i:2">The whole tool chain replaced by a single browser-based studio, with an AI copilot that does the manual work.</p>
   <div class="body split">
     <div class="r" style="--i:3">
-      <img class="shot" src="{{img:laptop}}" alt="Silicofeller Quantum Studio running a driven-modal simulation with the Palace 3D mesh viewer">
-      <p class="caption">Silicofeller Quantum Studio running a driven-modal simulation.</p>
+      <div class="bwin"><div class="bar"><i></i><i></i><i></i><span class="url">silicofeller.com/schematic-editor</span></div><img src="{{img:shot-schematic}}" alt="Silicofeller Schematic Editor with a 4-qubit transmon chip"></div>
+      <p class="caption">Live product: a 4-qubit transmon chip in the Silicofeller Schematic Editor.</p>
     </div>
     <div class="feat">
       <div class="fi r" style="--i:4"><span class="fbadge">{{icon:sparkles}}</span><div><h3>AI design copilot</h3><p>Describe the chip in plain language or as a target Hamiltonian. The AI builds it.</p></div></div>
@@ -602,86 +630,51 @@
 </section>
 
 <!-- 5 · SILICOFELLER: END TO END + RESULTS -->
-<section data-title="End to end">
-  <p class="eb r" style="--i:0">The solution · End to end</p>
-  <h2 class="t r" style="--i:1">Research to cloud execution, <span class="grad">automated.</span></h2>
-  <div class="body" style="margin-top: 64px">
-    <div class="r" style="--i:2"><div class="pipe"><div class="phases"><span style="grid-column: 1 / 5">Design</span><span style="grid-column: 5 / 7">Verify &amp; fabricate</span><span style="grid-column: 7 / 10">Operate</span></div><ol class="steps9" aria-label="Silicofeller workflow, research to cloud execution"><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="4" width="26" height="34" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13 H28 M13 19 H28 M13 25 H21" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="8" fill="#5B4BF5" fill-opacity=".14" stroke="#5B4BF5" stroke-width="2.2"/><path d="M38 38 L45 45" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">01</span><h4>Research</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M24 6 L38 14 V30 L24 38 L10 30 V14 Z M10 14 L24 22 L38 14 M24 22 V38" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">02</span><h4>Architecture</h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-schematic" aria-label="See the Schematic step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 16 H44 M4 32 H44 M16 16 V32 M32 16 V32" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="16" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="16" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><circle cx="32" cy="32" r="3.5" fill="#fff" stroke="#0A0F1E" stroke-width="2"/><path d="M21 20 L27 28 M27 20 L21 28" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="no">03</span><h4>Schematic<small class="see">Click to see it</small></h4></li><li class="zoom-step"><button class="ic" type="button" data-pop="pop-layout" aria-label="See the Layout step in Silicofeller"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="2" fill="#5B4BF5" fill-opacity=".14" stroke="#0A0F1E" stroke-width="2"/><path d="M18 6 V12 M24 6 V12 M30 6 V12 M18 36 V42 M24 36 V42 M30 36 V42 M6 18 H12 M6 24 H12 M6 30 H12 M36 18 H42 M36 24 H42 M36 30 H42" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19 H31 M17 24 H31 M17 29 H31" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg></button><span class="no">04</span><h4>Layout<small class="see">Click to see it</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 40 H44" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36 Z" fill="#5B4BF5" fill-opacity=".14"/><path d="M4 36 C12 36 13 21 18 21 C22 21 22 30 26 30 C30 30 30 8 34 8 C38 8 40 36 44 36" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">05</span><h4>Simulation</h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 26 L42 33 L24 40 L6 33 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 18 L42 25 L24 32 L6 25 Z" fill="#fff" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#fff" stroke="#5B4BF5" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 10 L42 17 L24 24 L6 17 Z" fill="#5B4BF5" fill-opacity=".14"/></svg></span><span class="no">06</span><h4>Fabrication ready<small>GDSII</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="6" width="40" height="36" rx="3" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".35"/><path d="M6 24 H12 L15 18 L18 30 L21 11 L24 37 L27 14 L30 32 L33 20 L36 24 H42" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">07</span><h4>Calibration<small>&amp; testing</small></h4></li><li><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M20 8 L34 16 V32 L20 40 L6 32 V16 Z M6 16 L20 24 L34 16 M20 24 V40" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4 L42 12 V28 L36 31.5" fill="none" stroke="#5B4BF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/><circle cx="14" cy="26" r="1.8" fill="#5B4BF5"/><circle cx="14" cy="32" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="28" r="1.8" fill="#5B4BF5"/><circle cx="26" cy="34" r="1.8" fill="#5B4BF5"/><circle cx="20" cy="15" r="1.8" fill="#5B4BF5"/></svg></span><span class="no">08</span><h4>Digital twin<small>VDPU</small></h4></li><li class="goal"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35 H35 A8.5 8.5 0 0 0 35.5 18 A11.5 11.5 0 0 0 13.5 20.5 A7.3 7.3 0 0 0 13 35 Z" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28 L24 24 L28 28 M24 24 V33" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="no">09</span><h4>Cloud execution</h4></li></ol></div></div>
-    <div class="stats">
-      <div class="stat r" style="--i:4"><p class="n">9</p><p class="l">stages, from research to cloud execution, in one workspace</p></div>
-      <div class="stat r" style="--i:5"><p class="n">58+</p><p class="l">pre-characterised cryogenic components</p></div>
-      <div class="stat r" style="--i:6"><p class="n">4</p><p class="l">simulation types built in: eigenmode, driven-modal, EPR, capacitance</p></div>
-      <div class="stat r" style="--i:7"><p class="n">1</p><p class="l">click from verified layout to GDSII and Python export</p></div>
-    </div>
-  </div>
-  <template id="pop-schematic"><figure class="popfig"><img src="{{img:step-schematic}}" alt="Schematic view in Silicofeller Quantum Studio"><figcaption><b>Schematic</b> A 7-qubit chip in the visual schematic editor: qubits, couplers, readout resonators and launch pads, placed and connected by drag and drop.</figcaption></figure></template><template id="pop-layout"><figure class="popfig"><img src="{{img:step-layout}}" alt="Layout view in Silicofeller Quantum Studio"><figcaption><b>Layout</b> The same chip as physical layout, with live design-rule checks for die boundary, edge margin, overlaps and connectivity.</figcaption></figure></template>
-  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>5</span></div>
-  <aside>And it doesn’t stop at layout. Silicofeller covers the whole journey: research, architecture, schematic, layout and simulation, then a fabrication-ready GDSII file, calibration and testing, a digital twin of the processor, and cloud execution. Nine stages in one workspace, more than 58 ready cryogenic components, four simulation types built in, and one click from a verified layout to GDSII and Python. [Click the Schematic or Layout tile to show that step in the product; Esc closes it, left/right arrows switch between them.]</aside>
-</section>
-
-<!-- 6 · DEMO VIDEO -->
-<section data-title="Demo">
-  <p class="eb r" style="--i:0">See it in action</p>
-  <h2 class="t r" style="--i:1">A quantum chip, <span class="grad">designed in one session.</span></h2>
-  <div class="body demo" style="margin-top: 44px">
-    <div class="vwin r" style="--i:2">
-      <div class="bar"><i></i><i></i><i></i><span>Silicofeller Schematic Editor · demo</span><em>plays muted · use the controls for sound</em></div>
-      <div class="stage">
-        <video preload="auto" playsinline muted loop controls poster="{{img:demo-poster}}">
-          <source src="silicofeller-demo.mp4" type="video/mp4">
-          <source src="https://silicofeller.com/videos/demo_video_new.mp4" type="video/mp4">
-        </video>
-        
+<section data-title="Product tour">
+  <p class="eb r" style="--i:0">The product · live screens</p>
+  <h2 class="t r" style="--i:1">From prompt to tapeout, <span class="grad">in one workspace.</span></h2>
+  <div class="body tour">
+    <div class="bwin twin r" style="--i:2">
+      <div class="bar"><i></i><i></i><i></i><span class="url">silicofeller.com/<b class="tpath">copilot</b></span></div>
+      <div class="tstage">
+        <img class="on" src="{{img:shot-copilot}}" alt="Design Copilot returning the closest matching qubit design for a target Hamiltonian">
+        <img src="{{img:shot-library}}" alt="Component Library with superconducting, semiconductor and trapped-ion components">
+        <img src="{{img:shot-schematic}}" alt="Schematic Editor with a 4-qubit transmon chip">
+        <img src="{{img:shot-layout}}" alt="Layout Viewer with the generated physical layout and design-rule checks passing">
+        <img src="{{img:shot-simsetup}}" alt="Simulation set-up on the Palace electromagnetic FEM solver">
       </div>
     </div>
-    <div class="chapters">
-      <p class="chl r" style="--i:3">What you’ll see <span>click a moment to jump</span></p>
-      <button class="chap r" style="--i:4" type="button" data-t="4"><span class="ts">0:04</span><h3>Visual schematic editor</h3><p>Place transmon qubits and route resonators by drag and drop.</p></button>
-      <button class="chap r" style="--i:5" type="button" data-t="19"><span class="ts">0:19</span><h3>AI design assistant</h3><p>Describe the chip in plain language. The copilot builds it.</p></button>
-      <button class="chap r" style="--i:6" type="button" data-t="23" data-end="28"><span class="ts">0:23</span><h3>Design as code</h3><p>The finished 4-qubit chip, mirrored live in Python.</p></button>
+    <div class="tsteps">
+      <button class="tst on r" style="--i:3" type="button" data-path="copilot"><span class="k">01</span><span><h3>Design Copilot</h3><p>Set a target Hamiltonian; the AI returns the closest matching qubit geometry.</p></span></button>
+      <button class="tst r" style="--i:4" type="button" data-path="component-library"><span class="k">02</span><span><h3>Component Library</h3><p>Superconducting, semiconductor and trapped-ion components, ready to place.</p></span></button>
+      <button class="tst r" style="--i:5" type="button" data-path="schematic-editor"><span class="k">03</span><span><h3>Schematic Editor</h3><p>Place qubits and couplers; resonators route automatically.</p></span></button>
+      <button class="tst r" style="--i:6" type="button" data-path="layout-viewer"><span class="k">04</span><span><h3>Layout and DRC</h3><p>Physical layout generated from the schematic, with every check passing.</p></span></button>
+      <button class="tst r" style="--i:7" type="button" data-path="simulations/new"><span class="k">05</span><span><h3>Simulation</h3><p>Eigenmode, driven-modal and electrostatic runs on the Palace FEM solver.</p></span></button>
     </div>
   </div>
   <script>
   (() => {
     const sec = document.currentScript.closest('section');
-    const v = sec.querySelector('video');
-    const chs = [...sec.querySelectorAll('.chap')];
-    const start = () => { v.play().catch(() => {}); };
-    // The demo plays by itself (muted) while this slide is on screen, and pauses when the slide changes.
-    new MutationObserver(() => { if (sec.classList.contains('active')) start(); else v.pause(); }).observe(sec, { attributes: true, attributeFilter: ['class'] });
-    if (sec.classList.contains('active')) start();
-    // silicofeller.com serves the video without partial downloads, so a moment can only be jumped to once that part
-    // has loaded: wait for it (the video starts loading when the deck opens), then jump and play from there.
-    let want = null;
-    const canJump = (t) => { for (let k = 0; k < v.seekable.length; k++) if (t >= v.seekable.start(k) && t <= v.seekable.end(k)) return true; return false; };
-    const tryJump = () => {
-      if (want === null || v.readyState < 1 || !canJump(want)) return;
-      const t = want; want = null;
-      v.currentTime = t;
-      v.addEventListener('seeked', start, { once: true });
+    const imgs = [...sec.querySelectorAll('.tstage img')];
+    const steps = [...sec.querySelectorAll('.tst')];
+    const path = sec.querySelector('.tpath');
+    let k = 0, timer = 0;
+    const set = (n) => {
+      k = (n + steps.length) % steps.length;
+      imgs.forEach((im, j) => im.classList.toggle('on', j === k));
+      steps.forEach((s, j) => s.classList.toggle('on', j === k));
+      path.textContent = steps[k].dataset.path;
     };
-    ['loadedmetadata', 'progress', 'canplay'].forEach((e) => v.addEventListener(e, tryJump));
-    chs.forEach((c) => c.addEventListener('click', () => {
-      want = +c.dataset.t;
-      tryJump();
-      // Still not reachable after 1.5 s (slow connection): keep playing rather than wait.
-      setTimeout(() => { if (want !== null) { want = null; start(); } }, 1500);
-    }));
-    v.addEventListener('timeupdate', () => {
-      const t = v.currentTime;
-      let k = -1;
-      chs.forEach((c, j) => { if (t >= +c.dataset.t) k = j; });
-      chs.forEach((c, j) => {
-        const t0 = +c.dataset.t;
-        const t1 = j + 1 < chs.length ? +chs[j + 1].dataset.t : +(c.dataset.end || v.duration || t0 + 1);
-        c.classList.toggle('on', j === k && t < t1);
-        c.style.setProperty('--p', j < k ? 1 : j === k ? Math.min(1, (t - t0) / (t1 - t0)) : 0);
-      });
-    });
+    // While this slide is on screen the tour moves on every 6 seconds; a click picks a screen and restarts the timer.
+    const run = () => { clearInterval(timer); timer = setInterval(() => set(k + 1), 6000); };
+    steps.forEach((s, j) => s.addEventListener('click', (e) => { e.stopPropagation(); set(j); run(); }));
+    new MutationObserver(() => { if (sec.classList.contains('active')) { set(0); run(); } else clearInterval(timer); })
+      .observe(sec, { attributes: true, attributeFilter: ['class'] });
+    addEventListener('beforeprint', () => set(0));
   })();
   </script>
-  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>6</span></div>
-  <aside>Let me show you instead of telling you. [Click the play button, or click a moment on the right to jump straight to it.] Point out three moments: the visual schematic editor at 0:04, the AI design assistant building the chip from a plain-language prompt at 0:19, and the finished design mirrored live in Python code at 0:23. All in one window, with no export and no second tool.</aside>
+  <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>7</span></div>
+  <aside>These are live screens from the product today. [Click a step on the right, or let it move on by itself.] One: the Design Copilot. Set the target Hamiltonian, for example a 4 GHz qubit with minus 200 MHz anharmonicity, and the AI returns the closest matching geometry. Two: the component library, with superconducting, semiconductor and trapped-ion components ready to place. Three: the schematic editor, here a 4-qubit transmon chip with resonators routed automatically. Four: the physical layout generated straight from that schematic, with die-boundary, overlap and connectivity checks all passing. Five: simulation set-up on the Palace electromagnetic solver, eigenmode, driven-modal or electrostatic. One workspace, no exports between tools.</aside>
 </section>
 
 <!-- 7 · EVERY ARCHITECTURE -->
@@ -711,7 +704,7 @@
 
 <!-- THE RESULT -->
 <section class="night result" data-title="The result">
-  <img class="lap" src="{{img:laptop}}" alt="Silicofeller Quantum Studio on a laptop, running a driven-modal simulation">
+  <div class="bwin lapwin"><div class="bar"><i></i><i></i><i></i><span class="url">silicofeller.com/layout-viewer</span></div><img src="{{img:shot-layout}}" alt="Silicofeller Layout Viewer: generated layout with all design-rule checks passing"></div>
   <div class="col">
     <p class="eb r" style="--i:0">The result</p>
     <h2 class="t r" style="--i:1">From 10+ tools <span class="grad">to one platform.</span></h2>
