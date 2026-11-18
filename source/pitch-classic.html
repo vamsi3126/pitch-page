@@ -665,19 +665,19 @@
     <div class="bwin twin r" style="--i:2">
       <div class="bar"><i></i><i></i><i></i><span class="url">silicofeller.com/<b class="tpath">copilot</b></span></div>
       <div class="tstage">
-        <img class="on" src="{{img:shot-copilot}}" alt="Design Copilot returning the closest matching qubit design for a target Hamiltonian">
-        <img src="{{img:shot-library}}" alt="Component Library with superconducting, semiconductor and trapped-ion components">
-        <img src="{{img:shot-schematic}}" alt="Schematic Editor with a 4-qubit transmon chip">
-        <img src="{{img:shot-layout}}" alt="Layout Viewer with the generated physical layout and design-rule checks passing">
+        <img class="on" src="{{img:prod-schematic}}" alt="Schematic Editor with a 4-qubit transmon chip">
+        <img src="{{img:prod-layout}}" alt="Layout Viewer with the generated physical layout and design-rule checks">
         <img src="{{img:shot-simsetup}}" alt="Simulation set-up on the Palace electromagnetic FEM solver">
+        <img src="{{img:prod-fault}}" alt="Fault Tolerance Studio choosing an error-correcting code for the saved chip">
+        <img src="{{img:prod-packaging}}" alt="Packaging and PCB built from the saved layout">
       </div>
     </div>
     <div class="tsteps">
-      <button class="tst on r" style="--i:3" type="button" data-path="copilot"><span class="k">01</span><span><h3>Design Copilot</h3><p>Set a target Hamiltonian; the AI returns the closest matching qubit geometry.</p></span></button>
-      <button class="tst r" style="--i:4" type="button" data-path="component-library"><span class="k">02</span><span><h3>Component Library</h3><p>Superconducting, semiconductor and trapped-ion components, ready to place.</p></span></button>
-      <button class="tst r" style="--i:5" type="button" data-path="schematic-editor"><span class="k">03</span><span><h3>Schematic Editor</h3><p>Place qubits and couplers; resonators route automatically.</p></span></button>
-      <button class="tst r" style="--i:6" type="button" data-path="layout-viewer"><span class="k">04</span><span><h3>Layout and DRC</h3><p>Physical layout generated from the schematic, with every check passing.</p></span></button>
-      <button class="tst r" style="--i:7" type="button" data-path="simulations/new"><span class="k">05</span><span><h3>Simulation</h3><p>Eigenmode, driven-modal and electrostatic runs on the Palace FEM solver.</p></span></button>
+      <button class="tst on r" style="--i:3" type="button" data-path="schematic"><span class="k">01</span><span><h3>Schematic</h3><p>Place qubits and couplers; resonators route automatically.</p></span></button>
+      <button class="tst r" style="--i:4" type="button" data-path="layout-viewer"><span class="k">02</span><span><h3>Layout</h3><p>Physical layout generated from the saved schematic, with live design-rule checks.</p></span></button>
+      <button class="tst r" style="--i:5" type="button" data-path="simulations/new"><span class="k">03</span><span><h3>Simulations</h3><p>Eigenmode, driven-modal and electrostatic runs on the Palace FEM solver.</p></span></button>
+      <button class="tst r" style="--i:6" type="button" data-path="fault-tolerance"><span class="k">04</span><span><h3>Fault tolerant</h3><p>Choose an error-correcting code and see whether your chip can run it.</p></span></button>
+      <button class="tst r" style="--i:7" type="button" data-path="packaging"><span class="k">05</span><span><h3>Packaging</h3><p>Connectors, vias and board checks, built from the saved layout.</p></span></button>
     </div>
   </div>
   <script>
@@ -702,7 +702,7 @@
   })();
   </script>
   <div class="foot"><span class="fl"><img src="{{img:logo}}" alt="Silicofeller">silicofeller.com</span><span>7</span></div>
-  <aside>These are live screens from the product today. [Click a step on the right, or let it move on by itself.] One: the Design Copilot. Set the target Hamiltonian, for example a 4 GHz qubit with minus 200 MHz anharmonicity, and the AI returns the closest matching geometry. Two: the component library, with superconducting, semiconductor and trapped-ion components ready to place. Three: the schematic editor, here a 4-qubit transmon chip with resonators routed automatically. Four: the physical layout generated straight from that schematic, with die-boundary, overlap and connectivity checks all passing. Five: simulation set-up on the Palace electromagnetic solver, eigenmode, driven-modal or electrostatic. One workspace, no exports between tools.</aside>
+  <aside>These are live screens from the product today. [Click a step on the right, or let it move on by itself.] One: the schematic editor, where qubits and couplers are placed and resonators route themselves. Two: the layout, generated from that schematic with design-rule checks. Three: simulations, eigenmode and driven-modal runs on the Palace solver. Four: fault tolerance, where you pick an error-correcting code and see whether your chip can run it. Five: packaging, the PCB built from the layout.</aside>
 </section>
 
 <!-- 7 · EVERY ARCHITECTURE -->
