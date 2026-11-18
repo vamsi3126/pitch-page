@@ -144,4 +144,6 @@ ${script}
 </html>
 `;
 fs.writeFileSync(outFile, out);
+// Web hosts (Vercel, Netlify, GitHub Pages) open index.html at the site's main address.
+fs.writeFileSync(path.join(path.dirname(outFile), 'index.html'), out);
 console.log('Wrote', outFile, Math.round(out.length / 1024) + ' KB');
